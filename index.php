@@ -1,4 +1,5 @@
-/*
-Theme Name: PRORIO
-Version: 1.0.0
-*/
+<?php
+
+?>
+
+<h1>Hello World</h1>
