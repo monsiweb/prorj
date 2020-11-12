@@ -25,6 +25,101 @@ Version: 1.0
     text-transform: uppercase;
 }
 
+.btn--third, .btn.btn--third {
+    color: #fff;
+    background: #FAAF41;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 14px 48px;
+}
+
+.btn--fourth, .btn.btn--fourth {
+    color: #414141;
+    background: none;
+    border: 2px solid #414141;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 13px 48px;
+}
+
+/* Modals */
+
+/* Modal login */
+
+.modal__login__body {
+    text-align: center;
+    max-width: 516px;
+    margin: 0 auto;
+    padding: 30px 0px 80px 0px !important;
+}
+
+.modal__login__body .modal__p {
+    padding: 17px 0px 13px 0px;
+}
+
+.modal__login__body .btn--third {
+    margin-right: 33px;
+}
+
+/* Configurações globais */
+
+a.modal__close {
+    color: #F05A28;
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: right;
+    margin-right: 10px;
+}
+
+a.modal__close:hover {
+    color: #F05A28;
+    text-decoration: none;
+}
+
+.modal__title {
+    font-size: 36px;
+    font-weight: 400;
+    color: #F05A28;
+    line-height: 48px;
+}
+
+.modal__p {
+    font-size: 20px;
+    font-weight: 400;
+    color: #414141;
+}
+
+
+.modal__prorio .modal-content {
+    border-radius: 0;
+    border: 1px solid #000;
+}
+
+
+
+
+/* Titles */
+
+.title--primary {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 84px;
+    text-transform: uppercase;
+    color: #EB4128;
+    position: relative;
+    width: fit-content;
+}
+
+
+.title--primary::before {
+    content: url('./assets/images/before_title.svg');
+    position: absolute;
+    left: -65px;
+    top: 35px;
+}
 
 /* Header Menu */
 
@@ -51,6 +146,8 @@ header {
 
 footer {
     background: #414141;
+    position: relative;
+    z-index: 100;
 }
 
 .footer__item__email {
@@ -117,11 +214,18 @@ footer {
     align-items: center;
     background-size:cover;
     background-blend-mode: multiply;
+    position: relative;
 }
 
+.hero::before {
+    content: url('./assets/images/hero_img.svg');
+    position: absolute;
+    left: 0;
+}
 
 .hero__content {
-    margin-left: 50px;
+    width: fit-content;
+    margin: 0 auto;
 }
 
 .hero__content__title {
@@ -152,4 +256,103 @@ footer {
     .hero__content {
         margin-left: 0px;
     } 
+}
+
+/* Conheça mais */
+
+.aboutMore_title {
+    padding: 65px 0px 30px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.aboutMore__content {
+    margin-bottom: 100px;
+}
+
+.aboutMore__content_image {
+    float: right;
+    max-width: 506px;
+    max-height: 505px;
+    margin-right: -50px;
+    z-index: 100;
+    position: relative;
+}
+
+.aboutMore__content__text {
+    background: #E94E1B;
+    padding: 120px 40px 86px 86px;
+    width: 476px;
+    z-index: 0;
+    position: relative;
+    margin-left: -20px;
+    margin-top: 100px;
+}
+
+.aboutMore__content__text p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    line-height: 24px;
+}
+
+.aboutMore__content__text strong {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 24px;
+    color: #fff;
+}
+
+.aboutMore__content__text a.btn {
+    display: block;
+    width: fit-content;
+    margin-top: 20px;
+}
+
+
+/* Sobre a ferramenta */
+
+.aboutTool {
+    background: url('./assets/images/tool_bg.jpg');
+    height: 343px;
+    display: flex;
+    align-items: center;
+}
+
+.aboutTool__content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.aboutTool__content__strong {
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    max-width: 200px;
+    position: relative;
+}
+
+.aboutTool__content__strong::before {
+    content: url('./assets/images/tool_image.svg');
+    position: absolute;
+    top: -150px;
+    left: -190px;
+    z-index: 0;
+}
+
+.aboutTool__content__p {
+    font-size: 16px;
+    color: #fff;
+    font-weight: 400;
+    max-width: 500px;
+}
+
+@media (max-width: 768px) {
+    .aboutTool__content {
+        flex-direction: column;
+    }
 }
