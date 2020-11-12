@@ -2,3 +2,154 @@
 Theme Name: PRO RIO ENERGIA
 Version: 1.0
 */
+
+/* Buttons */
+
+.btn--primary, .btn.btn--primary {
+    padding: 13px 35px;
+    color: #F05A28;
+    background: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 0;
+    text-transform: uppercase;
+}
+
+.btn--secondary, .btn.btn--secondary {
+    padding: 13px 35px;
+    color: #fff;
+    background: #F05A28;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 0;
+    text-transform: uppercase;
+}
+
+
+/* Header Menu */
+
+header {
+    padding: 25px 0px;
+}
+
+.header__menu__item a {
+    font-size: 16px;
+    color: #F05A28;
+    font-weight: bold;
+}
+
+.header__menu__item a:hover {
+    text-decoration: none;
+    color: #F05A28;
+}
+
+.header__menu__item img {
+    width: 100%;
+}
+
+/* Footer */
+
+footer {
+    background: #414141;
+}
+
+.footer__item__email {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.footer__item__email a {
+    color: #fff;
+    font-weight: bold;
+}
+
+.footer__item__email a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.footer__item__logos {
+    display: flex;
+    justify-content: space-between;
+    max-width: 700px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.footer__item__logos img {
+    width: 100%;
+}
+
+.footer__item__links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.footer__item__links a {
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.footer__item__links a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+/*  PAGES */
+
+/* 1. HOME */
+/* Hero */
+
+.hero {
+    min-height: 763px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size:cover;
+    background-blend-mode: multiply;
+}
+
+
+.hero__content {
+    margin-left: 50px;
+}
+
+.hero__content__title {
+    color: #fff;
+    font-size: 70px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.hero__content__title span {
+    color: #FAAF41;
+}
+
+.hero__content__p {
+    color: #fff;
+    font-weight: lighter;
+    font-size: 24px;
+    max-width: 570px;
+    padding: 20px 0px 40px 0px;
+}
+
+.hero__content_btns .btn--secondary {
+    margin-left: 30px;
+}
+
+
+@media (max-width: 768px) {
+    .hero__content {
+        margin-left: 0px;
+    } 
+}
