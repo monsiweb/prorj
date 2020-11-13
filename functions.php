@@ -66,26 +66,6 @@ register_nav_menus(array(
     'main_menu' => 'Menu Institucional',
 ));
 
-// Sidebar
-register_sidebar(array(
-    'name' => "Footer 1",
-    'id' => 'footer-1-widget',
-    'description' => '',
-    'before_widget' => '<div id="%1$s" class="footer-widget">',
-    'after_widget' => '</div>',
-    'before_title' => '<h6 class="title upp">',
-    'after_title' => '</h6>',
-));
-
-register_sidebar(array(
-    'name' => "Footer 2",
-    'id' => 'footer-2-widget',
-    'description' => '',
-    'before_widget' => '<div id="%1$s" class="footer-widget">',
-    'after_widget' => '</div>',
-    'before_title' => '<h6 class="title upp">',
-    'after_title' => '</h6>',
-));
 
 // Include styles
 function theme_enqueue_styles()
@@ -96,18 +76,11 @@ function theme_enqueue_styles()
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
 
-// Include footer styles
-function theme_enqueue_footer_styles()
-{
-    wp_enqueue_style('slick', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css', false);
-}
-add_action('get_footer', 'theme_enqueue_footer_styles');
 
 // Include scripts
 function theme_enqueue_scripts()
 {
     wp_enqueue_script('jquery', get_template_directory_uri() . '/assets/javascript/jquery.js', array('jquery'), '1.0', true);
-    wp_enqueue_script('slick', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array('jquery'), '1.0', true);
     wp_enqueue_script('bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js', array('jquery'), '1.0', true);
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
@@ -115,7 +88,6 @@ add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
 
 // Theme Settings
 if (function_exists('acf_add_options_page')) {
-
     acf_add_options_page(array(
         'page_title'     => 'Configurações Gerais',
         'menu_title'    => 'Opções do tema',
@@ -123,17 +95,12 @@ if (function_exists('acf_add_options_page')) {
         'capability'    => 'edit_posts',
         'redirect'        => false
     ));
-
-    acf_add_options_sub_page(array(
-        'page_title'     => 'Configurações do Cabeçalho',
-        'menu_title'    => 'Header',
-        'parent_slug'    => 'theme-general-settings',
-    ));
 }
 
 // Thumbnails
+/*
 add_theme_support('post-thumbnails');
 add_image_size('grid-thumb', 240, 220, true);
-
+*/
 
 //flush_rewrite_rules();
