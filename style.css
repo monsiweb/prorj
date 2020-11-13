@@ -46,23 +46,6 @@ Version: 1.0
 
 /* Modals */
 
-/* Modal login */
-
-.modal__login__body {
-    text-align: center;
-    max-width: 516px;
-    margin: 0 auto;
-    padding: 30px 0px 80px 0px !important;
-}
-
-.modal__login__body .modal__p {
-    padding: 17px 0px 13px 0px;
-}
-
-.modal__login__body .btn--third {
-    margin-right: 33px;
-}
-
 /* Configurações globais */
 
 a.modal__close {
@@ -98,10 +81,38 @@ a.modal__close:hover {
     border: 1px solid #000;
 }
 
+.breadcrumb__link {
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+
+    text-decoration: underline;
+}
+
+
+/* Modal login */
+
+.modal__login__body {
+    text-align: center;
+    max-width: 516px;
+    margin: 0 auto;
+    padding: 30px 0px 80px 0px !important;
+}
+
+.modal__login__body .modal__p {
+    padding: 17px 0px 13px 0px;
+}
+
+.modal__login__body .btn--third {
+    margin-right: 33px;
+}
 
 
 
-/* Titles */
+
+
+/* Titles & Text */
 
 .title--primary {
     font-size: 32px;
@@ -119,6 +130,12 @@ a.modal__close:hover {
     position: absolute;
     left: -65px;
     top: 35px;
+}
+
+.text--primary {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 26px;
 }
 
 /* Header Menu */
@@ -258,6 +275,10 @@ footer {
     } 
 }
 
+/* PÁGINAS INSTITUCIONAIS  */
+.institutional__pages__content {
+ padding: 10px 0px 50px 0px;
+}
 /* Conheça mais */
 
 .aboutMore_title {
