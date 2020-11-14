@@ -10,22 +10,54 @@
 <body>
     <header>
         <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-md-4 d-flex justify-content-start align-items-center">
-                    <div class="header__menu__item">
-                        <a href="#">FAZER LOGIN</a>
+        
+        <?php global $current_user; wp_get_current_user(); ?>
+            <?php if ( is_user_logged_in() ) : ?>
+                <div class="row justify-content-between">
+                    <div class="col-md-4 d-flex justify-content-between align-items-center">
+                        <div class="header__menu__item">
+                            <a href="#">DASHBOARD</a>
+                        </div>
+                        <div class="header__menu__item">
+                            <a href="#">CADASTRE SEU IMÓVEL</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex justify-content-center align-items-center">
+                        <div class="header__menu__item">
+                            <a href="#"><img src="<?= get_template_directory_uri(); ?>/assets/images/logo_prorio.svg" alt="Logo"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex justify-content-between align-items-center">
+                        <div class="header__menu__item">
+                            <a href="#">GUIA DE USO</a>
+                        </div>
+                        <div class="header__menu__item">
+                            <a href="#">PT|EN</a>
+                        </div>
+                        <div class="header__menu__item">
+                            <a href="#">SAIR</a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4 d-flex justify-content-center align-items-center">
-                    <div class="header__menu__item">
-                        <a href="#"><img src="<?= get_template_directory_uri(); ?>/assets/images/logo_prorio.svg" alt="Logo"></a>
+
+            <?php else:?>
+                <div class="row justify-content-between">
+                    <div class="col-md-4 d-flex justify-content-start align-items-center">
+                        <div class="header__menu__item">
+                            <a href="#">FAZER LOGIN</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex justify-content-center align-items-center">
+                        <div class="header__menu__item">
+                            <a href="#"><img src="<?= get_template_directory_uri(); ?>/assets/images/logo_prorio.svg" alt="Logo"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex justify-content-end align-items-center">
+                        <div class="header__menu__item">
+                            <a href="#">GUIA DE USO</a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4 d-flex justify-content-end align-items-center">
-                    <div class="header__menu__item">
-                        <a href="#">GUIA DE USO</a>
-                    </div>
-                </div>
-            </div>
+            <?php endif;?>
         </div>
     </header>
