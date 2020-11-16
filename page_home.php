@@ -19,7 +19,6 @@
 </section>
 
 <section class="aboutMore">
-    <p>Teste</p>
     <div class="container">
         <div class="aboutMore_title">
             <h2 class="title--primary">Conheça mais</h2>
