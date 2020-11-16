@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/monsicom/prorj.monsi.com.br/wp-content/themes/prorj 
+    - /bin/cp -r * $DEPLOYPATH            
