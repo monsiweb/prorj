@@ -3,6 +3,14 @@ Theme Name: PRO RIO ENERGIA
 Version: 1.0
 */
 
+/* HTML geral */
+
+body{
+    font-family: oscine, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+}
+
 /* Buttons */
 
 .btn--primary, .btn.btn--primary {
@@ -122,7 +130,6 @@ a.modal__close:hover {
     text-transform: uppercase;
     color: #EB4128;
     position: relative;
-    width: fit-content;
 }
 
 
@@ -131,6 +138,7 @@ a.modal__close:hover {
     position: absolute;
     left: -65px;
     top: 35px;
+    width: 100%;
 }
 
 .text--primary {
@@ -221,6 +229,18 @@ footer {
 .footer__item__links a:hover {
     text-decoration: none;
     color: #fff;
+}
+
+
+#menu-menu-rodape {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#menu_footer {
+    width: 100%;
 }
 
 /*  PAGES */
@@ -356,7 +376,7 @@ footer {
 }
 
 .aboutTool__content__strong {
-    font-size: 24px;
+    font-size: 23px;
     color: #fff;
     font-weight: bold;
     text-transform: uppercase;
@@ -385,4 +405,54 @@ footer {
     .aboutTool__content {
         flex-direction: column;
     }
+}
+
+/* Página FAQ */
+
+.questions-group {
+    padding: 20px 0px 30px;
+}
+
+.title__questions-group {
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #FAAF41;
+}
+
+.item-faq h4 {
+    font-size: 20px;
+    color: #414141;
+    margin: 0;
+    padding: 15px 0px;
+    border-bottom: 1px solid #FAAF41;
+}
+
+.item-faq {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid #FAAF41;
+}
+
+.item-faq.collapsed .fa-chevron-up {
+    display: none;
+}
+
+.item-faq .fa-chevron-up {
+    display: block;
+}
+
+
+.item-faq.collapsed .fa-chevron-down {
+    display: block;
+}
+
+.item-faq .fa-chevron-down {
+    display: none;
+}
+
+.content-faq {
+    padding: 12px 0px;
 }

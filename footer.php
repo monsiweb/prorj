@@ -21,9 +21,7 @@
         </div>
 
         <div class="footer__item__links">
-            <a href="#">Termos de uso</a>
-            <a href="#">Política de privacidade</a>
-            <a href="#">Guia de uso</a>
+            <?php theme_classic_menu('menu_footer'); ?>
         </div>
     </div>
 </footer>
