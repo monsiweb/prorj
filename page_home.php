@@ -1,14 +1,14 @@
 <?php
-   /* Template name: Homepage */
-   ?>
+/* Template name: Homepage */
+?>
 
 <?php get_header(); ?>
 
 <section class="hero" style="background: url('<?php the_field('background_hero') ?>') rgb(0 0 0 / 50%) no-repeat; background-size: cover ">
     <div class="container">
         <div class="hero__content">
-            <h1 class="hero__content__title"><?php the_field('title_hero');?></h1>
-            <p class="hero__content__p"><?php the_field('subtitle_hero');?></p>
+            <h1 class="hero__content__title"><?php the_field('title_hero'); ?></h1>
+            <p class="hero__content__p"><?php the_field('subtitle_hero'); ?></p>
 
             <div class="hero__content_btns">
                 <a href="" class="btn btn--primary">ME CADASTRAR</a>
@@ -19,6 +19,7 @@
 </section>
 
 <section class="aboutMore">
+    <p>Teste</p>
     <div class="container">
         <div class="aboutMore_title">
             <h2 class="title--primary">Conheça mais</h2>
@@ -26,22 +27,22 @@
         <div class="row aboutMore__content">
             <div class="col-md-6">
                 <div class="aboutMore__content_image">
-                    <img src="<?php the_field('image_aboutmore');?>" alt="Conheça mais">
+                    <img src="<?php the_field('image_aboutmore'); ?>" alt="Conheça mais">
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="aboutMore__content__text">
-                    <p><?php the_field('description_aboutmore');?></p>
+                    <p><?php the_field('description_aboutmore'); ?></p>
                     <strong>Precisa de ajuda? Veja o nosso tutorial</strong>
                     <?php
-                      $button_more = get_field('button_aboutmore');
-                      if($button_more ):
+                    $button_more = get_field('button_aboutmore');
+                    if ($button_more) :
                         $link_url = $button_more['url'];
                         $link_title = $button_more['title'];
                         $link_target = $button_more['target'] ? $button_more['target'] : '_self';
-                      ?>
-                        <a class="btn btn--primary" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+                    ?>
+                        <a class="btn btn--primary" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a>
                     <?php endif; ?>
                 </div>
             </div>
@@ -52,20 +53,20 @@
 <section class="aboutTool">
     <div class="container">
         <div class="aboutTool__content">
-          <strong class="aboutTool__content__strong">
-              Como foi feita
-              a ferramenta?
-          </strong>
-          <p class="aboutTool__content__p"><?php the_field('description_abouttool');?></p>
-          <?php
+            <strong class="aboutTool__content__strong">
+                Como foi feita
+                a ferramenta?
+            </strong>
+            <p class="aboutTool__content__p"><?php the_field('description_abouttool'); ?></p>
+            <?php
             $button_tool = get_field('button_aboutmore');
-            if($button_tool ):
-              $link_url = $button_tool['url'];
-              $link_title = $button_tool['title'];
-              $link_target = $button_tool['target'] ? $button_tool['target'] : '_self';
+            if ($button_tool) :
+                $link_url = $button_tool['url'];
+                $link_title = $button_tool['title'];
+                $link_target = $button_tool['target'] ? $button_tool['target'] : '_self';
             ?>
-              <a class="btn btn--secondary" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
-          <?php endif; ?>
+                <a class="btn btn--secondary" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a>
+            <?php endif; ?>
         </div>
     </div>
 
