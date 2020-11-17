@@ -456,3 +456,10 @@ footer {
 .content-faq {
     padding: 12px 0px;
 }
+
+/* 2. IMOVEIS */
+.terms {
+    min-height: 580px;
+    display: flex;
+    align-items: center;
+}
