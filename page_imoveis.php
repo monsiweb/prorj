@@ -1,4 +1,4 @@
-<?php /* Template Name: Imóveis */ ?>
+<?php /* Template Name: Termo */ ?>
 <?php
 
 if (is_user_logged_in()) {
