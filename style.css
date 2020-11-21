@@ -210,7 +210,6 @@ a.modal__close:hover {
     z-index: 100;
     right: 15px;
     top: 10px;
-
     font-size: 16px;
     font-weight: 400;
 }
@@ -249,7 +248,8 @@ a.modal__close:hover {
     font-size: 16px;
 }
 
-.input__extra input, span {
+.input__extra input, 
+.input__extra span {
     color: #fff;
     border-color: #fff;
     background: none;
@@ -267,6 +267,18 @@ a.modal__close:hover {
 
 .pretty .state label:before {
     border-color: #FAAF41;
+}
+
+.pretty .state label:after, 
+.pretty .state label:before {
+    width: calc(1.2em + 2px);
+    height: calc(1.2em + 2px);
+}
+
+.pretty .state label {
+    min-width: calc(1em + 2px);
+    margin-left: 14px;
+    margin-top: 2px;
 }
 
 /* Header Menu */
@@ -633,9 +645,11 @@ footer {
 
 /* página do formulário */
 
+.fase4,
+.fase5, 
 .fase6 {
     width: 450px;
-    margin: 0 auto;
+    margin: 20px auto;
     max-width: 100%;
     text-align: center;
 }
@@ -643,6 +657,7 @@ footer {
 label {
     color: #414141;
     font-size: 16px;
+    margin-bottom: 20px
 }
 
 .checkbox__input {
@@ -654,4 +669,34 @@ label {
 
 .checkbox__input div {
     margin-right: 20px;
+}
+
+.buttons-form {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0px;
+}
+
+.btn-previus {
+    border: 2px solid #414141;
+    border-radius: 4px;
+    padding: 6px 32px;
+    text-transform: uppercase;
+}
+
+.btn-next {
+    background: #FAAF41;
+    border: 2px solid #FAAF41;
+    color: #fff;
+    border-radius: 4px;
+    padding: 6px 32px;
+    text-transform: uppercase;
+}
+
+.fase2,
+.fase3 {
+    width: 750px;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
 }
