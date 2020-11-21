@@ -126,10 +126,6 @@ a.modal__close:hover {
     margin-right: 33px;
 }
 
-
-
-
-
 /* Titles & Text */
 
 .title--primary {
@@ -198,6 +194,43 @@ a.modal__close:hover {
     font-weight: 400;
     color: #414141;
 }
+
+/* INPUTS*/
+
+.input__text {
+    position: relative;
+}
+
+.text--input {
+    position: absolute;
+    z-index: 100;
+    right: 15px;
+    top: 10px;
+
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.input__rio {
+    border: solid 1px #FAAF41;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+}
+
+.input__rio:focus {
+    outline: none;
+}
+
+.input__rio--select {
+    width: 100%;
+    padding: 10px;
+    background: #FAAF41;
+    color: #fff;
+    border: none;
+}
+
+
 
 /* Header Menu */
 
