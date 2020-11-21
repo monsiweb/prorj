@@ -230,7 +230,13 @@ a.modal__close:hover {
     border: none;
 }
 
+.pretty.p-default:not(.p-fill) input:checked~.state.p-warning-o label:after {
+    background-color: #EB4128!important;
+}
 
+.pretty .state label:before {
+    border-color: #FAAF41;
+}
 
 /* Header Menu */
 
@@ -543,6 +549,7 @@ footer {
 }
 
 /* 2. IMOVEIS */
+
 .terms {
     min-height: 580px;
     display: flex;
@@ -591,4 +598,29 @@ footer {
 
 .panel__noItems {
     margin: 50px 0px;
+}
+
+/* página do formulário */
+
+.fase6 {
+    width: 450px;
+    margin: 0 auto;
+    max-width: 100%;
+    text-align: center;
+}
+
+label {
+    color: #414141;
+    font-size: 16px;
+}
+
+.checkbox__input {
+    margin: 20px 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.checkbox__input div {
+    margin-right: 20px;
 }
