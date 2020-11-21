@@ -5,7 +5,7 @@ Version: 1.0
 
 /* HTML geral */
 
-body{
+body {
     font-family: oscine, sans-serif;
     font-style: normal;
     font-weight: 300;
@@ -156,6 +156,21 @@ a.modal__close:hover {
     line-height: 26px;
 }
 
+.form__row__title {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.form__row__title--two {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.form__row__title--three {
+    font-size: 26px;
+    color: #fff;
+}
+
 /* Components */
 
 /* ---- CARD ---- */
@@ -236,6 +251,9 @@ a.modal__close:hover {
     font-size: 16px;
 }
 
+.form__row__title {
+    text-align: center;
+}
 
 /* INPUT EXTRA SECTION */
 .input__extra {
@@ -261,8 +279,84 @@ a.modal__close:hover {
     color: #414141;
 }
 
-.pretty.p-default:not(.p-fill) input:checked~.state.p-warning-o label:after {
-    background-color: #EB4128!important;
+/* RADIO GROUO */
+
+.radio__group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.radio__group .radio__content {
+    margin: 10px 15px;
+}
+
+.radio__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 179px;
+    width: 100%;
+    height: 172px;
+}
+
+.radio__content label {
+    width: 100%;
+}
+
+.radio__content label img {
+    width: 70px;
+}
+
+.radio__item__title {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.radio__content label [type=radio] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.radio__item {
+    max-width: 179px;
+    width: 100%;
+    height: 172px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20);
+    background: #fff;
+    color: #000;
+    font-weight: 400;
+}
+
+.radio__content label [type=radio] + .radio__item {
+    cursor: pointer;
+}
+
+.radio__content label [type=radio]:checked + .radio__item {
+    /*outline: 2px solid #000;*/
+    /*border: none;*/
+    background: #FAAF41;
+    color: #fff;
+    border: none;
+}
+
+.input__extra .radio__content label [type=radio]:checked + .radio__item {
+    /*outline: 2px solid #000;*/
+    /*border: none;*/
+    background: #fff;
+    color: #000;
+    border: 2px solid #000;
+}
+
+
+.pretty.p-default:not(.p-fill) input:checked ~ .state.p-warning-o label:after {
+    background-color: #EB4128 !important;
 }
 
 .pretty .state label:before {
@@ -387,7 +481,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-size:cover;
+    background-size: cover;
     background-blend-mode: multiply;
     position: relative;
 }
@@ -431,13 +525,14 @@ footer {
 @media (max-width: 768px) {
     .hero__content {
         margin-left: 0px;
-    } 
+    }
 }
 
 /* PÁGINAS INSTITUCIONAIS  */
 .institutional__pages__content {
- padding: 10px 0px 50px 0px;
+    padding: 10px 0px 50px 0px;
 }
+
 /* Conheça mais */
 
 .aboutMore_title {
@@ -647,6 +742,18 @@ footer {
 
 .fase4,
 .fase5, 
+
+.fase1 .form__width {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.fase1 .form__width--two {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+
 .fase6 {
     width: 450px;
     margin: 20px auto;

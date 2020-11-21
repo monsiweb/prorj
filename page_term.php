@@ -9,6 +9,8 @@ if (is_user_logged_in()) {
     if ($terms == 1) {
         wp_redirect(get_permalink(15));
     }
+} else {
+    wp_redirect(get_home_url());
 }
 
 ?>

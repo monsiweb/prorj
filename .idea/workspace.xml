@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="982f0217-2f18-40e3-9e5c-4eb7f851d628" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/endpoints/terms_update.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/endpoints/usuario_get.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page_imoveis.php" beforeDir="false" afterPath="$PROJECT_DIR$/page_imoveis.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/politica.php" beforeDir="false" afterPath="$PROJECT_DIR$/politica.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1kTt54jGIQf0WdxFbgidYqxh8nl" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/endpoints" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Colors" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\www\local\prorio\app\public\wp-content\themes\prorj\endpoints" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="982f0217-2f18-40e3-9e5c-4eb7f851d628" name="Default Changelist" comment="" />
+      <created>1605736225292</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605736225292</updated>
+      <workItem from="1605736227142" duration="345000" />
+      <workItem from="1605736591662" duration="137000" />
+      <workItem from="1605736748396" duration="4185000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="930" y="428" key="#WordPress" timestamp="1605736265082">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="930" y="428" key="#WordPress/0.0.2560.1040@0.0.2560.1040" timestamp="1605736265082" />
+    <state x="1060" y="261" key="FileChooserDialogImpl" timestamp="1605736259889">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1060" y="261" key="FileChooserDialogImpl/0.0.2560.1040@0.0.2560.1040" timestamp="1605736259889" />
+    <state x="190" y="109" key="SettingsEditor" timestamp="1605737503922">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="190" y="109" key="SettingsEditor/0.0.2560.1040@0.0.2560.1040" timestamp="1605737503922" />
+    <state x="310" y="229" width="672" height="678" key="search.everywhere.popup" timestamp="1605737596197">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="310" y="229" width="672" height="678" key="search.everywhere.popup/0.0.2560.1040@0.0.2560.1040" timestamp="1605737596197" />
+  </component>
+  <component name="WordPressConfiguration" enabled="true">
+    <wordpressPath>D:\www\local\prorio\app\public</wordpressPath>
+  </component>
+</project>
