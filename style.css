@@ -243,7 +243,7 @@ a.modal__close:hover {
 
 .input__rio--select {
     width: 100%;
-    padding: 10px;
+    padding: 13px 10px;
     background: #FAAF41;
     color: #fff;
     border: none;
@@ -807,3 +807,181 @@ label {
     margin: 0 auto;
     text-align: center;
 }
+
+/* FORM CSS */
+/* FORM HIDE CONTENTS */
+#numeroprocesso-content {
+    display: none;
+}
+
+#imovel-publico-content {
+    display: none;
+}
+
+#imovel-comercial-content {
+    display: none;
+}
+
+/* Forms configs */
+.form__item__header {
+    display: none;
+}
+
+.box-form {
+    display: none;
+}
+
+/**/
+.actions.clearfix {
+    padding: 50px 0;
+}
+.actions.clearfix ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin-top: 0;
+}
+
+.actions.clearfix ul li {
+    list-style: none;
+}
+
+.actions.clearfix ul li a[href="#previous"] {
+    font-size: 14px;
+    color: #696969;
+    border: #696969 2px solid;
+    border-radius: 4px;
+    text-decoration: none;
+    padding: 14px 44px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.actions.clearfix ul li a[href="#previous"]:hover {
+    text-decoration: none;
+}
+
+.actions.clearfix ul li a[href="#next"] {
+    font-size: 14px;
+    color: #fff;
+    background: #FAAF41;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    padding: 15px 45px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.actions.clearfix ul li a[href="#next"]:hover {
+    text-decoration: none;
+}
+
+.actions.clearfix ul li a[href="#finish"] {
+    font-size: 14px;
+    color: #fff;
+    background: #EB4128;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    padding: 15px 45px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.actions.clearfix ul li a[href="#finish"]:hover {
+    text-decoration: none;
+}
+
+
+/*progressbar*/
+.steps.clearfix span.number {
+    display: none;
+}
+.steps.clearfix ul {
+    margin: 50px 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+.steps.clearfix ul li {
+    list-style-type: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 9px;
+    width: 140px;
+    float: left;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.steps.clearfix ul li a {
+    font-size: 14px;
+    font-weight: bold;
+    color: #696969;
+}
+
+.steps.clearfix ul li a:hover {
+    text-decoration: none;
+}
+
+.steps.clearfix ul li.done a {
+    color: #f05a28;
+}
+
+.steps.clearfix ul li.current a {
+    color: #f05a28;
+}
+
+.steps.clearfix ul li:before {
+    content:"";
+    background: #FAAF41;
+    width: 10px;
+    height: 10px;
+    line-height: 20px;
+    font-size: 10px;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0;
+    margin: 0 auto 5px auto;
+}
+/*progressbar connectors*/
+.steps.clearfix ul li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: #DDDDDD;
+    position: absolute;
+    left: -50%;
+    top: 20%;
+    z-index: -1; /*put it behind the numbers*/
+}
+.steps.clearfix ul li:first-child:after {
+    /*connector not needed before the first step*/
+    content: none;
+}
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+.steps.clearfix ul li.done:before, .steps.clearfix ul li.done:after{
+    background: #EB4128;
+    color: white;
+}
+
+.steps.clearfix ul li.current:before {
+    width: 20px;
+    height: 20px;
+    background: #EB4128;
+}
+
+.steps.clearfix ul li.current:after {
+    background: #EB4128;
+}
+
+
+
+
+
+
+
+
