@@ -146,3 +146,41 @@ function monsi_admin_term_update() {
 }
 
 add_action( 'admin_post_term_update', 'monsi_admin_term_update');
+
+// add Imovel
+
+function monsi_admin_add_imovel() {
+    $request = $_REQUEST;
+    $user = wp_get_current_user();
+    $user_id = $user->ID;
+
+    if ($user_id > 0) {
+        $nome = sanitize_text_field($request['nome_do_imovel']);
+        $cliente_light = sanitize_text_field($request['cliente_light']);
+        $faixa_de_renda = sanitize_text_field($request['faixa_de_renda']);
+        $qual_o_tipo_de_uso_de_imovel = $request['qual_o_tipo_de_uso_de_imovel'];
+        $possui_paineis_fotovoltaicos = $request['possui_paineis_fotovoltaicos'];
+        $tipoimovel = $request['qual_o_tipo_de_imovel'];
+
+        $response = array(
+            'post_author' => $user_id,
+            'post_type' => 'imoveis',
+            'post_title' => $nome,
+            'post_status' => 'publish',
+            'meta_input' => array(
+                'qual_o_tipo_de_imovel' => $tipoimovel,
+                'nome_do_imovel' => $nome,
+                'cliente_light' => $cliente_light,
+                'faixa_de_renda' => $faixa_de_renda,
+                'qual_o_tipo_de_uso_de_imovel' => $qual_o_tipo_de_uso_de_imovel,
+                'possui_paineis_fotovoltaicos' => $possui_paineis_fotovoltaicos
+            ),
+        );
+
+        var_dump($request);
+        wp_insert_post($response);
+
+    }
+}
+
+add_action('admin_post_add_imovel', 'monsi_admin_add_imovel');
