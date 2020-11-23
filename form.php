@@ -2,7 +2,8 @@
 <?php get_header(); ?>
 <section class="form form-residencial">
     <div class="container">
-        <form action="" id="form-prorio">
+        <form action="<?php echo site_url() . '/wp-admin/admin-post.php'; ?>" method="POST" id="form-prorio">
+            <input type="hidden" name="action" value="term_update">
           <section class="form form-residencial">
             <div class="container">
                 <div class="d-flex justify-content-center">
