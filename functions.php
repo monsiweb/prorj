@@ -187,6 +187,7 @@ function monsi_admin_add_imovel()
         $qual_o_tipo_de_iluminacao_predominante = sanitize_text_field($request['qual_o_tipo_de_iluminacao_predominante']);
         $idade_media_dos_equipamentos_de_ar_condicionado = sanitize_text_field($request['idade_media_dos_equipamentos_de_ar_condicionado']);
         $nao_possuo_ar = sanitize_text_field($request['nao_possuo_ar']);
+        $tipoimovel = trim($request['tipoimovel']);
 
 
         $response = array(
@@ -194,11 +195,12 @@ function monsi_admin_add_imovel()
             'post_type' => 'imoveis',
             'post_title' => $nome,
             'post_status' => 'publish',
+			'tax_input'    => array($tipoimovel),
             'meta_input' => array(
+				'tipoimovel' => $tipoimovel,
                 'nome_do_imovel' => $nome,
                 'o_preenchimento_e_voluntario_ou_autovistoria' => $voluntario_autovistoria,
                 'numero_do_processo' => $numeroprocesso,
-                'qual_o_tipo_de_imovel' => $tipoimovel,
                 'iptu' => $iptu,
                 'cep' => $cep,
                 'endereco' => $endereco,
@@ -223,8 +225,8 @@ function monsi_admin_add_imovel()
         );
 
         var_dump($request);
-        wp_insert_post($response);
-
+        $post_id = wp_insert_post($response);
+        wp_set_post_terms( $post_id, $tipoimovel, 'tipos_de_imoveis' ); 
     }
 }
 

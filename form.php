@@ -41,7 +41,7 @@
                                         <div class="radio__group form__width--two mt-5">
                                             <div class="radio__content">
                                                 <label>
-                                                    <input type="radio" name="tipoimovel" value="imovel-residencial"
+                                                    <input type="radio" name="tipoimovel" value="residencial"
                                                            id="imovel-residencial" onclick="ShowHideDiv()">
                                                     <div class="radio__item">
                                                         <img src="https://www.flaticon.com/svg/static/icons/svg/25/25694.svg"
@@ -52,7 +52,7 @@
                                             </div>
                                             <div class="radio__content">
                                                 <label>
-                                                    <input type="radio" name="tipoimovel" value="imovel-publico"
+                                                    <input type="radio" name="tipoimovel" value="publico"
                                                            id="imovel-publico" onclick="ShowHideDiv()">
                                                     <div class="radio__item">
                                                         <img src="https://www.flaticon.com/svg/static/icons/svg/25/25694.svg"
@@ -63,7 +63,7 @@
                                             </div>
                                             <div class="radio__content">
                                                 <label>
-                                                    <input type="radio" name="tipoimovel" value="imovel-comercial"
+                                                    <input type="radio" name="tipoimovel" value="comercial"
                                                            id="imovel-comercial" onclick="ShowHideDiv()">
                                                     <div class="radio__item">
                                                         <img src="https://www.flaticon.com/svg/static/icons/svg/25/25694.svg"
