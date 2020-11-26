@@ -20,11 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="982f0217-2f18-40e3-9e5c-4eb7f851d628" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/endpoints/terms_update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/endpoints/usuario_get.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/clinica_ico.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/comercial_ico.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/edadm_ico.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/escola_ico.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/outros_ico.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/publico_ico.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/residencial_ico.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/javascript/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/javascript/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/form.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page_imoveis.php" beforeDir="false" afterPath="$PROJECT_DIR$/page_imoveis.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/politica.php" beforeDir="false" afterPath="$PROJECT_DIR$/politica.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +74,7 @@
       <workItem from="1605736227142" duration="345000" />
       <workItem from="1605736591662" duration="137000" />
       <workItem from="1605736748396" duration="4185000" />
+      <workItem from="1606425829113" duration="714000" />
     </task>
     <servers />
   </component>
@@ -82,6 +91,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="930" y="428" key="#WordPress" timestamp="1605736265082">

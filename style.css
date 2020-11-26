@@ -351,12 +351,21 @@ a.modal__close:hover {
     border: none;
 }
 
+.radio__content label [type=radio]:checked + .radio__item img {
+    filter: brightness(0) invert(1);
+}
+
+
 .input__extra .radio__content label [type=radio]:checked + .radio__item {
     /*outline: 2px solid #000;*/
     /*border: none;*/
     background: #fff;
     color: #000;
     border: 2px solid #000;
+}
+
+.input__extra .radio__content label [type=radio]:checked + .radio__item img {
+    filter: none;
 }
 
 
@@ -812,6 +821,7 @@ label {
 }
 
 .fase2,
+.fase2__publico,
 .fase3 {
     width: 750px;
     max-width: 100%;
@@ -821,7 +831,7 @@ label {
 
 /* FORM CSS */
 /* FORM HIDE CONTENTS */
-#numeroprocesso-content {
+#process_number_content {
     display: none;
 }
 

@@ -17,49 +17,49 @@
                                 <div class="form-group form__width">
                                     <div class="checkbox__input">
                                         <div class="pretty p-default p-thick p-smooth">
-                                            <input type="radio" name="voluntario_autovistoria" value="voluntario" id="voluntario" onclick="ShowHideDiv()" />
+                                            <input type="radio" name="voluntary_self_inspection" value="voluntario" id="voluntario" onclick="ShowHideDiv()" />
                                             <div class="state p-warning-o">
                                                 <label for="voluntario">Voluntário</label>
                                             </div>
                                         </div>
                                         <div class="pretty p-default p-thick p-smooth">
-                                            <input type="radio" name="voluntario_autovistoria" value="autovistoria" id="autovistoria" onclick="ShowHideDiv()" />
+                                            <input type="radio" name="voluntary_self_inspection" value="autovistoria" id="autovistoria" onclick="ShowHideDiv()" />
                                             <div class="state p-warning-o">
                                                 <label for="autovistoria">Autovistoria</label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group text-left form__width" id="numeroprocesso-content">
-                                    <label for="#">Número do processo</label>
-                                    <input type="text" class="input__rio" name="numeroprocesso" id="numeroprocesso">
+                                <div class="form-group text-left form__width" id="process_number_content">
+                                    <label for="process_number">Número do processo</label>
+                                    <input type="text" class="input__rio" name="process_number" id="process_number">
                                 </div>
                                 <div class="form-group mt-5">
                                     <p class="form__row__title--two text-center">Qual o tipo de imóvel?</p>
                                     <div class="radio__group form__width--two mt-5">
                                         <div class="radio__content">
                                             <label>
-                                                <input type="radio" name="tipoimovel" value="residencial" id="imovel-residencial" onclick="ShowHideDiv()">
+                                                <input type="radio" name="type_of_property" value="residencial" id="imovel-residencial" onclick="ShowHideDiv()">
                                                 <div class="radio__item">
-                                                    <img src="https://www.flaticon.com/svg/static/icons/svg/25/25694.svg" alt="">
+                                                    <img src="<?= get_template_directory_uri(); ?>/assets/images/residencial_ico.svg" alt="Residencial">
                                                     <p class="radio__item__title">Residencial</p>
                                                 </div>
                                             </label>
                                         </div>
                                         <div class="radio__content">
                                             <label>
-                                                <input type="radio" name="tipoimovel" value="publico" id="imovel-publico" onclick="ShowHideDiv()">
+                                                <input type="radio" name="type_of_property" value="publico" id="imovel-publico" onclick="ShowHideDiv()">
                                                 <div class="radio__item">
-                                                    <img src="https://www.flaticon.com/svg/static/icons/svg/25/25694.svg" alt="">
+                                                    <img src="<?= get_template_directory_uri(); ?>/assets/images/publico_ico.svg" alt="Publico">
                                                     <p class="radio__item__title">Público</p>
                                                 </div>
                                             </label>
                                         </div>
                                         <div class="radio__content">
                                             <label>
-                                                <input type="radio" name="tipoimovel" value="comercial" id="imovel-comercial" onclick="ShowHideDiv()">
+                                                <input type="radio" name="type_of_property" value="comercial" id="imovel-comercial" onclick="ShowHideDiv()">
                                                 <div class="radio__item">
-                                                    <img src="https://www.flaticon.com/svg/static/icons/svg/25/25694.svg" alt="">
+                                                    <img src="<?= get_template_directory_uri(); ?>/assets/images/comercial_ico.svg" alt="Comercial">
                                                     <p class="radio__item__title">Comercial</p>
                                                 </div>
                                             </label>
@@ -72,36 +72,36 @@
                                         <div class="radio__group">
                                             <div class="radio__content">
                                                 <label>
-                                                    <input type="radio" name="tipoimovelpublico" value="imovel-publico-clinica">
+                                                    <input type="radio" name="type_public_property" value="imovel-publico-clinica">
                                                     <div class="radio__item">
-                                                        <img src="https://www.flaticon.com/svg/static/icons/svg/25/25694.svg" alt="">
+                                                        <img src="<?= get_template_directory_uri(); ?>/assets/images/clinica_ico.svg" alt="Clinica">
                                                         <p class="radio__item__title">Clínica</p>
                                                     </div>
                                                 </label>
                                             </div>
                                             <div class="radio__content">
                                                 <label>
-                                                    <input type="radio" name="tipoimovelpublico" value="imovel-publico-escola">
+                                                    <input type="radio" name="type_public_property" value="imovel-publico-escola">
                                                     <div class="radio__item">
-                                                        <img src="https://www.flaticon.com/svg/static/icons/svg/25/25694.svg" alt="">
+                                                        <img src="<?= get_template_directory_uri(); ?>/assets/images/escola_ico.svg" alt="Escola">
                                                         <p class="radio__item__title">Escola</p>
                                                     </div>
                                                 </label>
                                             </div>
                                             <div class="radio__content">
                                                 <label>
-                                                    <input type="radio" name="tipoimovelpublico" value="imovel-publico-adm">
+                                                    <input type="radio" name="type_public_property" value="imovel-publico-adm">
                                                     <div class="radio__item">
-                                                        <img src="https://www.flaticon.com/svg/static/icons/svg/25/25694.svg" alt="">
+                                                        <img src="<?= get_template_directory_uri(); ?>/assets/images/edadm_ico.svg" alt="Ed. ADM">
                                                         <p class="radio__item__title">Ed. ADM</p>
                                                     </div>
                                                 </label>
                                             </div>
                                             <div class="radio__content">
                                                 <label>
-                                                    <input type="radio" name="tipoimovelpublico" value="imovel-publico-outros">
+                                                    <input type="radio" name="type_public_property" value="imovel-publico-outros">
                                                     <div class="radio__item">
-                                                        <img src="https://www.flaticon.com/svg/static/icons/svg/25/25694.svg" alt="">
+                                                        <img src="<?= get_template_directory_uri(); ?>/assets/images/outros_ico.svg" alt="Outros">
                                                         <p class="radio__item__title">Outros</p>
                                                     </div>
                                                 </label>
@@ -119,8 +119,8 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label for="cliente-light">Cliente Light</label>
-                                                        <input class="input__rio" type="text" name="cliente-light">
+                                                        <label for="client_light">Cliente Light</label>
+                                                        <input class="input__rio" type="text" name="client_light">
                                                     </div>
                                                 </div>
                                             </div>
@@ -133,8 +133,8 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label for="endereco">Endereço</label>
-                                                        <input class="input__rio" type="text" name="endereco">
+                                                        <label for="address">Endereço</label>
+                                                        <input class="input__rio" type="text" name="address">
                                                     </div>
                                                 </div>
                                             </div>
@@ -184,6 +184,200 @@
                                         <input type="text" class="input__rio" name="faixa_de_renda">
                                     </div>
                                 </div>
+                            </div>
+                            <div id="fase2__publico">
+
+                                <div class="mb-5">
+                                    <div class="form__section__title">
+                                        <p class="form__row__title">Dados de área</p>
+                                    </div>
+                                    <div class="form-row mb-3">
+                                        <div class="col-md-6 text-left">
+                                            <div class="form-group">
+                                                <label for="" class="mb-1">Área total do imóvel</label>
+                                                <div class="input__text">
+                                                    <span class="text--input">m²</span>
+                                                    <input type="text" class="input__rio" name="total_place_area">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 text-left">
+                                            <div class="form-group">
+                                                <label for="" class="mb-1">Área condicionada do imóvel <span class="text--optional">(opcional)</span></label>
+                                                <div class="input__text">
+                                                    <span class="text--input">m²</span>
+                                                    <input type="text" class="input__rio" name="total_conditioned_area">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row mb-3">
+                                        <div class="col-md-6 mx-auto">
+                                            <div class="form-group">
+                                                <label for="number_of_floors" class="mb-1">Número de andares</label>
+                                                <input type="text" class="input__rio" name="number_of_floors">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-5">
+                                    <div class="form__section__title">
+                                        <p class="form__row__title">Dados de ocupação</p>
+                                    </div>
+
+                                    <div class="form-row mb-3">
+                                        <div class="col-md-6 text-left">
+                                            <label for="" class="mb-1">Número médio de ocupantes/dia útil</label>
+                                            <input type="text" class="input__rio" name="occupants_useful_day">
+                                        </div>
+                                        <div class="col-md-6 text-left">
+                                            <label for="" class="mb-1">Horário de funcionamento</label>
+                                            <div class="input__text">
+                                                <span class="text--input">semanais</span>
+                                                <input type="text" class="input__rio" name="working_hours">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row mb-3">
+                                        <div class="col-md-6 mx-auto">
+                                            <label for="percentage_occupancy" class="mb-1">Taxa de ocupação
+                                                percentual</label>
+                                            <div class="input__text">
+                                                <span class="text--input">%</span>
+                                                <input type="text" class="input__rio" name="percentage_occupancy" id="percentage_occupancy">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-5">
+                                    <div class="form__section__title">
+                                        <p class="form__row__title">Dados de consumo</p>
+                                        <span class="form__row__title__subtitle">Tenha em mãos a conta de luz</span>
+                                    </div>
+
+                                    <div class="form-row mb-3">
+                                        <div class="col-md-6 m-auto">
+                                            <div class="form-group">
+                                                <label for="consumption_data">Tipo / Subgrupo</label>
+                                                <select name="consumption_data" id="consumption_data" class="input__rio--select">
+                                                    <option value="a1">A1</option>
+                                                    <option value="bx">Bx</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="A1__item" class="mb-md-5">
+                                    <div class="form__section__title">
+                                        <p class="form__row__title">Baixa tensão</p>
+                                    </div>
+
+                                    <div class="form-row mb-3">
+                                        <div class="col-md-6 text-left">
+                                            <div class="form-group">
+                                                <label for="last_energy_bill" class="mb-1">Valor última conta de energia do imóvel</label>
+                                                <div class="input__text">
+                                                    <span class="text--input">kWh/ano</span>
+                                                    <input type="text" class="input__rio" name="last_energy_bill" id="last_energy_bill">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 text-left">
+                                            <div class="form-group">
+                                                <label for="account_month" class="mb-1">Mês da conta</label>
+                                                <select name="account_month" id="account_month" class="input__rio--select">
+                                                    <option value="janeiro">Janeiro</option>
+                                                    <option value="fevereiro">Fevereiro</option>
+                                                    <option value="marco">Março</option>
+                                                    <option value="abril">Abril</option>
+                                                    <option value="maio">Maio</option>
+                                                    <option value="junho">Junho</option>
+                                                    <option value="julho">Julho</option>
+                                                    <option value="agosto">Agosto</option>
+                                                    <option value="setembro">Setembro</option>
+                                                    <option value="outubro">Outubro</option>
+                                                    <option value="novembro">Novembro</option>
+                                                    <option value="dezembro">Dezembro</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="Bx__item" class="mb-5">
+                                    <div class="form__section__title">
+                                        <p class="form__row__title">Alta tensão</p>
+                                    </div>
+
+                                    <div class="form-row mb-3">
+                                        <div class="col-md-6 m-auto">
+                                            <div class="form-group">
+                                                <label for="last_energy_bill" class="mb-1">Demanda contratada</label>
+                                                <div class="input__text">
+                                                    <span class="text--input">kW</span>
+                                                    <input type="text" class="input__rio" name="hired_demand" id="hired_demand">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row mb-3">
+                                        <div class="col-md-6 text-left">
+                                            <div class="form-group">
+                                                <label for="rush_hour_consumption" class="mb-1">Consumo horário de ponta</label>
+                                                <div class="input__text">
+                                                    <span class="text--input">kWh</span>
+                                                    <input type="text" class="input__rio" name="rush_hour_consumption" id="rush_hour_consumption">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 text-left">
+                                            <div class="form-group">
+                                                <label for="off_time_consumption" class="mb-1">Consumo horário fora de ponta</label>
+                                                <div class="input__text">
+                                                    <span class="text--input">kWh</span>
+                                                    <input type="text" class="input__rio" name="off_time_consumption" id="off_time_consumption">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row mb-3">
+                                        <div class="col-md-6 text-left">
+                                            <div class="form-group">
+                                                <label for="last_account_value" class="mb-1">Valor da última conta</label>
+                                                <div class="input__text">
+                                                    <span class="text--input">R$</span>
+                                                    <input type="text" class="input__rio" name="last_account_value" id="last_account_value">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 text-left">
+                                            <div class="form-group">
+                                                <label for="month_of_invoice" class="mb-1">Mês da fatura</label>
+                                                <select name="month_of_invoice" id="month_of_invoice" class="input__rio--select">
+                                                    <option value="janeiro">Janeiro</option>
+                                                    <option value="fevereiro">Fevereiro</option>
+                                                    <option value="marco">Março</option>
+                                                    <option value="abril">Abril</option>
+                                                    <option value="maio">Maio</option>
+                                                    <option value="junho">Junho</option>
+                                                    <option value="julho">Julho</option>
+                                                    <option value="agosto">Agosto</option>
+                                                    <option value="setembro">Setembro</option>
+                                                    <option value="outubro">Outubro</option>
+                                                    <option value="novembro">Novembro</option>
+                                                    <option value="dezembro">Dezembro</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </section>
                         <h3 class="form__item__header">Passo 3</h3>
@@ -262,13 +456,20 @@
                                         <span class="text--input">anos</span>
                                         <input type="text" class="input__rio" name="idade_media_dos_equipamentos_de_ar_condicionado">
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="checkbox__input">
-                                        <div class="pretty p-default p-thick p-smooth">
-                                            <input type="checkbox" name="nao_possuo_ar" value="nao_possuo" />
-                                            <div class="state p-warning-o">
-                                                <label for="nao_possuo_ar">Não Possuo ar</label>
+                                    <div class="form-group w-75 m-auto">
+                                        <label for="">Idade média dos equipamentos de ar condicionado?</label>
+                                        <div class="input__text">
+                                            <span class="text--input">anos</span>
+                                            <input type="text" class="input__rio" name="idade_media_dos_equipamentos_de_ar_condicionado">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="checkbox__input">
+                                            <div class="pretty p-default p-thick p-smooth">
+                                                <input type="checkbox" name="nao_possuo_ar" value="nao_possuo" />
+                                                <div class="state p-warning-o">
+                                                    <label for="nao_possuo_ar">Não Possuo ar</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -430,7 +631,6 @@
                                         <option value="led-18w">LED 18w</option>
                                     </select>
                                 </div>
-                            </div>
                         </section>
                         <h3 class="form__item__header">Passo 6</h3>
                         <section>
