@@ -63,14 +63,14 @@ if (is_user_logged_in()) {
                                 <div class="card__item__img">
                                     <img src="<?= get_template_directory_uri(); ?>/assets/images/item_icon.svg" alt="">
                                 </div>
-
                                 <div class="card__item__text">
                                 <?php
-                                        $term_obj_list = get_the_terms( $post->ID, 'tipos_de_imoveis' );
+                                    $term_obj_list = get_the_terms( $post->ID, 'tipos_de_imoveis' );
+                                    if(!empty($term_obj_list)){
                                         $terms_string = join(', ', wp_list_pluck($term_obj_list, 'name'));
                                         $post_date = get_the_date( 'd.m.Y' );
-
                                         echo $terms_string . '<span class="date">' . $post_date . '</span>';
+                                    }
                                     ?>
                                 </div>
 
