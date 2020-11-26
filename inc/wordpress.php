@@ -1,12 +1,5 @@
 <?php
-// Register Custom Navigation Walker
-require_once('wp_bootstrap_navwalker.php');
 
-// Register Plugins
-require_once('wp_plugins.php');
-
-// Register Custom
-require_once('wp_custom.php');
 
 // Remove admin bar
 show_admin_bar(false);

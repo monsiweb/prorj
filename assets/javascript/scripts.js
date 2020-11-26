@@ -60,6 +60,21 @@ function ShowHideDiv() {
     const imovelComercial = document.getElementById("imovel-comercial");
     const imovelComercialContent = document.getElementById("imovel-comercial-content");
     imovelComercialContent.style.display = imovelComercial.checked ? "block" : "none";
+    
+    // Tipo de ar
+    const airConditioning = document.getElementById("air_conditioning-vrf");
+    const airConditioningContent = document.getElementById("air_conditioning-content");
+    airConditioningContent.style.display = airConditioning.checked ? "block" : "none";
+    
+    // Tipo de ar
+    const airConditioninTwo = document.getElementById("air_conditioning-chiller");
+    const airConditioningContentTwo = document.getElementById("air_conditioning-content-two");
+    airConditioningContentTwo.style.display = airConditioninTwo.checked ? "block" : "none";
+
+    // Sistema de automação
+    const automationSystem = document.getElementById("automation-system");
+    const automationSystemContent = document.getElementById("automation-system-content");
+    automationSystemContent.style.display = automationSystem.checked ? "block" : "none";
 }
 
 

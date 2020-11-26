@@ -175,8 +175,8 @@ a.modal__close:hover {
 
 /* ---- CARD ---- */
 .card__item {
-    max-width: 280px;
-    width: 100%;
+    max-width: 100%;
+    width: 280px;
     height: 250px;
     background: #FCFCFC;
     box-shadow: -1px 0px 3px 2px rgba(0, 0, 0, 0.10);
@@ -253,6 +253,11 @@ a.modal__close:hover {
 
 .form__row__title {
     text-align: center;
+}
+
+.w-35 {
+    width: 35%;
+    max-width: 100%;
 }
 
 /* INPUT EXTRA SECTION */
@@ -731,7 +736,13 @@ footer {
 }
 
 .panel__items__list {
-    margin: 70px 0px;
+    margin: 70px 15px 70px 0px;
+    width: 25%;
+    max-width: 100%;
+}
+
+.panel__items__list:last-child {
+    margin-right: 0px;
 }
 
 .panel__noItems {
@@ -819,6 +830,18 @@ label {
 }
 
 #imovel-comercial-content {
+    display: none;
+}
+
+#air_conditioning-content{
+    display: none;
+}
+
+#air_conditioning-content-two{
+    display: none;
+}
+
+#automation-system-content{
     display: none;
 }
 
@@ -980,8 +1003,54 @@ label {
 
 
 
+/* form step 4 part 2 */
 
 
+.fase4-v2 .radio__item {
+    max-width: 100%;
+    width: 400px;
+    height: 100px;
+}
 
+.fase4-v2 .radio__content {
+    width: 250px;
+    height: 100px;
+    max-width: 100%;
+}
 
+.fase4-v2 .input__rio--select {
+    width: 35%;
+    margin: 0 auto;
+    display: block;
+}
 
+.fase4-v2 #automation-system-content .checkbox__input {
+    width: 40%;
+    margin: 0 auto;
+}
+
+.fase4-v2 #automation-system-content .checkbox__input .pretty .state label:before {
+    border: 1px solid #fff;
+}
+
+.fase4-v2 #automation-system-content .checkbox__input .pretty.p-default:not(.p-fill) input:checked ~ .state.p-warning-o label:after {
+    background: #fff !important;
+}
+
+/* Página do relatório */
+
+.subtitle--herosingle{
+    color: #FAAF41;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.text--herosingle {
+    color: #414141;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    font-size: 20px;
+}

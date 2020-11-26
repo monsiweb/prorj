@@ -243,7 +243,7 @@
                         </section>
                         <h3 class="form__item__header">Passo 4</h3>
                         <section>
-                            <div class="fase4">
+                            <div class="fase4" style="display: none">
                                 <p class="form__row__title">Ar condicionado</p>
                                 <div class="form-group">
                                     <label for="" class="text-center w-100">Qual tipo predominante de ar
@@ -269,6 +269,143 @@
                                             <input type="checkbox" name="nao_possuo_ar" value="nao_possuo" />
                                             <div class="state p-warning-o">
                                                 <label for="nao_possuo_ar">Não Possuo ar</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fase4-v2">
+                                <div class="form-group mt-5">
+                                    <p class="form__row__title--two text-center"> Qual tipo predominante de ar condicionado? </p>
+                                    <div class="radio__group form__width--two mt-5">
+                                        <div class="radio__content">
+                                            <label>
+                                                <input type="radio" name="type_air_conditioning" value="janela" id="air_conditioning" onclick="ShowHideDiv()">
+                                                <div class="radio__item">
+                                                    <p class="radio__item__title">Janela</p>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="radio__content">
+                                            <label>
+                                                <input type="radio" name="type_air_conditioning" value="split" id="air_conditioning" onclick="ShowHideDiv()">
+                                                <div class="radio__item">
+                                                    <p class="radio__item__title">Split</p>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="radio__content">
+                                            <label>
+                                                <input type="radio" name="type_air_conditioning" value="split" id="air_conditioning" onclick="ShowHideDiv()">
+                                                <div class="radio__item">
+                                                    <p class="radio__item__title">Split Inverter</p>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="radio__group form__width--two mt-5">
+                                        <div class="radio__content">
+                                            <label>
+                                                <input type="radio" name="type_air_conditioning" value="vrf" id="air_conditioning-vrf" onclick="ShowHideDiv()">
+                                                <div class="radio__item">
+                                                    <p class="radio__item__title">VRF</p>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="radio__content">
+                                            <label>
+                                                <input type="radio" name="type_air_conditioning" value="chiller" id="air_conditioning-chiller" onclick="ShowHideDiv()">
+                                                <div class="radio__item">
+                                                    <p class="radio__item__title">Chiller</p>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="input__extra" id="air_conditioning-content">
+                                        <select name="qual_tipo_predominante_de_ar_condicionado" id="" class="input__rio--select">
+                                            <option value="split">Split</option>
+                                            <option value="janela">Janela</option>
+                                            <option value="split-inverter">Split inverter</option>
+                                            <option value="vrf">VRF</option>
+                                            <option value="chiller">Chiller</option>
+                                        </select>
+                                    </div>
+                                    <div class="input__extra" id="air_conditioning-content-two">
+                                        <select name="qual_tipo_predominante_de_ar_condicionado" id="" class="input__rio--select">
+                                            <option value="split">Split</option>
+                                            <option value="janela">Janela</option>
+                                            <option value="split-inverter">Split inverter</option>
+                                            <option value="vrf">VRF</option>
+                                            <option value="chiller">Chiller</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group w-35 m-auto">
+                                        <label class="mt-5" for="">Idade média dos equipamentos de ar condicionado?</label>
+                                        <div class="input__text">
+                                            <span class="text--input">anos</span>
+                                            <input type="text" class="input__rio" name="idade_media_dos_equipamentos_de_ar_condicionado">
+                                        </div>
+                                    </div>
+                                    <p class="form__row__title--two text-center mt-5">Possui sistema de automação?</p>
+                                    <div class="radio__group form__width--two mt-5">
+                                        <div class="radio__content">
+                                            <label>
+                                                <input type="radio" name="automation-system" value="sim" id="automation-system" onclick="ShowHideDiv()">
+                                                <div class="radio__item">
+                                                    <p class="radio__item__title">Sim</p>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="radio__content">
+                                            <label>
+                                                <input type="radio" name="automation-system" value="nao" id="automation-system" onclick="ShowHideDiv()">
+                                                <div class="radio__item">
+                                                    <p class="radio__item__title">Não</p>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="input__extra" id="automation-system-content">
+                                        <div class="form-group form__width">
+                                            <p class="form__row__title--three text-center">Possui sistema de liga/desliga horário?</p>
+                                            <div class="checkbox__input">
+                                                <div class="pretty p-default p-thick p-smooth">
+                                                    <input type="radio" name="on-off-system" value="sim" id="on-off-system-yes">
+                                                    <div class="state p-warning-o">
+                                                        <label for="sim">Sim</label>
+                                                    </div>
+                                                </div>
+                                                <div class="pretty p-default p-thick p-smooth">
+                                                    <input type="radio" name="on-off-system" value="nao" id="on-off-system-no">
+                                                    <div class="state p-warning-o">
+                                                        <label for="nao">Não</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form__width">
+                                            <p class="form__row__title--three text-center">Possui sistema de controle de temperatura?</p>
+                                            <div class="checkbox__input">
+                                                <div class="pretty p-default p-thick p-smooth">
+                                                    <input type="radio" name="temperature-control" value="sim" id="temperature-control-yes">
+                                                    <div class="state p-warning-o">
+                                                        <label for="sim">Sim</label>
+                                                    </div>
+                                                </div>
+                                                <div class="pretty p-default p-thick p-smooth">
+                                                    <input type="radio" name="temperature-control" value="nao" id="temperature-control-no">
+                                                    <div class="state p-warning-o">
+                                                        <label for="nao">Não</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox__input">
+                                        <div class="pretty p-default p-thick p-smooth">
+                                            <input type="checkbox" name="nao_possuo_ar" value="nao_possuo" />
+                                            <div class="state p-warning-o">
+                                                <label for="nao_possuo_ar">Não tenho ar condicionado</label>
                                             </div>
                                         </div>
                                     </div>

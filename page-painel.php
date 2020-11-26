@@ -41,10 +41,11 @@ if (is_user_logged_in()) {
                         </div>
                     </div>
                 </div>
+                <div class="d-flex">
             <?php
 
             $query_args = array(
-                'post_type' => 'post',
+                'post_type' => 'imoveis',
                 'post_status' => 'publish',
                 'order' => 'ASC',
             );
@@ -64,29 +65,33 @@ if (is_user_logged_in()) {
                                 </div>
 
                                 <div class="card__item__text">
-                                    <strong>Categoria</strong>
-                                    <span>00.00.00</span>
+                                <?php
+                                        $term_obj_list = get_the_terms( $post->ID, 'tipos_de_imoveis' );
+                                        $terms_string = join(', ', wp_list_pluck($term_obj_list, 'name'));
+                                        $post_date = get_the_date( 'd.m.Y' );
+
+                                        echo $terms_string . '<span class="date">' . $post_date . '</span>';
+                                    ?>
                                 </div>
 
                                 <div class="card__item__name">
-                                    <p>Nome do imóvel</p>
+                                    <p><?php the_title();?></p>
                                 </div>
                             </div>
                         </div>
 
                         <?php
                 }
-                /* Restore original Post Data */
                 wp_reset_postdata();
             } else {
               ?>
                 <div class="panel__noItems alert alert-warning text-center" role="alert">
                     Não existem imóveis cadastrados
                 </div>
-                    <?php
-            }
-
+            <?php
+             }
             ?>
+            </div>
             </div>
         </div>
     </section>

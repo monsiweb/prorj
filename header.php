@@ -16,7 +16,7 @@
                 <div class="row justify-content-between">
                     <div class="col-md-4 d-flex justify-content-between align-items-center">
                         <div class="header__menu__item">
-                            <a href="#">DASHBOARD</a>
+                            <a href="<?php the_permalink(59);?>">DASHBOARD</a>
                         </div>
                         <div class="header__menu__item">
                             <a href="#">CADASTRE SEU IMÓVEL</a>
@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-md-4 d-flex justify-content-center align-items-center">
                         <div class="header__menu__item">
-                            <a href="#"><img src="<?= get_template_directory_uri(); ?>/assets/images/logo_prorio.svg" alt="Logo"></a>
+                            <a href="<?php echo get_home_url();?>"><img src="<?= get_template_directory_uri(); ?>/assets/images/logo_prorio.svg" alt="Logo"></a>
                         </div>
                     </div>
                     <div class="col-md-4 d-flex justify-content-between align-items-center">
