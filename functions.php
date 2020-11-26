@@ -147,7 +147,6 @@ function monsi_admin_term_update()
     }
 
     return wp_redirect(get_permalink(15));
-
 }
 
 add_action('admin_post_term_update', 'monsi_admin_term_update');
@@ -195,9 +194,9 @@ function monsi_admin_add_imovel()
             'post_type' => 'imoveis',
             'post_title' => $nome,
             'post_status' => 'publish',
-			'tax_input'    => array($tipoimovel),
+            'tax_input'    => array($tipoimovel),
             'meta_input' => array(
-				'tipoimovel' => $tipoimovel,
+                'tipoimovel' => $tipoimovel,
                 'nome_do_imovel' => $nome,
                 'o_preenchimento_e_voluntario_ou_autovistoria' => $voluntario_autovistoria,
                 'numero_do_processo' => $numeroprocesso,
@@ -226,7 +225,7 @@ function monsi_admin_add_imovel()
 
         var_dump($request);
         $post_id = wp_insert_post($response);
-        wp_set_post_terms( $post_id, $tipoimovel, 'tipos_de_imoveis' ); 
+        wp_set_post_terms($post_id, $tipoimovel, 'tipos_de_imoveis');
     }
 }
 
