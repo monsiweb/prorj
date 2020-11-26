@@ -45,7 +45,7 @@ function ShowHideDiv() {
 
     // Autovistoria
     const autoVistoria = document.getElementById("autovistoria");
-    const numeroProcesso = document.getElementById("numeroprocesso-content");
+    const numeroProcesso = document.getElementById("process_number_content");
     numeroProcesso.style.display = autoVistoria.checked ? "block" : "none";
 
     // Imovel Residencial
@@ -54,7 +54,9 @@ function ShowHideDiv() {
     // Imovel Publico
     const imovelPublico = document.getElementById("imovel-publico");
     const imovelPublicoContent = document.getElementById("imovel-publico-content");
+    const Fase2Content = document.getElementById("fase2__publico");
     imovelPublicoContent.style.display = imovelPublico.checked ? "block" : "none";
+    Fase2Content.style.display = imovelPublico.checked ? "block" : "none";
 
     // Imovel Comercial
     const imovelComercial = document.getElementById("imovel-comercial");
