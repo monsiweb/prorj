@@ -41,7 +41,7 @@ if (is_user_logged_in()) {
                         </div>
                     </div>
                 </div>
-                <div class="d-flex">
+            <div class="d-flex flex-wrap justify-content-center">
             <?php
 
             $query_args = array(
