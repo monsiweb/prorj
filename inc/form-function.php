@@ -1,6 +1,7 @@
 <?php
 
 
+
 // add Imovel
 
 function monsi_admin_add_imovel()
@@ -28,7 +29,6 @@ function monsi_admin_add_imovel()
 
         $qual_o_tipo_de_uso_de_imovel = sanitize_text_field($request['qual_o_tipo_de_uso_de_imovel']);
         $possui_paineis_fotovoltaicos = sanitize_text_field($request['possui_paineis_fotovoltaicos']);
-        $tipoimovel = sanitize_text_field($request['qual_o_tipo_de_imovel']);
         $voluntario_autovistoria = sanitize_text_field($request['voluntario_autovistoria']);
 
         $area_total_disponivel_na_coberturatelhados = sanitize_text_field($request['area_total_disponivel_na_coberturatelhados']);
@@ -36,7 +36,7 @@ function monsi_admin_add_imovel()
         $qual_o_tipo_de_iluminacao_predominante = sanitize_text_field($request['qual_o_tipo_de_iluminacao_predominante']);
         $idade_media_dos_equipamentos_de_ar_condicionado = sanitize_text_field($request['idade_media_dos_equipamentos_de_ar_condicionado']);
         $nao_possuo_ar = sanitize_text_field($request['nao_possuo_ar']);
-        $tipoimovel = trim($request['tipoimovel']);
+        $tipoimovel = trim($request['type_of_property']);
 
 
         $response = array(
