@@ -51,18 +51,26 @@ function ShowHideDiv() {
     // Imovel Residencial
 
 
-    // Imovel Publico
+    // Imovel Publico & Imovel Comercial
     const imovelPublico = document.getElementById("imovel-publico");
     const imovelPublicoContent = document.getElementById("imovel-publico-content");
-    const Fase2Content = document.getElementById("fase2__publico");
     imovelPublicoContent.style.display = imovelPublico.checked ? "block" : "none";
-    Fase2Content.style.display = imovelPublico.checked ? "block" : "none";
 
-    // Imovel Comercial
+    const fase2Content = document.getElementById("fase2__two");
+    const fase2PrimaryContent = document.getElementById("fase__2");
+    fase2Content.style.display = imovelPublico.checked ? "block" : "none";
+    fase2PrimaryContent.style.display = imovelPublico.checked ? "block" : "block";
+
+    const fase3Content = document.getElementById("fase3__two");
+    const fase3PrimaryContent = document.getElementById("fase__3");
+    fase3Content.style.display = imovelPublico.checked ? "block" : "none";
+    fase3PrimaryContent.style.display = imovelPublico.checked ? "none" : "block";
+
+
     const imovelComercial = document.getElementById("imovel-comercial");
     const imovelComercialContent = document.getElementById("imovel-comercial-content");
     imovelComercialContent.style.display = imovelComercial.checked ? "block" : "none";
-    
+
     // Tipo de ar
     const airConditioning = document.getElementById("air_conditioning-vrf");
     const airConditioningContent = document.getElementById("air_conditioning-content");
@@ -79,6 +87,26 @@ function ShowHideDiv() {
     automationSystemContent.style.display = automationSystem.checked ? "block" : "none";
 }
 
+
+function showDiv(divId, element, DivIdTwo)
+{
+    if (element.value === 'A1') {
+        document.getElementById(divId).style.display = 'block';
+    }
+
+    else {
+        document.getElementById(divId).style.display = 'none';
+    }
+
+    if (element.value === 'Bx') {
+        document.getElementById(DivIdTwo).style.display = 'block';
+    }
+
+    else {
+        document.getElementById(DivIdTwo).style.display = 'none';
+    }
+
+}
 
 
 

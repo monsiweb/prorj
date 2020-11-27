@@ -152,41 +152,52 @@
                         </section>
                         <h3 class="form__item__header">Passo 2</h3>
                         <section>
-                            <div class="fase2">
+                            <div class="fase2" id="fase__2">
                                 <p class="form__row__title">Dados do imóvel</p>
                                 <div class="form-row mb-3">
                                     <div class="col-6 text-left">
-                                        <label for="" class="mb-1">Nome do imóvel </label>
-                                        <input type="text" class="input__rio" name="nome_do_imovel">
+                                      <div class="form-group">
+                                          <label for="" class="mb-1">Nome do imóvel </label>
+                                          <input type="text" class="input__rio" name="nome_do_imovel">
+                                      </div>
                                     </div>
                                     <div class="col-6 text-left">
-                                        <label for="" class="mb-1">IPTU </label>
-                                        <input type="text" class="input__rio" name="iptu">
-                                    </div>
-                                </div>
-                                <div class="form-row mb-3">
-                                    <div class="col-6 text-left">
-                                        <label for="" class="mb-1">CEP</label>
-                                        <input type="text" class="input__rio" name="cep">
-                                    </div>
-                                    <div class="col-6 text-left">
-                                        <label for="" class="mb-1">Endereço</label>
-                                        <input type="text" class="input__rio" name="endereco">
+                                       <div class="form-group">
+                                           <label for="" class="mb-1">IPTU </label>
+                                           <input type="text" class="input__rio" name="iptu">
+                                       </div>
                                     </div>
                                 </div>
                                 <div class="form-row mb-3">
                                     <div class="col-6 text-left">
-                                        <label for="" class="mb-1">Cliente light</label>
-                                        <input type="text" class="input__rio" name="cliente_light">
+                                       <div class="form-group">
+                                           <label for="" class="mb-1">CEP</label>
+                                           <input type="text" class="input__rio" name="cep">
+                                       </div>
                                     </div>
                                     <div class="col-6 text-left">
-                                        <label for="" class="mb-1">Faixa de renda</label>
-                                        <input type="text" class="input__rio" name="faixa_de_renda">
+                                     <div class="form-group">
+                                         <label for="" class="mb-1">Endereço</label>
+                                         <input type="text" class="input__rio" name="endereco">
+                                     </div>
+                                    </div>
+                                </div>
+                                <div class="form-row mb-3">
+                                    <div class="col-6 text-left">
+                                       <div class="form-group">
+                                           <label for="" class="mb-1">Cliente light</label>
+                                           <input type="text" class="input__rio" name="cliente_light">
+                                       </div>
+                                    </div>
+                                    <div class="col-6 text-left">
+                                      <div class="form-group">
+                                          <label for="" class="mb-1">Faixa de renda</label>
+                                          <input type="text" class="input__rio" name="faixa_de_renda">
+                                      </div>
                                     </div>
                                 </div>
                             </div>
-                            <div id="fase2__publico">
-
+                            <div id="fase2__two">
                                 <div class="mb-5">
                                     <div class="form__section__title">
                                         <p class="form__row__title">Dados de área</p>
@@ -253,6 +264,63 @@
                                     </div>
                                 </div>
 
+                            </div>
+                        </section>
+                        <h3 class="form__item__header">Passo 3</h3>
+                        <section>
+                            <div id="fase__3" class="fase3">
+                                <p class="form__row__title">Dados do imóvel</p>
+                                <div class="form-group w-50 m-auto">
+                                    <label for="">Qual o tipo de uso do imóvel?</label>
+                                    <select name="qual_o_tipo_de_uso_de_imovel" id="" class="input__rio--select">
+                                        <option value="finais-de-semana">Finais de semana</option>
+                                        <option value="principal">Principal</option>
+                                    </select>
+                                </div>
+                                <div class="form-row mt-4">
+                                    <div class="col-6 text-left">
+                                        <label for="" class="mb-1">Valor da última conta</label>
+                                        <div class="input__text">
+                                            <span class="text--input">kWh/ano</span>
+                                            <input type="text" class="input__rio" name="valor_da_ultima_conta">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 text-left">
+                                        <label for="" class="mb-1">Mês da conta</label>
+                                        <select name="mes_da_conta" id="" class="input__rio--select">
+                                            <option value="janeiro">Janeiro</option>
+                                            <option value="fevereiro">Fevereiro</option>
+                                            <option value="marco">Março</option>
+                                            <option value="abril">Abril</option>
+                                            <option value="maio">Maio</option>
+                                            <option value="junho">Junho</option>
+                                            <option value="julho">Julho</option>
+                                            <option value="agosto">Agosto</option>
+                                            <option value="setembro">Setembro</option>
+                                            <option value="outubro">Outubro</option>
+                                            <option value="novembro">Novembro</option>
+                                            <option value="dezembro">Dezembro</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row mt-4">
+                                    <div class="col-6 text-left">
+                                        <label for="" class="mb-1">Consumo médio anual</label>
+                                        <div class="input__text">
+                                            <span class="text--input">kWh/ano</span>
+                                            <input type="text" class="input__rio" name="consumo_total_anual">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 text-left">
+                                        <label for="" class="mb-1">Tarifa de energia</label>
+                                        <div class="input__text">
+                                            <span class="text--input">R$/kWh</span>
+                                            <input type="text" class="input__rio" name="tarifa_de_energia">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="fase3__two">
                                 <div class="mb-5">
                                     <div class="form__section__title">
                                         <p class="form__row__title">Dados de consumo</p>
@@ -263,9 +331,10 @@
                                         <div class="col-md-6 m-auto">
                                             <div class="form-group">
                                                 <label for="consumption_data">Tipo / Subgrupo</label>
-                                                <select name="consumption_data" id="consumption_data" class="input__rio--select">
-                                                    <option value="a1">A1</option>
-                                                    <option value="bx">Bx</option>
+                                                <select name="consumption_data" id="consumption_data" class="input__rio--select" onchange="showDiv('A1__item', this, 'Bx__item')">
+                                                    <option value="null">Selecione</option>
+                                                    <option id="a1_value" value="A1">A1</option>
+                                                    <option id="bx_value" value="Bx">Bx</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -374,62 +443,6 @@
                                                     <option value="dezembro">Dezembro</option>
                                                 </select>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </section>
-                        <h3 class="form__item__header">Passo 3</h3>
-                        <section>
-                            <div class="fase3">
-                                <p class="form__row__title">Dados do imóvel</p>
-                                <div class="form-group w-50 m-auto">
-                                    <label for="">Qual o tipo de uso do imóvel?</label>
-                                    <select name="qual_o_tipo_de_uso_de_imovel" id="" class="input__rio--select">
-                                        <option value="finais-de-semana">Finais de semana</option>
-                                        <option value="principal">Principal</option>
-                                    </select>
-                                </div>
-                                <div class="form-row mt-4">
-                                    <div class="col-6 text-left">
-                                        <label for="" class="mb-1">Valor da última conta</label>
-                                        <div class="input__text">
-                                            <span class="text--input">kWh/ano</span>
-                                            <input type="text" class="input__rio" name="valor_da_ultima_conta">
-                                        </div>
-                                    </div>
-                                    <div class="col-6 text-left">
-                                        <label for="" class="mb-1">Mês da conta</label>
-                                        <select name="mes_da_conta" id="" class="input__rio--select">
-                                            <option value="janeiro">Janeiro</option>
-                                            <option value="fevereiro">Fevereiro</option>
-                                            <option value="marco">Março</option>
-                                            <option value="abril">Abril</option>
-                                            <option value="maio">Maio</option>
-                                            <option value="junho">Junho</option>
-                                            <option value="julho">Julho</option>
-                                            <option value="agosto">Agosto</option>
-                                            <option value="setembro">Setembro</option>
-                                            <option value="outubro">Outubro</option>
-                                            <option value="novembro">Novembro</option>
-                                            <option value="dezembro">Dezembro</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-row mt-4">
-                                    <div class="col-6 text-left">
-                                        <label for="" class="mb-1">Consumo médio anual</label>
-                                        <div class="input__text">
-                                            <span class="text--input">kWh/ano</span>
-                                            <input type="text" class="input__rio" name="consumo_total_anual">
-                                        </div>
-                                    </div>
-                                    <div class="col-6 text-left">
-                                        <label for="" class="mb-1">Tarifa de energia</label>
-                                        <div class="input__text">
-                                            <span class="text--input">R$/kWh</span>
-                                            <input type="text" class="input__rio" name="tarifa_de_energia">
                                         </div>
                                     </div>
                                 </div>

@@ -171,6 +171,15 @@ a.modal__close:hover {
     color: #fff;
 }
 
+.form__row__title__subtitle {
+    margin-top: -15px;
+    margin-bottom: 20px;
+    display: block;
+    font-size: 17px;
+    font-weight: 400;
+    color: #D6D6D6;
+}
+
 /* Components */
 
 /* ---- CARD ---- */
@@ -821,7 +830,8 @@ label {
 }
 
 .fase2,
-.fase2__publico,
+#fase2__two,
+#fase3__two,
 .fase3 {
     width: 750px;
     max-width: 100%;
@@ -840,6 +850,10 @@ label {
 }
 
 #imovel-comercial-content {
+    display: none;
+}
+
+#A1__item, #Bx__item {
     display: none;
 }
 
