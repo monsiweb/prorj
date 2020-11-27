@@ -510,7 +510,7 @@
                                         </div>
                                         <div class="radio__content">
                                             <label>
-                                                <input type="radio" name="type_air_conditioning" value="split" id="air_conditioning" onclick="ShowHideDiv()">
+                                                <input type="radio" name="type_air_conditioning" value="split-inverter" id="air_conditioning" onclick="ShowHideDiv()">
                                                 <div class="radio__item">
                                                     <p class="radio__item__title">Split Inverter</p>
                                                 </div>
@@ -557,7 +557,7 @@
                                         <label class="mt-5" for="">Idade média dos equipamentos de ar condicionado?</label>
                                         <div class="input__text">
                                             <span class="text--input">anos</span>
-                                            <input type="text" class="input__rio" name="idade_media_dos_equipamentos_de_ar_condicionado">
+                                            <input type="text" class="input__rio" name="air-age-equipment">
                                         </div>
                                     </div>
                                     <p class="form__row__title--two text-center mt-5">Possui sistema de automação?</p>
@@ -617,9 +617,9 @@
                                     </div>
                                     <div class="checkbox__input">
                                         <div class="pretty p-default p-thick p-smooth">
-                                            <input type="checkbox" name="nao_possuo_ar" value="nao_possuo" />
+                                            <input type="checkbox" name="do-not-have" value="do-not-have" />
                                             <div class="state p-warning-o">
-                                                <label for="nao_possuo_ar">Não tenho ar condicionado</label>
+                                                <label for="do-not-have">Não tenho ar condicionado</label>
                                             </div>
                                         </div>
                                     </div>

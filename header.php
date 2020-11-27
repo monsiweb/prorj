@@ -19,7 +19,7 @@
                             <a href="<?php the_permalink(59);?>">DASHBOARD</a>
                         </div>
                         <div class="header__menu__item">
-                            <a href="#">CADASTRE SEU IMÓVEL</a>
+                            <a href="<?php the_permalink(100);?>">CADASTRE SEU IMÓVEL</a>
                         </div>
                     </div>
                     <div class="col-md-4 d-flex justify-content-center align-items-center">
@@ -35,7 +35,7 @@
                             <a href="#">PT|EN</a>
                         </div>
                         <div class="header__menu__item">
-                            <a href="#">SAIR</a>
+                            <a href="<?php echo wp_logout_url( home_url() ); ?>">SAIR</a>
                         </div>
                     </div>
                 </div>
