@@ -43,6 +43,8 @@ function monsi_admin_add_imovel()
         $last_account_value = sanitize_text_field($request['last_account_value']);
         $month_of_invoice = sanitize_text_field($request['month_of_invoice']);
         $predominant_air_conditioning = sanitize_text_field($request['predominant_air_conditioning']);
+        $predominant_air_conditioning_two = sanitize_text_field($request['predominant_air_conditioning_two']);
+        $predominant_air_conditioning_three = sanitize_text_field($request['predominant_air_conditioning_three']);
         $air_age_equipment = sanitize_text_field($request['air_age_equipment']);
         $automation_system = sanitize_text_field($request['automation_system']);
         $on_off_system = sanitize_text_field($request['on_off_system']);
@@ -93,6 +95,8 @@ function monsi_admin_add_imovel()
                 'last_account_value' => $last_account_value,
                 'month_of_invoice' => $month_of_invoice,
                 'predominant_air_conditioning' => $predominant_air_conditioning,
+                'predominant_air_conditioning_two' => $predominant_air_conditioning_two,
+                'predominant_air_conditioning_three' => $predominant_air_conditioning_three,
                 'air_age_equipment' => $air_age_equipment,
                 'automation_system' => $automation_system,
                 'on_off_system' => $on_off_system,
