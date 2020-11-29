@@ -157,8 +157,8 @@
                                 <div class="form-row mb-3">
                                     <div class="col-6 text-left">
                                       <div class="form-group">
-                                          <label for="" class="mb-1">Nome do imóvel </label>
-                                          <input type="text" class="input__rio" name="name_of_property">
+                                          <label for="name_of_property" class="mb-1">Nome do imóvel </label>
+                                          <input type="text" class="input__rio" name="name_of_property" id="name_of_property">
                                       </div>
                                     </div>
                                     <div class="col-6 text-left">
