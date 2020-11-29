@@ -79,7 +79,7 @@ if (is_user_logged_in()) {
                                         $post_date = get_the_date( 'd.m.Y' );
                                         echo $terms_string . '<span class="date">' . $post_date . '</span>';
                                     }
-                                    ?>
+                                    ?> 
                                 </div>
 
                                 <div class="card__item__name">
