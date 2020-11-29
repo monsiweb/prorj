@@ -63,7 +63,11 @@ if (is_user_logged_in()) {
                         <div class="panel__items__list">
                             <div class="card__item">
                                 <div class="card__item__img">
-                                    <img src="<?= get_template_directory_uri(); ?>/assets/images/item_icon.svg" alt="">
+                                <?php 
+                                $image = get_field('current_image');
+                                if( !empty( $image ) ): ?>
+                                    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+                                <?php endif; ?>
                                 </div>
 
                                 <div class="card__item__text">
