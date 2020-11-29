@@ -727,6 +727,14 @@ footer {
     margin-bottom: 75px;
 }
 
+.panel .panel__title .title--primary{
+    margin-left: 65px;
+}
+
+.title--primary::before {
+    width: 50px;
+}
+
 .panel__items__control {
     display: flex;
     justify-content: space-between;
