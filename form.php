@@ -519,7 +519,7 @@
                                     <div class="radio__group form__width--two mt-5">
                                         <div class="radio__content">
                                             <label>
-                                                <input type="radio" name="predominant_air_conditioning" value="vrf" onclick="ShowHideDiv()">
+                                                <input type="radio" name="predominant_air_conditioning" value="vrf" id= "air_conditioning-vrf" onclick="ShowHideDiv()">
                                                 <div class="radio__item">
                                                     <p class="radio__item__title">VRF</p>
                                                 </div>
@@ -527,7 +527,7 @@
                                         </div>
                                         <div class="radio__content">
                                             <label>
-                                                <input type="radio" name="predominant_air_conditioning" value="chiller" onclick="ShowHideDiv()">
+                                                <input type="radio" name="predominant_air_conditioning" value="chiller" id="air_conditioning-chiller" onclick="ShowHideDiv()">
                                                 <div class="radio__item">
                                                     <p class="radio__item__title">Chiller</p>
                                                 </div>
@@ -563,7 +563,7 @@
                                     <div class="radio__group form__width--two mt-5">
                                         <div class="radio__content">
                                             <label>
-                                                <input type="radio" name="automation_system" value="sim" onclick="ShowHideDiv()">
+                                                <input type="radio" name="automation_system" value="sim" id="automation-system" onclick="ShowHideDiv()">
                                                 <div class="radio__item">
                                                     <p class="radio__item__title">Sim</p>
                                                 </div>
