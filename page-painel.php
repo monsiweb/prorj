@@ -43,10 +43,11 @@ if (is_user_logged_in()) {
                         </div>
                     </div>
                 </div>
+                <div class="d-flex flex-wrap justify-content-center">
                 <?php
 
                 $query_args = array(
-                    'post_type' => 'post',
+                    'post_type' => 'imoveis',
                     'post_status' => 'publish',
                     'order' => 'ASC',
                 );
@@ -66,12 +67,18 @@ if (is_user_logged_in()) {
                                 </div>
 
                                 <div class="card__item__text">
-                                    <strong>Categoria</strong>
-                                    <span>00.00.00</span>
+                                    <?php
+                                    $term_obj_list = get_the_terms( $post->ID, 'tipos_de_imoveis' );
+                                    if(!empty($term_obj_list)){
+                                        $terms_string = join(', ', wp_list_pluck($term_obj_list, 'name'));
+                                        $post_date = get_the_date( 'd.m.Y' );
+                                        echo $terms_string . '<span class="date">' . $post_date . '</span>';
+                                    }
+                                    ?>
                                 </div>
 
                                 <div class="card__item__name">
-                                    <p>Nome do imóvel</p>
+                                    <p><?php the_title();?></p>
                                 </div>
                             </div>
                         </div>
@@ -89,6 +96,7 @@ if (is_user_logged_in()) {
                 }
 
                 ?>
+                </div>
             </div>
         </div>
     </section>
