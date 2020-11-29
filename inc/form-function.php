@@ -62,7 +62,7 @@ function monsi_admin_add_imovel()
             'tax_input' => array($type_of_property),
             'meta_input' => array(
                 'type_of_property' => $type_of_property,
-                'post_name' => $name_of_property,
+                'name_of_property' => $name_of_property,
                 'voluntary_self_inspection' => $voluntary_self_inspection,
                 'process_number' => $process_number,
                 'iptu' => $iptu,
