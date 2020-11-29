@@ -63,11 +63,12 @@ if (is_user_logged_in()) {
                         <div class="panel__items__list">
                             <div class="card__item">
                                 <div class="card__item__img">
-                                <?php 
-                                $image = get_field('current_image');
-                                if( !empty( $image ) ): ?>
-                                    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
-                                <?php endif; ?>
+                                    <?php $terms = get_the_terms( get_the_ID(), 'tipos_de_imoveis' );
+                                        if( ! empty( $terms ) ) : ?>
+                                            <?php foreach( $terms as $term ) : ?>           
+                                                <img src="<?php the_field('current_image', $term); ?>" />
+                                            <?php endforeach; ?>
+                                    <?php endif;  ?>
                                 </div>
 
                                 <div class="card__item__text">
