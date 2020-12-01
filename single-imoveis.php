@@ -12,20 +12,33 @@ if (is_user_logged_in()) {
 
 ?>
 
+<!-- Single page functions -->
+<?php
+
+// TOTAL HORA ANO
+
+
+?>
+<!-- Single page fim -->
+
 <?php get_header(); ?>
+<!-- DEBUG-->
+
+<?php
+var_dump([
+
+]);
+?>
+
+
 <section class="hero-single">
   <div class="container">
     <h1 class="title--primary text-center">Ficha técnica</h1>
     <h2 class="subtitle--herosingle"><?php the_title();?></h2>
-    <span class="text--herosingle">Área total: <?php the_field('area_total');?> m²</span>
-    <span class="text--herosingle">Consumo total: <?php the_field('consumo_total_anual');?> kWh/ano</span>
-    <?php
-      $areatotal = get_field('area_total');
-      $consumototal = get_field('consumo_total_anual');
+    <span class="text--herosingle">Área total:  m²</span>
+    <span class="text--herosingle">Consumo total: kWh/ano</span>
 
-      $soma = $consumototal / $areatotal;
-      echo "seu consumo por m² é: " . $soma;
-    ?>
+
   </div>
 </section>
 
