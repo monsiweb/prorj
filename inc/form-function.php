@@ -12,6 +12,7 @@ function monsi_admin_add_imovel()
     if ($user_id > 0) {
 
         $name_of_property = sanitize_text_field($request['name_of_property']);
+        $type_public_property = sanitize_text_field($request['type_public_property']);
         $voluntary_self_inspection = sanitize_text_field($request['voluntary_self_inspection']);
         $process_number = sanitize_text_field($request['process_number']);
         $type_of_property = trim($request['type_of_property']);
@@ -64,6 +65,7 @@ function monsi_admin_add_imovel()
             'tax_input' => array($type_of_property),
             'meta_input' => array(
                 'type_of_property' => $type_of_property,
+                'type_public_property' => $type_public_property,
                 'name_of_property' => $name_of_property,
                 'voluntary_self_inspection' => $voluntary_self_inspection,
                 'process_number' => $process_number,

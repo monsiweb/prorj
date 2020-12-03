@@ -1072,7 +1072,7 @@ label {
     font-size: 25px;
     text-align: center;
     font-weight: bold;
-    margin-bottom: 0;
+    margin-bottom: 20px;
 }
 
 .text--herosingle {
@@ -1081,4 +1081,50 @@ label {
     text-align: center;
     display: block;
     font-size: 20px;
+}
+
+.text--rel {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #EB4128;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.subtitle--two {
+    font-size: 23px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.single--title {
+    font-size: 23px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #F05A28;
+}
+
+.single--text {
+    font-size: 20px;
+    font-weight: 400;
+    max-width: 920px;
+}
+
+.benchmark {
+    background: #F5F5F5;
+    padding: 50px 0 30px 0;
+}
+.single--subtitle {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.single--subtitle span {
+    color: #EB4128;
+}
+
+
+.yourConsumption {
+    margin: 50px 0;
 }

@@ -13,6 +13,7 @@ if (is_user_logged_in()) {
 // Fields
 $data = [
     'type_of_property' => get_field('type_of_property'),
+    'type_public_property' => get_field('type_public_property'),
     'name_of_property' => get_field('name_of_property'),
     'voluntary_self_inspection' => get_field('voluntary_self_inspection'),
     'process_number' => get_field('process_number'),
@@ -56,12 +57,74 @@ $data = [
     'panels_water_heating' => get_field('panels_water_heating'),
     'available_on_rooftops' => get_field('available_on_rooftops')
 ];
+$month_mod = [
+    'janeiro' => 0.925,
+    'fevereiro' => 0.950,
+    'marco' => 0.975,
+    'abril' => 0.950,
+    'maio' => 1.007,
+    'junho' => 1.040,
+    'julho' => 1.058,
+    'agosto' => 1.049,
+    'setembro' => 1.028,
+    'outubro' => 1.032,
+    'novembro' => 0.965,
+    'dezembro' => 0.990
+];
+$type_mod = [
+    "ma_avc" => 0,
+    "ma_ilu" => 0,
+    "emed" => 0
+];
 ?>
 
-    <!-- Single page functions -->
 <?php
+// Tipo
+$type_public_property = $data['type_public_property'];
+switch ($type_public_property) {
+    case ($type_public_property == 'imovel-publico-clinica'):
+        $type_public_property = 'Clinica';
+        break;
+    case ($type_public_property == 'imovel-publico-escola'):
+        $type_public_property = 'Escola';
+        break;
+    case ($type_public_property == 'imovel-publico-adm'):
+        $type_public_property = 'Ed. ADM';
+        break;
+};
+switch ($type_public_property) {
+    case ($type_public_property == 'Clinica'):
+        $type_mod = [
+            "ma_avc" => 1,
+            "ma_ilu" => 0.98,
+            "emed" => 300
+        ];
+        break;
+    case ($type_public_property == 'Escola'):
+        $type_mod = [
+            "ma_avc" => 0.9,
+            "ma_ilu" => 0.98,
+            "emed" => 300
+        ];
+        break;
+    case ($type_public_property == 'Ed. ADM'):
+        $type_mod = [
+            "ma_avc" => 0.93,
+            "ma_ilu" => 1,
+            "emed" => 500
+        ];
+        break;
+};
 
-// TOTAL HORA ANO
+// CONSUMO TOTAL
+$consumption_type = $data['consumption_data'];
+
+if ($consumption_type == 'Ax') {
+    $consumption = $data['last_energy_bill'];
+    $total_consumption = $consumption * $month_mod[""];
+} elseif ($consumption_type == 'Bx') {
+
+}
 
 ?>
     <!-- Single page fim -->
@@ -70,20 +133,95 @@ $data = [
     <!-- DEBUG-->
 
 <?php
-    var_dump($data);
-    var_dump($data['iptu']);
+
 ?>
 
 
     <section class="hero-single">
         <div class="container">
-            <h1 class="title--primary text-center">Ficha técnica</h1>
-            <h2 class="subtitle--herosingle"><?php the_title(); ?></h2>
-            <span class="text--herosingle">Área total:  m²</span>
-            <span class="text--herosingle">Consumo total: kWh/ano</span>
+            <div class="d-flex justify-content-center flex-column align-items-center">
+                <h1 class="title--primary text-center">DIAGNÓSTICO ENERGÉTICO PRO Rio</h1>
+                <p class="text-center">Relatório Final para Clínicas, Ed Administrativos e Escolas (dentro da faixa de
+                    abrangência de metragem)<br/>
+                    Dados dinâmicos a serem retirados dos inputs ou resultados.
+                </p>
+            </div>
 
+            <div class="d-flex justify-content-center">
+                <div class="d-flex mr-4">
+                    <p class="text--rel"><?= $type_public_property; ?></p>
+                </div>
+                <div class="d-flex align-items-center">
+                    <img src="<?= get_template_directory_uri(); ?>/assets/images/local_r.svg" alt="">
+                    <p class="text--rel">Rua das Laranjeiras, n. 815</p>
+                </div>
+            </div>
 
+            <div class="my-4">
+                <p class="text-center">Neste relatório você poderá identificar o comportamento energético de seu imóvel
+                    quando comparado com demais imóveis semelhantes, da cidade do Rio de Janeiro. Poderá também
+                    identificar seu potencial de redução de consumo, através de medidas relacionadas à modernização de
+                    seus sistemas de iluminação e climatização.
+
+                    Para completar, te informaremos sobre a quantidade de emissões de CO2 que será capaz de evitar
+                    através de medidas de eficiência energética e, fechando com chave de ouro, saberá estimar seu
+                    potencial de geração de energia renovável através da instalação de um sistema fotovoltaico, também
+                    com respectiva redução de emissões.
+                    Esperamos que aproveite!
+                </p>
+            </div>
         </div>
     </section>
 
+    <section class="benchmark">
+        <div>
+            <h2 class="subtitle--herosingle"><?php the_title(); ?></h2>
+            <span class="text--herosingle">Área total:  m²</span>
+            <span class="text--herosingle">Consumo total: kWh/ano</span>
+        </div>
+
+        <div class="text-center my-4">
+            <h2 class="subtitle--two">POSIÇÃO NO BENCHMARK</h2>
+            <p>veja aqui como está sua escola quando comparada a outras da mesma cidade:</p>
+        </div>
+    </section>
+
+    <section class="yourConsumption">
+        <div class="text-center">
+            <h2 class="single--title">Seu consumo</h2>
+            <p class="single--text m-auto">Os gráficos mostram os consumos estimados do sistema de climatização, de
+                iluminação e de todos os outros (juntos) que constituem o consumo energético total de seu imóvel:</p>
+            <p class="single--subtitle mt-4">Consumo total utilizado: <span>850.000 kWh/ano</span></p>
+        </div>
+        <div id="donutchart" style="width: 900px; height: 500px;"></div>
+    </section>
+
+
+    <script>
+        window.onload = function () {
+            google.charts.load("current", {packages: ["corechart"]});
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                    ['Task', 'Hours per Day'],
+                    ['Ar condicionado', <?="20000"?>],
+                    ['Iluminação', 2222],
+                    ['Tomadas e outros', 2111],
+                ]);
+
+                var options = {
+                    pieHole: 0.4,
+                    slices: {
+                        0: { color: '#FB451D' },
+                        1: { color: '#FAAF41' },
+                        2: { color: '#FFCD00' }
+                    }
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+                chart.draw(data, options);
+            }
+        }
+    </script>
 <?php get_footer(); ?>
