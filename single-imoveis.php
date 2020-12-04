@@ -193,11 +193,13 @@ if ($consumption_type == 'Ax') {
                 iluminação e de todos os outros (juntos) que constituem o consumo energético total de seu imóvel:</p>
             <p class="single--subtitle mt-4">Consumo total utilizado: <span>850.000 kWh/ano</span></p>
         </div>
-        <div id="donutchart" style="width: 900px; height: 500px;"></div>
+        <div id="potencial-atual" style="width: 900px; height: 500px;"></div>
+       
     </section>
 
 
     <script>
+        //SEU CONSUMO
         window.onload = function () {
             google.charts.load("current", {packages: ["corechart"]});
             google.charts.setOnLoadCallback(drawChart);
@@ -213,15 +215,41 @@ if ($consumption_type == 'Ax') {
                 var options = {
                     pieHole: 0.4,
                     slices: {
-                        0: { color: '#FB451D' },
-                        1: { color: '#FAAF41' },
-                        2: { color: '#FFCD00' }
+                        0: {color: '#FB451D'},
+                        1: {color: '#FAAF41'},
+                        2: {color: '#FFCD00'}
+                    }
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('potencial-atual'));
+                chart.draw(data, options);
+            }
+
+            // SEU POTENCIAL - ATUAL
+            google.charts.setOnLoadCallback(potencialAtualChart);
+
+            function potencialAtualChart() {
+                var data = google.visualization.arrayToDataTable([
+                    ['Task', 'Hours per Day'],
+                    ['Ar condicionado', <?="20000"?>],
+                    ['Iluminação', 2222],
+                    ['Tomadas e outros', 2111],
+                ]);
+
+                var options = {
+                    pieHole: 0.4,
+                    slices: {
+                        0: {color: '#FB451D'},
+                        1: {color: '#FAAF41'},
+                        2: {color: '#FFCD00'}
                     }
                 };
 
                 var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
                 chart.draw(data, options);
-            }
-        }
+            };
+        };
+
+
     </script>
 <?php get_footer(); ?>

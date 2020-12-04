@@ -44,63 +44,63 @@ if (is_user_logged_in()) {
                     </div>
                 </div>
                 <div class="d-flex flex-wrap justify-content-center">
-                <?php
+                    <?php
 
-                $query_args = array(
-                    'post_type' => 'imoveis',
-                    'post_status' => 'publish',
-                    'order' => 'ASC',
-                );
+                    $query_args = array(
+                        'post_type' => 'imoveis',
+                        'post_status' => 'publish',
+                        'order' => 'ASC',
+                    );
 
-                // The Query
-                $the_query = new WP_Query( $query_args );
+                    // The Query
+                    $the_query = new WP_Query( $query_args );
 
-                // The Loop
-                if ( $the_query->have_posts() ) {
-                    while ( $the_query->have_posts() ) {
-                        $the_query->the_post();
-                        ?>
-                        <div class="panel__items__list">
-                            <div class="card__item">
-                                <div class="card__item__img">
-                                    <?php $terms = get_the_terms( get_the_ID(), 'tipos_de_imoveis' );
+                    // The Loop
+                    if ( $the_query->have_posts() ) {
+                        while ( $the_query->have_posts() ) {
+                            $the_query->the_post();
+                            ?>
+                            <div class="panel__items__list">
+                                <div class="card__item">
+                                    <div class="card__item__img">
+                                        <?php $terms = get_the_terms( get_the_ID(), 'tipos_de_imoveis' );
                                         if( ! empty( $terms ) ) : ?>
-                                            <?php foreach( $terms as $term ) : ?>           
+                                            <?php foreach( $terms as $term ) : ?>
                                                 <img src="<?php the_field('current_image', $term); ?>" />
                                             <?php endforeach; ?>
-                                    <?php endif;  ?>
-                                </div>
+                                        <?php endif;  ?>
+                                    </div>
 
-                                <div class="card__item__text">
-                                    <?php
-                                    $term_obj_list = get_the_terms( $post->ID, 'tipos_de_imoveis' );
-                                    if(!empty($term_obj_list)){
-                                        $terms_string = join(', ', wp_list_pluck($term_obj_list, 'name'));
-                                        $post_date = get_the_date( 'd.m.Y' );
-                                        echo $terms_string . '<span class="date">' . $post_date . '</span>';
-                                    }
-                                    ?> 
-                                </div>
+                                    <div class="card__item__text">
+                                        <?php
+                                        $term_obj_list = get_the_terms( $post->ID, 'tipos_de_imoveis' );
+                                        if(!empty($term_obj_list)){
+                                            $terms_string = join(', ', wp_list_pluck($term_obj_list, 'name'));
+                                            $post_date = get_the_date( 'd.m.Y' );
+                                            echo $terms_string . '<span class="date">' . $post_date . '</span>';
+                                        }
+                                        ?>
+                                    </div>
 
-                                <div class="card__item__name">
-                                    <p><?php the_title();?></p>
+                                    <div class="card__item__name">
+                                        <p><?php the_title();?></p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
+                            <?php
+                        }
+                        /* Restore original Post Data */
+                        wp_reset_postdata();
+                    } else {
+                        ?>
+                        <div class="panel__noItems alert alert-warning text-center" role="alert">
+                            Não existem imóveis cadastrados
+                        </div>
                         <?php
                     }
-                    /* Restore original Post Data */
-                    wp_reset_postdata();
-                } else {
-                    ?>
-                    <div class="panel__noItems alert alert-warning text-center" role="alert">
-                        Não existem imóveis cadastrados
-                    </div>
-                    <?php
-                }
 
-                ?>
+                    ?>
                 </div>
             </div>
         </div>
