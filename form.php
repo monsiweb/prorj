@@ -332,8 +332,8 @@
                                                 <label for="consumption_data">Tipo / Subgrupo</label>
                                                 <select name="consumption_data" id="consumption_data" class="input__rio--select" onchange="showDiv('A1__item', this, 'Bx__item')">
                                                     <option value="null">Selecione</option>
-                                                    <option id="a1_value" value="A1">A1</option>
-                                                    <option id="bx_value" value="Bx">Bx</option>
+                                                    <option id="a1_value" value="A1">A</option>
+                                                    <option id="bx_value" value="Bx">B</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -341,44 +341,8 @@
                                 </div>
 
                                 <div id="A1__item" class="mb-md-5">
-                                    <div class="form__section__title">
-                                        <p class="form__row__title">Baixa tensão</p>
-                                    </div>
 
-                                    <div class="form-row mb-3">
-                                        <div class="col-md-6 text-left">
-                                            <div class="form-group">
-                                                <label for="last_energy_bill" class="mb-1">Valor última conta de energia do imóvel</label>
-                                                <div class="input__text">
-                                                    <span class="text--input">kWh/ano</span>
-                                                    <input type="text" class="input__rio" name="last_energy_bill" id="last_energy_bill">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 text-left">
-                                            <div class="form-group">
-                                                <label for="account_month_a1" class="mb-1">Mês da conta</label>
-                                                <select name="account_month_a1" id="account_month_a1" class="input__rio--select">
-                                                    <option value="janeiro">Janeiro</option>
-                                                    <option value="fevereiro">Fevereiro</option>
-                                                    <option value="marco">Março</option>
-                                                    <option value="abril">Abril</option>
-                                                    <option value="maio">Maio</option>
-                                                    <option value="junho">Junho</option>
-                                                    <option value="julho">Julho</option>
-                                                    <option value="agosto">Agosto</option>
-                                                    <option value="setembro">Setembro</option>
-                                                    <option value="outubro">Outubro</option>
-                                                    <option value="novembro">Novembro</option>
-                                                    <option value="dezembro">Dezembro</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div id="Bx__item" class="mb-5">
-                                    <div class="form__section__title">
+                                <div class="form__section__title">
                                         <p class="form__row__title">Alta tensão</p>
                                     </div>
 
@@ -428,6 +392,44 @@
                                             <div class="form-group">
                                                 <label for="month_of_invoice" class="mb-1">Mês da fatura</label>
                                                 <select name="month_of_invoice" id="month_of_invoice" class="input__rio--select">
+                                                    <option value="janeiro">Janeiro</option>
+                                                    <option value="fevereiro">Fevereiro</option>
+                                                    <option value="marco">Março</option>
+                                                    <option value="abril">Abril</option>
+                                                    <option value="maio">Maio</option>
+                                                    <option value="junho">Junho</option>
+                                                    <option value="julho">Julho</option>
+                                                    <option value="agosto">Agosto</option>
+                                                    <option value="setembro">Setembro</option>
+                                                    <option value="outubro">Outubro</option>
+                                                    <option value="novembro">Novembro</option>
+                                                    <option value="dezembro">Dezembro</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="Bx__item" class="mb-5">
+                                   
+                                <div class="form__section__title">
+                                        <p class="form__row__title">Baixa tensão</p>
+                                    </div>
+
+                                    <div class="form-row mb-3">
+                                        <div class="col-md-6 text-left">
+                                            <div class="form-group">
+                                                <label for="last_energy_bill" class="mb-1">Valor última conta de energia do imóvel</label>
+                                                <div class="input__text">
+                                                    <span class="text--input">kWh/ano</span>
+                                                    <input type="text" class="input__rio" name="last_energy_bill" id="last_energy_bill">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 text-left">
+                                            <div class="form-group">
+                                                <label for="account_month_a1" class="mb-1">Mês da conta</label>
+                                                <select name="account_month_a1" id="account_month_a1" class="input__rio--select">
                                                     <option value="janeiro">Janeiro</option>
                                                     <option value="fevereiro">Fevereiro</option>
                                                     <option value="marco">Março</option>
