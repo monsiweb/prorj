@@ -556,11 +556,15 @@
                                     </div>
                                     <div class="input__extra" id="air_conditioning-content-two">
                                         <select name="predominant_air_conditioning_three" class="input__rio--select">
-                                            <option value="split">Split</option>
-                                            <option value="janela">Janela</option>
-                                            <option value="split-inverter">Split inverter</option>
-                                            <option value="vrf">VRF</option>
-                                            <option value="chiller">Chiller</option>
+                                            <option value="consensacao-ar-com-condensador">Condesação a ar com condensador</option>
+                                            <option value="consensacao-ar-sem-condensador">Condesação a ar sem condensador</option>
+                                            <option value="condensacao-agua-compressor-alternativo">Condesação a água (Compressor alternativo)</option>
+                                            <option value="condensacao-agua-compressor-parafuso-scoll">Condesação a água (Compressor do tipo parafuso e scroll)</option>
+                                            <option value="condensacao-agua-compressor-centrifugo">Condesação a água (Compressor centrifugo)</option>
+                                            <option value="absorcao-ar-simples-efeito">Absorção a ar de simples efeito</option>
+                                            <option value="absorcao-agua-simples-efeito">Absorção a água de simples efeito</option>
+                                            <option value="absorcao-agua-duplo-acionamento-indireto">Absorção a água de duplo efeito e acionamento indireto</option>
+                                            <option value="absorcao-agua-duplo-acionamento-direto">Absorção a água de duplo efeito e acionamento direto</option>
                                         </select>
                                     </div>
                                     <div class="form-group w-35 m-auto">
