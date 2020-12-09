@@ -538,11 +538,8 @@
                                     </div>
                                     <div class="input__extra" id="air_conditioning-content">
                                         <select name="predominant_air_conditioning_two" class="input__rio--select">
-                                            <option value="split">Split</option>
-                                            <option value="janela">Janela</option>
-                                            <option value="split-inverter">Split inverter</option>
-                                            <option value="vrf">VRF</option>
-                                            <option value="chiller">Chiller</option>
+                                            <option value="condensacao-a-ar">Com condensação a ar</option>
+                                            <option value="condensacao-a-agua">Com condensação a água</option>
                                         </select>
                                     </div>
                                     <div class="input__extra" id="air_conditioning-content-two">
