@@ -36,8 +36,8 @@ function monsi_admin_add_imovel()
         $total_annual_consumption = sanitize_text_field($request['total_annual_consumption']);
         $energy_tariff = sanitize_text_field($request['energy_tariff']);
         $consumption_data = sanitize_text_field($request['consumption_data']);
+        $total_consumption_value = sanitize_text_field($request['total_consumption_value']);
         $last_energy_bill = sanitize_text_field($request['last_energy_bill']);
-        $account_month_a1 = sanitize_text_field($request['account_month_a1']);
         $hired_demand = sanitize_text_field($request['hired_demand']);
         $rush_hour_consumption = sanitize_text_field($request['rush_hour_consumption']);
         $off_time_consumption = sanitize_text_field($request['off_time_consumption']);
@@ -89,8 +89,8 @@ function monsi_admin_add_imovel()
                 'total_annual_consumption' => $total_annual_consumption,
                 'energy_tariff' => $energy_tariff,
                 'consumption_data' => $consumption_data,
+                'total_consumption_value' => $total_consumption_value,
                 'last_energy_bill' => $last_energy_bill,
-                'account_month_a1' => $account_month_a1,
                 'hired_demand' => $hired_demand,
                 'rush_hour_consumption' => $rush_hour_consumption,
                 'off_time_consumption' => $off_time_consumption,

@@ -15,6 +15,14 @@ input:focus, select:focus {
     outline: none;
 }
 
+rect {
+    fill: none;
+}
+
+.p-relative {
+    position: relative;
+}
+
 /* Buttons */
 
 .btn--primary, .btn.btn--primary {
@@ -1127,4 +1135,79 @@ label {
 
 .yourConsumption {
     margin: 50px 0;
+}
+
+.savingPotential .single--text span {
+    color: #2DB71F;
+    padding: 0px;
+}
+
+.savingPotential .single--subtitle {
+    margin: 5px 0px;
+}
+
+.savingPotential .savingPies {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.single--pieTitle {
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: absolute;
+    
+    top: 10;
+}
+
+.single--pieSubTitle {
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+}
+
+.savingPotential.savingPotential__Two {
+    background: #F5F5F5;
+    padding: 50px 0;
+}
+
+.savingPotential.savingPotential__Three {
+    padding: 50px 0;
+}
+
+.green--color {
+color: #2DB71F;}
+
+/* Strategy */
+.strategy__section {
+    background: #F5F5F5;
+    padding: 50px 0;
+}
+
+.strategy__type {
+    font-size: 20px;
+    color: #FAAF41;
+    text-transform: uppercase;
+    font-weight: bold;
+} 
+
+.strategy__item {
+    margin-bottom: 30px;
+}
+.strategy__item__title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #414141;
+}
+
+.strategy__item__p {
+    font-size: 20px;
+    font-weight: 400;
+    padding-left: 100px;
+}
+
+.strategy__text {
+    font-size: 20px;
+    font-weight: 400;
 }

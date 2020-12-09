@@ -156,44 +156,44 @@
                                 <p class="form__row__title">Dados do imóvel</p>
                                 <div class="form-row mb-3">
                                     <div class="col-6 text-left">
-                                      <div class="form-group">
-                                          <label for="name_of_property" class="mb-1">Nome do imóvel </label>
-                                          <input type="text" class="input__rio" name="name_of_property" id="name_of_property">
-                                      </div>
+                                        <div class="form-group">
+                                            <label for="name_of_property" class="mb-1">Nome do imóvel </label>
+                                            <input type="text" class="input__rio" name="name_of_property" id="name_of_property">
+                                        </div>
                                     </div>
                                     <div class="col-6 text-left">
-                                       <div class="form-group">
-                                           <label for="" class="mb-1">IPTU </label>
-                                           <input type="text" class="input__rio" name="iptu">
-                                       </div>
-                                    </div>
-                                </div>
-                                <div class="form-row mb-3">
-                                    <div class="col-6 text-left">
-                                       <div class="form-group">
-                                           <label for="" class="mb-1">CEP</label>
-                                           <input type="text" class="input__rio" name="cep">
-                                       </div>
-                                    </div>
-                                    <div class="col-6 text-left">
-                                     <div class="form-group">
-                                         <label for="" class="mb-1">Endereço</label>
-                                         <input type="text" class="input__rio" name="address">
-                                     </div>
+                                        <div class="form-group">
+                                            <label for="" class="mb-1">IPTU </label>
+                                            <input type="text" class="input__rio" name="iptu">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-row mb-3">
                                     <div class="col-6 text-left">
-                                       <div class="form-group">
-                                           <label for="" class="mb-1">Cliente light</label>
-                                           <input type="text" class="input__rio" name="client_light">
-                                       </div>
+                                        <div class="form-group">
+                                            <label for="" class="mb-1">CEP</label>
+                                            <input type="text" class="input__rio" name="cep">
+                                        </div>
                                     </div>
                                     <div class="col-6 text-left">
-                                      <div class="form-group">
-                                          <label for="" class="mb-1">Faixa de renda</label>
-                                          <input type="text" class="input__rio" name="income_range">
-                                      </div>
+                                        <div class="form-group">
+                                            <label for="" class="mb-1">Endereço</label>
+                                            <input type="text" class="input__rio" name="address">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row mb-3">
+                                    <div class="col-6 text-left">
+                                        <div class="form-group">
+                                            <label for="" class="mb-1">Cliente light</label>
+                                            <input type="text" class="input__rio" name="client_light">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 text-left">
+                                        <div class="form-group">
+                                            <label for="" class="mb-1">Faixa de renda</label>
+                                            <input type="text" class="input__rio" name="income_range">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -332,8 +332,8 @@
                                                 <label for="consumption_data">Tipo / Subgrupo</label>
                                                 <select name="consumption_data" id="consumption_data" class="input__rio--select" onchange="showDiv('A1__item', this, 'Bx__item')">
                                                     <option value="null">Selecione</option>
-                                                    <option id="a1_value" value="A1">A</option>
-                                                    <option id="bx_value" value="Bx">B</option>
+                                                    <option id="a1_value" value="A">A</option>
+                                                    <option id="bx_value" value="B">B</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -342,7 +342,7 @@
 
                                 <div id="A1__item" class="mb-md-5">
 
-                                <div class="form__section__title">
+                                    <div class="form__section__title">
                                         <p class="form__row__title">Alta tensão</p>
                                     </div>
 
@@ -411,9 +411,21 @@
                                 </div>
 
                                 <div id="Bx__item" class="mb-5">
-                                   
-                                <div class="form__section__title">
+
+                                    <div class="form__section__title">
                                         <p class="form__row__title">Baixa tensão</p>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="col-md-6 mx-auto my-3">
+                                            <div class="form-group">
+                                                <label for="total_consumption_value" class="mb-1">Consumo total da conta</label>
+                                                <div class="input__text">
+                                                    <span class="text--input">kWh/ano</span>
+                                                    <input type="text" class="input__rio" name="total_consumption_value" id="total_consumption_value">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="form-row mb-3">
@@ -421,7 +433,7 @@
                                             <div class="form-group">
                                                 <label for="last_energy_bill" class="mb-1">Valor última conta de energia do imóvel</label>
                                                 <div class="input__text">
-                                                    <span class="text--input">kWh/ano</span>
+                                                    <span class="text--input">R$</span>
                                                     <input type="text" class="input__rio" name="last_energy_bill" id="last_energy_bill">
                                                 </div>
                                             </div>
@@ -521,7 +533,7 @@
                                     <div class="radio__group form__width--two mt-5">
                                         <div class="radio__content">
                                             <label>
-                                                <input type="radio" name="predominant_air_conditioning" value="vrf" id= "air_conditioning-vrf" onclick="ShowHideDiv()">
+                                                <input type="radio" name="predominant_air_conditioning" value="vrf" id="air_conditioning-vrf" onclick="ShowHideDiv()">
                                                 <div class="radio__item">
                                                     <p class="radio__item__title">VRF</p>
                                                 </div>
