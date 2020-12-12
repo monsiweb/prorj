@@ -261,7 +261,6 @@ if ($air_type == 'janela') {
     $ckw = (float)number_format(($cptr * 3.5168), '2', '.', '.');
 }
 
-
 // MI e NIVEL
 switch ($air_age) {
     case ($air_age <= 2):
@@ -520,7 +519,8 @@ $data_full = [
     "nivel" => $nivel,
 ]
 
-?>
+
+?> 
 <!-- Single page fim -->
 
 <?php get_header(); ?>
@@ -588,9 +588,32 @@ var_dump($data_full);
         <p class="single--subtitle mt-4">Consumo total utilizado: <span><?= kwh($total_consumption_year); ?> kWh/ano</span></p>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div id="pie-consumo" style="max-width: 500px; height: 500px;"></div>
+        <div class="row align-items-center">
+            <div class="col-md-7">
+                <div id="pie-consumo" style="max-width: 500px; height: 500px;margin: 0 auto;display:blocks;"></div>
+            </div>
+            <div class="col-md-5">
+                <div class="bar-content">
+                    <div class="values-bar">
+                    <p>Ar condicionado</p>
+                    <span>R$ 654,5454</span>
+                    </div>
+                    <div id="barOne"></div>
+                </div>
+                <div class="bar-content">
+                    <div class="values-bar">
+                    <p>Iluminação</p>
+                    <span>R$ 36,00</span>
+                    </div>
+                    <div id="barTwo"></div>
+                </div>
+                <div class="bar-content">
+                    <div class="values-bar">
+                    <p>Tomadas e outros</p>
+                    <span>R$ 36,00</span>
+                    </div>
+                    <div id="barThree"></div>
+                </div>
             </div>
         </div>
     </div>

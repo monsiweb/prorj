@@ -116,3 +116,41 @@ $(document).ready(function () {
   $('.mask-value').mask('000.000.000', { reverse: true });
   $('.money').mask('000.000.000.000.000,00', { reverse: true });
 });
+
+/* progress bar */
+
+var bar = new ProgressBar.Line(barOne, {
+  strokeWidth: 4,
+  easing: 'easeInOut',
+  duration: 1400,
+  color: '#FB451D',
+  trailColor: '#eee',
+  trailWidth: 1,
+  svgStyle: { width: '100%', height: '100%' },
+});
+
+bar.animate(1.0); // Number from 0.0 to 1.0
+
+var bar1 = new ProgressBar.Line(barTwo, {
+  strokeWidth: 4,
+  easing: 'easeInOut',
+  duration: 1400,
+  color: '#FB6C21',
+  trailColor: '#eee',
+  trailWidth: 1,
+  svgStyle: { width: '70%', height: '100%' },
+});
+
+bar1.animate(1.0); // Number from 0.0 to 1.0
+
+var bar2 = new ProgressBar.Line(barThree, {
+  strokeWidth: 4,
+  easing: 'easeInOut',
+  duration: 1400,
+  color: '#FAAF41',
+  trailColor: '#eee',
+  trailWidth: 1,
+  svgStyle: { width: '40%', height: '100%' },
+});
+
+bar2.animate(1.0); // Number from 0.0 to 1.0
