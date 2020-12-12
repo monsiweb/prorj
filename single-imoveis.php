@@ -49,6 +49,36 @@ function floatNum($value)
 
 
 
+// Automacão
+
+function automationValue($valueAuto)
+{
+
+    if ($valueAuto == 'sim') {
+        $value_temp = 0.85;
+        return $value_temp;
+    } else {
+        $value_temp = 1;
+        return $value_temp;
+    }
+}
+
+// Number Precision
+
+function numberPrecision($number, $precision = 2, $separator = '.')
+{
+    $numberParts = explode($separator, $number);
+    $response = $numberParts[0];
+    if (count($numberParts) > 1 && $precision > 0) {
+        $response .= $separator;
+        $response .= substr($numberParts[1], 0, $precision);
+    }
+    return $response;
+}
+
+
+
+
 
 // Fields
 $data = [
@@ -345,12 +375,136 @@ $efb = (float)number_format($efb_temp, '2', '.', '.');
 
 
 // ILUMINAÇÃO
+$type_ilu = $data['predominant_type_illumination'];
 
+switch ($type_ilu) {
+
+    case ($type_ilu == 'incandescente'):
+        $data_ilu = [
+            "efm" => 15,
+            "ptm" => 100,
+            "tlm" => 1500
+        ];
+        break;
+
+    case ($type_ilu == 'mista'):
+        $data_ilu = [
+            "efm" => 35,
+            "ptm" => 250,
+            "tlm" => 8750
+        ];
+        break;
+
+    case ($type_ilu == 'mercurio'):
+        $data_ilu = [
+            "efm" => 55,
+            "ptm" => 250,
+            "tlm" => 13750
+        ];
+        break;
+
+    case ($type_ilu == 'fluorescente-compacta'):
+        $data_ilu = [
+            "efm" => 75,
+            "ptm" => 26,
+            "tlm" => 1950
+        ];
+        break;
+
+    case ($type_ilu == 'vapor-metalico'):
+        $data_ilu = [
+            "efm" => 77.5,
+            "ptm" => 150,
+            "tlm" => 11625
+        ];
+        break;
+
+    case ($type_ilu == 'fluorescente-tubular'):
+        $data_ilu = [
+            "efm" => 82.5,
+            "ptm" => 40,
+            "tlm" => 3300
+        ];
+        break;
+
+    case ($type_ilu == 'vapor-de-sodio'):
+        $data_ilu = [
+            "efm" => 80,
+            "ptm" => 100,
+            "tlm" => 8000
+        ];
+        break;
+
+    case ($type_ilu == 'led-18w'):
+        $data_ilu = [
+            "efm" => 150,
+            "ptm" => 18,
+            "tlm" => 2700
+        ];
+        break;
+}
+
+$ilu_values = [
+    "n" => 2.00,
+    "lumens" => $data_ilu['tlm'],
+    "fm" => 0.8,
+    "ffl" => 1,
+];
+
+// Calculos
+$automation = automationValue($data['automation_system']);
+
+$ilu_F0 = ((float)$total_area) * ((float)$type_mod['ma_ilu']);
+
+$ilu_F1 = round((($type_mod['emed']) * ($ilu_F0)) / (($ilu_values['n']) * ($ilu_values['lumens']) * ($ilu_values['fm']) * $ilu_values['ffl']));
+
+$ilu_F2 = ($data_ilu['ptm'] * $ilu_F1 * $ilu_values['n']) / 1000;
+
+$ilu_F3 = num($ilu_F2 * 5.200 * $automation);
+
+$ilu_F4 = $ilu_F3 * $tariff;
+
+
+$ilu_p_F1 = round((300 * $ilu_F0) / (2 * 2700 * 0.91 * 1));
+$ilu_p_F2 = (float)numberPrecision(((18 * $ilu_p_F1 * 2) / 1000), 2, '.');
+$ilu_p_F3 = num($ilu_p_F2 * 5200 * $automation);
+$ilu_p_F4 = $ilu_p_F3 * $tariff;
+
+$ilu_calc = [
+    "ilu_esa" => [
+        "F0" => $ilu_F0,
+        "F1" => $ilu_F1,
+        "F2" => $ilu_F2,
+        "F3" => $ilu_F3,
+        "F4" => $ilu_F4,
+    ],
+    "ilu_ep" => [
+        "F0" => $ilu_F0,
+        "F1" => $ilu_p_F1,
+        "F2" => $ilu_p_F2,
+        "F3" => $ilu_p_F3,
+        "F4" => $ilu_p_F4,
+    ]
+
+];
+$dep_porcentagem = (int)numberPrecision((($ilu_calc['ilu_esa']['F2'] - $ilu_calc['ilu_ep']['F2']) / $ilu_calc['ilu_esa']['F2'] * 100), 0, '.');
+$dep_porcentagem_ano = (int)numberPrecision(($ilu_calc['ilu_esa']['F3'] / $total_consumption_year  * 100), 0, '.');
+
+$dep = [
+    "dep_value" => $ilu_calc['ilu_esa']['F4'] - $ilu_calc['ilu_ep']['F4'],
+    "dep_kwh_ano" => $ilu_calc['ilu_esa']['F3'] - $ilu_calc['ilu_ep']['F3'],
+    "dep_porcentagem" => $dep_porcentagem,
+    "dep_porcentagem_ano" => $dep_porcentagem_ano
+];
 
 
 // DATA FULL
 
 $data_full = [
+    "dep" => $dep,
+    "lamp calc" => $ilu_calc,
+    "Tipo de lampada" => $type_ilu,
+    "Values Lamp" => $data_ilu,
     "Area Total" => $total_area,
     "EFB" => $efb,
     "MIN_EFF" => $min_efficiency,
@@ -447,7 +601,7 @@ var_dump($data_full);
         <h2 class="single--title">Seu consumo</h2>
         <p class="single--text m-auto">agora você pode verificar seu potencial de economia através de medidas de eficiência energética:</p>
         <p class="single--subtitle mt-4">Potencial de economia do imóvel</p>
-        <p class="single--text m-auto">Seu potencial de economia é de <span>30 %</span></p>
+        <p class="single--text m-auto">Seu potencial de economia é de <span>10 %</span></p>
     </div>
 
     <div class="container">
@@ -496,7 +650,7 @@ var_dump($data_full);
 <section class="savingPotential savingPotential__Three">
     <div class="text-center">
         <p class="single--subtitle mt-4">Potencial de economia do sistema de iluminação</p>
-        <p class="single--text m-auto">Seu potencial de economia no sistema de iluminação é de <span>30 %</span><br />
+        <p class="single--text m-auto">Seu potencial de economia no sistema de iluminação é de <span><?= $dep['dep_porcentagem']; ?> %</span><br />
             Sistema sugerido – LED</p>
     </div>
 
@@ -505,13 +659,13 @@ var_dump($data_full);
             <div class="col-md-6 d-flex justify-content-center">
                 <p class="single--pieTitle">Atual</p>
                 <div id="pie-consumo-atual-three" style="width: 300px; height: 300px;"></div>
-                <p class="single--pieSubTitle">850.000 kWh/ano</p>
+                <p class="single--pieSubTitle"><?= kwh($ilu_calc['ilu_esa']['F3']); ?> kWh/ano</p>
             </div>
 
             <div class="col-md-6 d-flex justify-content-center">
                 <p class="single--pieTitle">Objetivo*</p>
                 <div id="pie-consumo-objetivo-three" style="width: 300px; height: 300px;"></div>
-                <p class="single--pieSubTitle green--color">850.000 kWh/ano</p>
+                <p class="single--pieSubTitle green--color"><?= kwh($ilu_calc['ilu_ep']['F3']); ?> kWh/ano</p>
             </div>
         </div>
     </div>
@@ -800,7 +954,7 @@ var_dump($data_full);
         function potencialAtualThreeChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Task', 'Hours per Day'],
-                ['Ar condicionado', <?= "20000" ?>],
+                ['Atual', <?= $ilu_calc['ilu_esa']['F3']; ?>],
             ]);
 
             var options = {
@@ -808,13 +962,7 @@ var_dump($data_full);
                 legend: 'none',
                 slices: {
                     0: {
-                        color: '#FB451D'
-                    },
-                    1: {
                         color: '#FAAF41'
-                    },
-                    2: {
-                        color: '#FFCD00'
                     }
                 }
             };
@@ -830,9 +978,8 @@ var_dump($data_full);
         function potencialObjetivoThreeChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Task', 'Hours per Day'],
-                ['Ar condicionado', <?= "20000" ?>],
-                ['Iluminação', 2222],
-                ['Tomadas e outros', 2111],
+                ['Atual', <?= $ilu_calc['ilu_esa']['F3']; ?>],
+                ['Objetivo', <?= $ilu_calc['ilu_ep']['F3']; ?>],
             ]);
 
             var options = {
@@ -840,13 +987,10 @@ var_dump($data_full);
                 legend: 'none',
                 slices: {
                     0: {
-                        color: '#FB451D'
-                    },
-                    1: {
                         color: '#FAAF41'
                     },
-                    2: {
-                        color: '#FFCD00'
+                    1: {
+                        color: '#2DB71F'
                     }
                 }
             };
