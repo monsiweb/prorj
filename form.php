@@ -192,7 +192,7 @@
                                     <div class="col-6 text-left">
                                         <div class="form-group">
                                             <label for="" class="mb-1">Faixa de renda</label>
-                                            <input type="text" class="input__rio" name="income_range">
+                                            <input type="text" class="input__rio money" name="income_range">
                                         </div>
                                     </div>
                                 </div>
@@ -352,7 +352,7 @@
                                                 <label for="hired_demand" class="mb-1">Demanda contratada</label>
                                                 <div class="input__text">
                                                     <span class="text--input">kW</span>
-                                                    <input type="text" class="input__rio" name="hired_demand" id="hired_demand">
+                                                    <input type="text" class="input__rio mask-value" name="hired_demand" id="hired_demand">
                                                 </div>
                                             </div>
                                         </div>
@@ -363,7 +363,7 @@
                                                 <label for="rush_hour_consumption" class="mb-1">Consumo horário de ponta</label>
                                                 <div class="input__text">
                                                     <span class="text--input">kWh</span>
-                                                    <input type="text" class="input__rio" name="rush_hour_consumption" id="rush_hour_consumption">
+                                                    <input type="text" class="input__rio mask-value" name="rush_hour_consumption" id="rush_hour_consumption">
                                                 </div>
                                             </div>
                                         </div>
@@ -372,7 +372,7 @@
                                                 <label for="off_time_consumption" class="mb-1">Consumo horário fora de ponta</label>
                                                 <div class="input__text">
                                                     <span class="text--input">kWh</span>
-                                                    <input type="text" class="input__rio" name="off_time_consumption" id="off_time_consumption">
+                                                    <input type="text" class="input__rio mask-value" name="off_time_consumption" id="off_time_consumption">
                                                 </div>
                                             </div>
                                         </div>
@@ -384,7 +384,7 @@
                                                 <label for="last_account_value" class="mb-1">Valor da última conta</label>
                                                 <div class="input__text">
                                                     <span class="text--input">R$</span>
-                                                    <input type="text" class="input__rio" name="last_account_value" id="last_account_value">
+                                                    <input type="text" class="input__rio money" name="last_account_value" id="last_account_value">
                                                 </div>
                                             </div>
                                         </div>
@@ -421,8 +421,8 @@
                                             <div class="form-group">
                                                 <label for="total_consumption_value" class="mb-1">Consumo total da conta</label>
                                                 <div class="input__text">
-                                                    <span class="text--input">kWh/ano</span>
-                                                    <input type="text" class="input__rio" name="total_consumption_value" id="total_consumption_value">
+                                                    <span class="text--input">kWh</span>
+                                                    <input type="text" class="input__rio mask-value" name="total_consumption_value" id="total_consumption_value">
                                                 </div>
                                             </div>
                                         </div>
@@ -434,7 +434,7 @@
                                                 <label for="last_energy_bill" class="mb-1">Valor última conta de energia do imóvel</label>
                                                 <div class="input__text">
                                                     <span class="text--input">R$</span>
-                                                    <input type="text" class="input__rio" name="last_energy_bill" id="last_energy_bill">
+                                                    <input type="text" class="input__rio money" name="last_energy_bill" id="last_energy_bill">
                                                 </div>
                                             </div>
                                         </div>

@@ -109,3 +109,10 @@ function showDiv(divId, element, DivIdTwo) {
     document.getElementById(DivIdTwo).style.display = 'none';
   }
 }
+
+/* Mask inputs */
+
+$(document).ready(function () {
+  $('.mask-value').mask('000.000.000', { reverse: true });
+  $('.money').mask('000.000.000.000.000,00', { reverse: true });
+});
