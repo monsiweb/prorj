@@ -63,6 +63,13 @@ function automationValue($valueAuto)
     }
 }
 
+// Real
+
+function real($custo)
+{
+    return number_format($custo, 2, ',', '.');
+};
+
 // Number Precision
 
 function numberPrecision($number, $precision = 2, $separator = '.')
@@ -238,6 +245,9 @@ if ($consumption_type == 'A') {
 * AR CONDICIONADO
 * Date: 09/12/20
 */
+
+// Global
+$automation = automationValue($data['automation_system']);
 
 //Sistema de ar condicionado principal
 $air_type = $data['predominant_air_conditioning'];
@@ -573,6 +583,16 @@ switch ($air_type) {
         break;
 };
 
+// POTENCIAL DE ECONOMIA
+$potencial_economia = (int)numberPrecision(((($min_efficiency_pro - $min_efficiency) / $min_efficiency_pro) * 100), 0, '.');
+
+$pea_base = (float)numberPrecision(($ckw / $min_efficiency), 2, '.');
+$pea_prop = (float)numberPrecision(($ckw / $min_efficiency_pro), 2, '.');
+$consumo_anual_ar = $pea_base * 5200 * $automation;
+$custo_anual_ar  = $consumo_anual_ar * $tariff;
+$consumo_anual_ar_prop = $pea_prop * 5200 * $automation;
+$custo_anual_ar_prop  = $consumo_anual_ar_prop * $tariff;
+
 // Eficiência base com modificador de idade (EFB)
 $efb_temp = $min_efficiency * (1 - $mi);
 $efb = (float)number_format($efb_temp, '2', '.', '.');
@@ -657,7 +677,6 @@ $ilu_values = [
 ];
 
 // Calculos
-$automation = automationValue($data['automation_system']);
 
 $ilu_F0 = ((float)$total_area) * ((float)$type_mod['ma_ilu']);
 
@@ -702,18 +721,43 @@ $dep = [
     "dep_porcentagem_ano" => $dep_porcentagem_ano
 ];
 
+// TOMADA e OUTROS
+
+$outros_consumo = $total_consumption_year - ($consumo_anual_ar + $ilu_calc['ilu_esa']['F3']);
+$outros_tarifa = $outros_consumo * $tariff;
+
+$cem_por = $total_consumption_year;
+$porcentagem_outros = (float)numberPrecision(($outros_consumo * 100 / $cem_por), 2, '.');
+$porcentagem_ar = (float)numberPrecision(($consumo_anual_ar * 100 / $cem_por), 2, '.');
+$porcentagem_ilu = (float)numberPrecision(($ilu_calc['ilu_esa']['F3'] * 100 / $cem_por), 2, '.');
+
+
+// GERAL
+
+$potencial_geral = $consumo_anual_ar_prop + $ilu_calc['ilu_ep']['F3'] + $outros_consumo;
+
+$geral_resto = $total_consumption_year - $potencial_geral;
+$porcentagem_total = (int)numberPrecision(($geral_resto * 100 / $cem_por), 2, '.');
 
 // DATA FULL
 
 $data_full = [
-    "dep" => $dep,
-    "lamp calc" => $ilu_calc,
-    "Tipo de lampada" => $type_ilu,
-    "Values Lamp" => $data_ilu,
-    "Area Total" => $total_area,
+    "potencial geral" => $potencial_geral,
+    "porcen outros" => $porcentagem_outros,
+    "OUTROS CONSUMO" => $outros_consumo,
+    "OUTROS TARIFA" => $outros_tarifa,
+    "CUSTO ANUAL" => $custo_anual_ar,
+    "CUSTO ILU" => $ilu_F4,
     "EFB" => $efb,
+    "PEA BASE" => $pea_base,
+    "PEA PROPOSTO" => $pea_prop,
     "MIN_EFF" => $min_efficiency,
     "MIN_EFF_PRO" => $min_efficiency_pro,
+    "POTENCIAL DE ECONOMIA" => $potencial_economia,
+    "CONSUMO ANUAL" => $consumo_anual_ar,
+
+    "CONSUMO ANUAL PROP" => $consumo_anual_ar_prop,
+    "CUSTO ANUAL PROPOSTO" => $custo_anual_ar_prop,
     "TXAR" => $txar,
     "CPTR" => $cptr,
     "ckw" => $ckw,
@@ -743,7 +787,6 @@ $data_full = [
     "Possui automação?" => $automation_system,
     "MI" => $mi,
     "nivel" => $nivel,
-    "data" => $data,
 ]
 
 
@@ -754,7 +797,7 @@ $data_full = [
 
 <!-- DEBUG-->
 <?php
-var_dump($data_full);
+// var_dump($data_full);
 ?>
 
 
@@ -801,7 +844,7 @@ var_dump($data_full);
         <span class="text--herosingle">Consumo total: <?= kwh($total_consumption_year); ?> kWh/ano</span>
     </div>
 
-    <div class="text-center my-4">
+    <div class="text-center my-4 d-none">
         <h2 class="subtitle--two">POSIÇÃO NO BENCHMARK</h2>
         <p>veja aqui como está sua escola quando comparada a outras da mesma cidade:</p>
     </div>
@@ -823,21 +866,21 @@ var_dump($data_full);
                 <div class="bar-content">
                     <div class="values-bar">
                         <p>Ar condicionado</p>
-                        <span>R$ 654,5454</span>
+                        <span>R$ <?= real($custo_anual_ar); ?></span>
                     </div>
                     <div id="barOne"></div>
                 </div>
                 <div class="bar-content">
                     <div class="values-bar">
                         <p>Iluminação</p>
-                        <span>R$ 36,00</span>
+                        <span>R$ <?= real($ilu_F4); ?></span>
                     </div>
                     <div id="barTwo"></div>
                 </div>
                 <div class="bar-content">
                     <div class="values-bar">
                         <p>Tomadas e outros</p>
-                        <span>R$ 36,00</span>
+                        <span>R$ <?= real($outros_tarifa); ?></span>
                     </div>
                     <div id="barThree"></div>
                 </div>
@@ -851,7 +894,7 @@ var_dump($data_full);
         <h2 class="single--title">Seu consumo</h2>
         <p class="single--text m-auto">agora você pode verificar seu potencial de economia através de medidas de eficiência energética:</p>
         <p class="single--subtitle mt-4">Potencial de economia do imóvel</p>
-        <p class="single--text m-auto">Seu potencial de economia é de <span>10 %</span></p>
+        <p class="single--text m-auto">Seu potencial de economia é de <span><?= $porcentagem_total; ?> %</span></p>
     </div>
 
     <div class="container">
@@ -859,13 +902,13 @@ var_dump($data_full);
             <div class="col-md-6 d-flex justify-content-center">
                 <p class="single--pieTitle">Atual</p>
                 <div id="pie-consumo-atual" style="width: 300px; height: 300px;"></div>
-                <p class="single--pieSubTitle">850.000 kWh/ano</p>
+                <p class="single--pieSubTitle"><?= kwh($total_consumption_year); ?> kWh/ano</p>
             </div>
 
             <div class="col-md-6 d-flex justify-content-center">
                 <p class="single--pieTitle">Objetivo*</p>
                 <div id="pie-consumo-objetivo" style="width: 300px; height: 300px;"></div>
-                <p class="single--pieSubTitle green--color">850.000 kWh/ano</p>
+                <p class="single--pieSubTitle green--color"><?= kwh($potencial_geral); ?> kWh/ano</p>
             </div>
         </div>
     </div>
@@ -876,7 +919,7 @@ var_dump($data_full);
     <div class="text-center">
         <p class="single--subtitle mt-4">Potencial de economia do sistema de climatização (ar condicionados)
         </p>
-        <p class="single--text m-auto">Seu potencial de economia no sistema de climatização é de <span>30 %</span><br />
+        <p class="single--text m-auto">Seu potencial de economia no sistema de climatização é de <span><?= $potencial_economia; ?> %</span><br />
             Sistema sugerido – Split Inverter</p>
     </div>
 
@@ -885,13 +928,13 @@ var_dump($data_full);
             <div class="col-md-6 d-flex justify-content-center">
                 <p class="single--pieTitle">Atual</p>
                 <div id="pie-consumo-atual-two" style="width: 300px; height: 300px;"></div>
-                <p class="single--pieSubTitle">850.000 kWh/ano</p>
+                <p class="single--pieSubTitle"><?= kwh($consumo_anual_ar); ?> kWh/ano</p>
             </div>
 
             <div class="col-md-6 d-flex justify-content-center">
                 <p class="single--pieTitle">Objetivo*</p>
                 <div id="pie-consumo-objetivo-two" style="width: 300px; height: 300px;"></div>
-                <p class="single--pieSubTitle green--color">850.000 kWh/ano</p>
+                <p class="single--pieSubTitle green--color"><?= kwh($consumo_anual_ar_prop); ?> kWh/ano</p>
             </div>
         </div>
     </div>
@@ -1049,9 +1092,9 @@ var_dump($data_full);
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Task', 'Hours per Day'],
-                ['Ar condicionado', <?= "20000" ?>],
-                ['Iluminação', 2222],
-                ['Tomadas e outros', 2111],
+                ['Ar condicionado', <?= $consumo_anual_ar ?>],
+                ['Iluminação', <?= $ilu_calc['ilu_esa']['F3']; ?>],
+                ['Tomadas e outros', <?= $outros_consumo; ?>],
             ]);
 
             var options = {
@@ -1080,9 +1123,7 @@ var_dump($data_full);
         function potencialAtualChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Task', 'Hours per Day'],
-                ['Ar condicionado', <?= "20000" ?>],
-                ['Iluminação', 2222],
-                ['Tomadas e outros', 2111],
+                ['Atual', <?= $total_consumption_year; ?>],
             ]);
 
             var options = {
@@ -1090,14 +1131,8 @@ var_dump($data_full);
                 legend: 'none',
                 slices: {
                     0: {
-                        color: '#FB451D'
-                    },
-                    1: {
-                        color: '#FAAF41'
-                    },
-                    2: {
                         color: '#FFCD00'
-                    }
+                    },
                 }
             };
 
@@ -1112,9 +1147,8 @@ var_dump($data_full);
         function potencialObjetivoChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Task', 'Hours per Day'],
-                ['Ar condicionado', <?= "20000" ?>],
-                ['Iluminação', 2222],
-                ['Tomadas e outros', 2111],
+                ['Atual', <?= $total_consumption_year; ?>],
+                ['Objetivo', <?= $potencial_geral; ?>]
             ]);
 
             var options = {
@@ -1122,14 +1156,11 @@ var_dump($data_full);
                 legend: 'none',
                 slices: {
                     0: {
-                        color: '#FB451D'
+                        color: '#FFCD00'
                     },
                     1: {
-                        color: '#FAAF41'
+                        color: '#2DB71F'
                     },
-                    2: {
-                        color: '#FFCD00'
-                    }
                 }
             };
 
@@ -1143,7 +1174,7 @@ var_dump($data_full);
         function potencialAtualTwoChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Task', 'Hours per Day'],
-                ['Ar condicionado', <?= "20000" ?>],
+                ['Atual', <?= $consumo_anual_ar ?>],
             ]);
 
             var options = {
@@ -1152,12 +1183,6 @@ var_dump($data_full);
                 slices: {
                     0: {
                         color: '#FB451D'
-                    },
-                    1: {
-                        color: '#FAAF41'
-                    },
-                    2: {
-                        color: '#FFCD00'
                     }
                 }
             };
@@ -1173,9 +1198,8 @@ var_dump($data_full);
         function potencialObjetivoTwoChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Task', 'Hours per Day'],
-                ['Ar condicionado', <?= "20000" ?>],
-                ['Iluminação', 2222],
-                ['Tomadas e outros', 2111],
+                ['Atual', <?= $consumo_anual_ar ?>],
+                ['Objetivo', <?= $consumo_anual_ar_prop; ?>],
             ]);
 
             var options = {
@@ -1186,10 +1210,7 @@ var_dump($data_full);
                         color: '#FB451D'
                     },
                     1: {
-                        color: '#FAAF41'
-                    },
-                    2: {
-                        color: '#FFCD00'
+                        color: '#2db71f'
                     }
                 }
             };
@@ -1249,6 +1270,53 @@ var_dump($data_full);
             chart.draw(data, options);
         };
 
+
+        /* progress bar */
+
+        var bar = new ProgressBar.Line(barOne, {
+            strokeWidth: 4,
+            easing: 'easeInOut',
+            duration: 1400,
+            color: '#FB451D',
+            trailColor: '#eee',
+            trailWidth: 1,
+            svgStyle: {
+                width: '<?= $porcentagem_ar; ?>%',
+                height: '100%'
+            },
+        });
+
+        bar.animate(1.0); // Number from 0.0 to 1.0
+
+        var bar1 = new ProgressBar.Line(barTwo, {
+            strokeWidth: 4,
+            easing: 'easeInOut',
+            duration: 1400,
+            color: '#FAAF41',
+            trailColor: '#eee',
+            trailWidth: 1,
+            svgStyle: {
+                width: '<?= $porcentagem_ilu; ?>%',
+                height: '100%'
+            },
+        });
+
+        bar1.animate(1.0); // Number from 0.0 to 1.0
+
+        var bar2 = new ProgressBar.Line(barThree, {
+            strokeWidth: 4,
+            easing: 'easeInOut',
+            duration: 1400,
+            color: '#FFCD00',
+            trailColor: '#eee',
+            trailWidth: 1,
+            svgStyle: {
+                width: '<?= $porcentagem_outros; ?>%',
+                height: '100%'
+            },
+        });
+
+        bar2.animate(1.0); // Number from 0.0 to 1.0
 
     };
 </script>
