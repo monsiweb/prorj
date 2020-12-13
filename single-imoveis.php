@@ -20,7 +20,7 @@ if (is_user_logged_in()) {
 
 function kwh(float $number)
 {
-    return number_format($number, '2', ',', '.');
+    return number_format($number, '2', ',', '');
 }
 
 /*
@@ -115,8 +115,8 @@ $data = [
     'last_account_value' => get_field('last_account_value'),
     'month_of_invoice' => get_field('month_of_invoice'),
     'predominant_air_conditioning' => get_field('predominant_air_conditioning'),
-    'predominant_air_conditioning_two' => get_field('predominant_air_conditioning_two'),
-    'predominant_air_conditioning_three' => get_field('predominant_air_conditioning_three'),
+    'predominant_air_conditioning_two' => get_field('vrf_options_type'),
+    'predominant_air_conditioning_three' => get_field('chiller_options_type'),
     'air_age_equipment' => get_field('air_age_equipment'),
     'automation_system' => get_field('automation_system'),
     'on_off_system' => get_field('on_off_system'),
@@ -240,7 +240,9 @@ if ($consumption_type == 'A') {
 */
 
 //Sistema de ar condicionado principal
-$air_type = $data['predominant_air_conditioning_two'];
+$air_type = $data['predominant_air_conditioning'];
+$air_type_two = $data['predominant_air_conditioning_two'];
+$air_type_three = $data['predominant_air_conditioning_three'];
 
 //(Idade) Idade do equipamento e/ou sistema
 $air_age = $data['air_age_equipment'];
@@ -291,10 +293,11 @@ switch ($air_age) {
         break;
 };
 
-// EFICIENCIA MINIMA
+// EFICIENCIA MINIMA 
 
 switch ($air_type) {
 
+        // SPLIT
     case ($air_type == 'split'):
         if ($nivel == 'C') {
             if ($ckw <= 40) {
@@ -322,7 +325,8 @@ switch ($air_type) {
 
         break;
 
-    case ($air_type == 'split'):
+        // SPLIT INVERTER
+    case ($air_type == 'split_inverter'):
         if ($nivel == 'C') {
             if ($ckw <= 40) {
                 $min_efficiency = 3.02;
@@ -346,6 +350,128 @@ switch ($air_type) {
         } else {
             echo "ERROR";
         }
+
+        break;
+
+        // JANELA
+    case ($air_type == 'janela'):
+        if ($nivel == 'C') {
+            if ($cpbtu <= 9000) {
+                $min_efficiency = 2.78;
+            } elseif ($cpbtu <= 13900) {
+                $min_efficiency = 2.86;
+            } elseif ($cpbtu <= 19900) {
+                $min_efficiency = 2.59;
+            } else {
+                $min_efficiency = 2.48;
+            }
+        } elseif ($nivel == 'D') {
+            if ($cpbtu <= 9000) {
+                $min_efficiency = 2.68;
+            } elseif ($cpbtu <= 13900) {
+                $min_efficiency = 2.78;
+            } elseif ($cpbtu <= 19900) {
+                $min_efficiency = 2.45;
+            } else {
+                $min_efficiency = 2.3;
+            }
+        } else {
+            echo "ERROR";
+        }
+
+        break;
+
+        // VRF
+    case ($air_type == 'vrf'):
+        if ($air_type_two == 'condensacao-a-ar') {
+            if ($ckw <= 19) {
+                $min_efficiency = 3.81;
+            } elseif ($ckw <= 40) {
+                $min_efficiency = 3.16;
+            } elseif ($ckw <= 70) {
+                $min_efficiency = 3.05;
+            } else {
+                $min_efficiency = 2.73;
+            }
+        } elseif ($air_type_two == 'condensacao-a-agua') {
+            if ($ckw <= 19) {
+                $min_efficiency = 3.46;
+            } elseif ($ckw <= 40) {
+                $min_efficiency = 3.46;
+            } else {
+                $min_efficiency = 2.87;
+            }
+        } else {
+            echo "ERROR";
+        }
+
+        break;
+
+    case ($air_type == 'chiller'):
+        if ($nivel == 'C') {
+            if ($air_type_three == 'condensacao-ar-com-condensador') {
+                $min_efficiency = 2.8;
+            } elseif ($air_type_three == 'condensacao-ar-sem-condensador') {
+                $min_efficiency = 3.1;
+            } elseif ($air_type_three == 'condensacao-agua-compressor-alternativo') {
+                $min_efficiency = 4.2;
+            } elseif ($air_type_three == 'condensacao-agua-compressor-parafuso-scroll') {
+                if ($ckw <= 528) {
+                    $min_efficiency = 4.45;
+                } elseif ($ckw <= 1055) {
+                    $min_efficiency = 4.9;
+                } else {
+                    $min_efficiency = 5.5;
+                }
+            } elseif ($air_type_three == 'condensacao-agua-compressor-centrifugo') {
+                if ($ckw <= 528) {
+                    $min_efficiency = 5;
+                } elseif ($ckw <= 1055) {
+                    $min_efficiency = 5.55;
+                } else {
+                    $min_efficiency = 6.1;
+                }
+            } elseif ($air_type_three == 'absorcao-ar-simples-efeito') {
+                $min_efficiency = 0.6;
+            } elseif ($air_type_three == 'absorcao-agua-simples-efeito') {
+                $min_efficiency = 0.7;
+            } elseif ($air_type_three == 'absorcao-agua-duplo-acionamento-indireto') {
+                $min_efficiency = 1.05;
+            } elseif ($air_type_three == 'absorcao-agua-duplo-acionamento-direto') {
+                $min_efficiency = 1;
+            }
+        } elseif ($nivel == 'D') {
+            if ($air_type_three == 'condensacao-ar-com-condensador') {
+                if ($ckw <= 527) {
+                    $min_efficiency = 2.7;
+                } else {
+                    $min_efficiency = 2.5;
+                }
+            } elseif ($air_type_three == 'condensacao-ar-sem-condensador') {
+                $min_efficiency = 3.1;
+            } elseif ($air_type_three == 'condensacao-agua-compressor-alternativo') {
+                $min_efficiency = 3.1;
+            } elseif ($air_type_three == 'condensacao-agua-compressor-parafuso-scroll') {
+                if ($ckw <= 528) {
+                    $min_efficiency = 3.9;
+                } elseif ($ckw <= 1055) {
+                    $min_efficiency = 4.5;
+                } else {
+                    $min_efficiency = 5.3;
+                }
+            } elseif ($air_type_three == 'condensacao-agua-compressor-centrifugo') {
+                if ($ckw <= 528) {
+                    $min_efficiency = 3.9;
+                } elseif ($ckw <= 1055) {
+                    $min_efficiency = 4.5;
+                } else {
+                    $min_efficiency = 5.3;
+                }
+            }
+        } else {
+            echo 'ERROR';
+        }
+
 
         break;
 }
@@ -364,6 +490,86 @@ switch ($air_type) {
         } else {
             $min_efficiency_pro = 2.84;
         }
+        break;
+
+    case ($air_type == 'split_inverter'):
+        if ($ckw <= 40) {
+            $min_efficiency_pro = 3.28;
+        } elseif ($ckw <= 70) {
+            $min_efficiency_pro = 3.22;
+        } elseif ($ckw <= 223) {
+            $min_efficiency_pro = 2.93;
+        } else {
+            $min_efficiency_pro = 2.84;
+        }
+        break;
+
+    case ($air_type == 'janela'):
+        if ($cpbtu <= 9000) {
+            $min_efficiency_pro = 2.93;
+        } elseif ($cpbtu <= 13900) {
+            $min_efficiency_pro = 3.03;
+        } elseif ($cpbtu <= 19900) {
+            $min_efficiency_pro = 2.88;
+        } else {
+            $min_efficiency_pro = 2.82;
+        }
+        break;
+
+    case ($air_type == 'vrf'):
+
+        if ($ckw <= 19) {
+            $min_efficiency_pro = 3.81;
+        } elseif ($ckw <= 40) {
+            $min_efficiency_pro = 3.28;
+        } elseif ($ckw <= 70) {
+            $min_efficiency_pro = 3.22;
+        } else {
+            $min_efficiency_pro = 2.93;
+        }
+        break;
+
+    case ($air_type == 'chiller'):
+        if ($air_type_three == 'condensacao-ar-com-condensador') {
+            if ($ckw <= 528) {
+                $min_efficiency_pro = 3.66;
+            } else {
+                $min_efficiency_pro = 3.73;
+            }
+        } elseif ($air_type_three == 'condensacao-ar-sem-condensador') {
+            $min_efficiency_pro = 3.1;
+        } elseif ($air_type_three == 'condensacao-agua-compressor-alternativo') {
+            $min_efficiency_pro = 4.2;
+        } elseif ($air_type_three == 'condensacao-agua-compressor-parafuso-scroll') {
+            if ($ckw <= 264) {
+                $min_efficiency_pro = 5.58;
+            } elseif ($ckw <= 528) {
+                $min_efficiency_pro = 5.71;
+            } elseif ($ckw <= 1055) {
+                $min_efficiency_pro = 6.06;
+            } else {
+                $min_efficiency_pro = 6.51;
+            }
+        } elseif ($air_type_three == 'condensacao-agua-compressor-centrifugo') {
+            if ($ckw <= 528) {
+                $min_efficiency_pro = 5.9;
+            } elseif ($ckw <= 1055) {
+                $min_efficiency_pro = 5.9;
+            } elseif ($ckw <= 2110) {
+                $min_efficiency_pro = 6.4;
+            } else {
+                $min_efficiency_pro = 6.52;
+            }
+        } elseif ($air_type_three == 'absorcao-ar-simples-efeito') {
+            $min_efficiency = 0.6;
+        } elseif ($air_type_three == 'absorcao-agua-simples-efeito') {
+            $min_efficiency = 0.7;
+        } elseif ($air_type_three == 'absorcao-agua-duplo-acionamento-indireto') {
+            $min_efficiency = 1.05;
+        } elseif ($air_type_three == 'absorcao-agua-duplo-acionamento-direto') {
+            $min_efficiency = 1;
+        }
+
         break;
 };
 
@@ -511,16 +717,37 @@ $data_full = [
     "TXAR" => $txar,
     "CPTR" => $cptr,
     "ckw" => $ckw,
+    "VRF" => [
+        "TIPO" => $air_type,
+        "TIPO 2" => $air_type_two,
+    ],
+    "CHILLER" => [
+        "TIPO" => $air_type,
+        "TIPO 3" => $air_type_three
+    ],
+    "AREA" => [
+        "Area Total" => $total_area,
+        "Area total condicionada" => $total_area_cond,
+    ],
+    "CALC" => [
+        "EFB" => $efb,
+        "MIN_EFF" => $min_efficiency,
+        "MIN_EFF_PRO" => $min_efficiency_pro,
+        "TXAR" => $txar,
+        "CPTR" => $cptr,
+        "cpbtu" => $cpbtu,
+        "ckw" => $ckw,
+    ],
     "air" => $air_type,
     "air_age" => num($air_age),
-    "Area total condicionada" => $total_area_cond,
     "Possui automação?" => $automation_system,
     "MI" => $mi,
     "nivel" => $nivel,
+    "data" => $data,
 ]
 
 
-?> 
+?>
 <!-- Single page fim -->
 
 <?php get_header(); ?>
@@ -595,22 +822,22 @@ var_dump($data_full);
             <div class="col-md-5">
                 <div class="bar-content">
                     <div class="values-bar">
-                    <p>Ar condicionado</p>
-                    <span>R$ 654,5454</span>
+                        <p>Ar condicionado</p>
+                        <span>R$ 654,5454</span>
                     </div>
                     <div id="barOne"></div>
                 </div>
                 <div class="bar-content">
                     <div class="values-bar">
-                    <p>Iluminação</p>
-                    <span>R$ 36,00</span>
+                        <p>Iluminação</p>
+                        <span>R$ 36,00</span>
                     </div>
                     <div id="barTwo"></div>
                 </div>
                 <div class="bar-content">
                     <div class="values-bar">
-                    <p>Tomadas e outros</p>
-                    <span>R$ 36,00</span>
+                        <p>Tomadas e outros</p>
+                        <span>R$ 36,00</span>
                     </div>
                     <div id="barThree"></div>
                 </div>

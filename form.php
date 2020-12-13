@@ -556,10 +556,10 @@
                                     </div>
                                     <div class="input__extra" id="air_conditioning-content-two">
                                         <select name="predominant_air_conditioning_three" class="input__rio--select">
-                                            <option value="consensacao-ar-com-condensador">Condesação a ar com condensador</option>
-                                            <option value="consensacao-ar-sem-condensador">Condesação a ar sem condensador</option>
+                                            <option value="condensacao-ar-com-condensador">Condesação a ar com condensador</option>
+                                            <option value="condensacao-ar-sem-condensador">Condesação a ar sem condensador</option>
                                             <option value="condensacao-agua-compressor-alternativo">Condesação a água (Compressor alternativo)</option>
-                                            <option value="condensacao-agua-compressor-parafuso-scoll">Condesação a água (Compressor do tipo parafuso e scroll)</option>
+                                            <option value="condensacao-agua-compressor-parafuso-scroll">Condesação a água (Compressor do tipo parafuso e scroll)</option>
                                             <option value="condensacao-agua-compressor-centrifugo">Condesação a água (Compressor centrifugo)</option>
                                             <option value="absorcao-ar-simples-efeito">Absorção a ar de simples efeito</option>
                                             <option value="absorcao-agua-simples-efeito">Absorção a água de simples efeito</option>
