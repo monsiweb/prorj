@@ -740,6 +740,14 @@ footer {
   width: 50px;
 }
 
+.panel__items__list a {
+  color: #414141;
+}
+
+.panel__items__list a:hover {
+  text-decoration: none;
+}
+
 .panel__items__control {
   display: flex;
   justify-content: space-between;
@@ -1215,6 +1223,26 @@ label {
   font-size: 20px;
   font-weight: 400;
 }
+.strategy_section.relatorio {
+  background: #f5f5f5;
+  padding: 50px 0;
+}
+
+.btn--back {
+  border: 2px solid #414141;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #414141;
+  font-size: 16px;
+  border-radius: 6px;
+  padding: 8px 48px;
+}
+
+.strategy_section.relatorio .btn--five {
+  font-size: 16px;
+  border-radius: 6px;
+  padding: 8px 48px;
+}
 
 /* progress bar */
 
@@ -1243,4 +1271,24 @@ label {
 .values-bar span {
   font-weight: 300;
   font-size: 18px;
+}
+
+/* Impressao do relatório */
+@media print {
+  header,
+  footer {
+    display: none;
+  }
+  .savingPotential {
+    padding: 5px 0px;
+  }
+  .savingPotential.savingPotential__Three {
+    margin-top: -100px;
+  }
+  .yourConsumption {
+    margin-top: 100px;
+  }
+  .strategy_section.relatorio {
+    display: none;
+  }
 }

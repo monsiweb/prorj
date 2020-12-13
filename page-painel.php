@@ -61,31 +61,33 @@ if (is_user_logged_in()) {
                             $the_query->the_post();
                             ?>
                             <div class="panel__items__list">
-                                <div class="card__item">
-                                    <div class="card__item__img">
-                                        <?php $terms = get_the_terms( get_the_ID(), 'tipos_de_imoveis' );
-                                        if( ! empty( $terms ) ) : ?>
-                                            <?php foreach( $terms as $term ) : ?>
-                                                <img src="<?php the_field('current_image', $term); ?>" />
-                                            <?php endforeach; ?>
-                                        <?php endif;  ?>
-                                    </div>
+                                <a href="<?php the_permalink();?>">
+                                    <div class="card__item">
+                                        <div class="card__item__img">
+                                            <?php $terms = get_the_terms( get_the_ID(), 'tipos_de_imoveis' );
+                                            if( ! empty( $terms ) ) : ?>
+                                                <?php foreach( $terms as $term ) : ?>
+                                                    <img src="<?php the_field('current_image', $term); ?>" />
+                                                <?php endforeach; ?>
+                                            <?php endif;  ?>
+                                        </div>
 
-                                    <div class="card__item__text">
-                                        <?php
-                                        $term_obj_list = get_the_terms( $post->ID, 'tipos_de_imoveis' );
-                                        if(!empty($term_obj_list)){
-                                            $terms_string = join(', ', wp_list_pluck($term_obj_list, 'name'));
-                                            $post_date = get_the_date( 'd.m.Y' );
-                                            echo $terms_string . '<span class="date">' . $post_date . '</span>';
-                                        }
-                                        ?>
-                                    </div>
+                                        <div class="card__item__text">
+                                            <?php
+                                            $term_obj_list = get_the_terms( $post->ID, 'tipos_de_imoveis' );
+                                            if(!empty($term_obj_list)){
+                                                $terms_string = join(', ', wp_list_pluck($term_obj_list, 'name'));
+                                                $post_date = get_the_date( 'd.m.Y' );
+                                                echo $terms_string . '<span class="date">' . $post_date . '</span>';
+                                            }
+                                            ?>
+                                        </div>
 
-                                    <div class="card__item__name">
-                                        <p><?php the_title();?></p>
+                                        <div class="card__item__name">
+                                            <p><?php the_title();?></p>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
 
                             <?php

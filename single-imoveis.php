@@ -739,66 +739,10 @@ $potencial_geral = $consumo_anual_ar_prop + $ilu_calc['ilu_ep']['F3'] + $outros_
 $geral_resto = $total_consumption_year - $potencial_geral;
 $porcentagem_total = (int)numberPrecision(($geral_resto * 100 / $cem_por), 2, '.');
 
-// DATA FULL
-
-$data_full = [
-    "potencial geral" => $potencial_geral,
-    "porcen outros" => $porcentagem_outros,
-    "OUTROS CONSUMO" => $outros_consumo,
-    "OUTROS TARIFA" => $outros_tarifa,
-    "CUSTO ANUAL" => $custo_anual_ar,
-    "CUSTO ILU" => $ilu_F4,
-    "EFB" => $efb,
-    "PEA BASE" => $pea_base,
-    "PEA PROPOSTO" => $pea_prop,
-    "MIN_EFF" => $min_efficiency,
-    "MIN_EFF_PRO" => $min_efficiency_pro,
-    "POTENCIAL DE ECONOMIA" => $potencial_economia,
-    "CONSUMO ANUAL" => $consumo_anual_ar,
-
-    "CONSUMO ANUAL PROP" => $consumo_anual_ar_prop,
-    "CUSTO ANUAL PROPOSTO" => $custo_anual_ar_prop,
-    "TXAR" => $txar,
-    "CPTR" => $cptr,
-    "ckw" => $ckw,
-    "VRF" => [
-        "TIPO" => $air_type,
-        "TIPO 2" => $air_type_two,
-    ],
-    "CHILLER" => [
-        "TIPO" => $air_type,
-        "TIPO 3" => $air_type_three
-    ],
-    "AREA" => [
-        "Area Total" => $total_area,
-        "Area total condicionada" => $total_area_cond,
-    ],
-    "CALC" => [
-        "EFB" => $efb,
-        "MIN_EFF" => $min_efficiency,
-        "MIN_EFF_PRO" => $min_efficiency_pro,
-        "TXAR" => $txar,
-        "CPTR" => $cptr,
-        "cpbtu" => $cpbtu,
-        "ckw" => $ckw,
-    ],
-    "air" => $air_type,
-    "air_age" => num($air_age),
-    "Possui automação?" => $automation_system,
-    "MI" => $mi,
-    "nivel" => $nivel,
-]
-
-
 ?>
 <!-- Single page fim -->
 
 <?php get_header(); ?>
-
-<!-- DEBUG-->
-<?php
-// var_dump($data_full);
-?>
 
 
 <section class="hero-single">
@@ -1076,8 +1020,14 @@ $data_full = [
         </div>
     </div>
 </section>
-
-
+<section class="strategy_section relatorio">
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <a href="<?php the_permalink(59); ?>" class="btn btn--back">Voltar</a>
+            <a href="#"  class="btn btn--five" onclick="window.print();">Gerar PDF</a>
+        </div>
+    </div>
+</section>
 
 
 
