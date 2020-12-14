@@ -31,7 +31,7 @@ if (is_user_logged_in()) {
                     echo '<a href="' . get_permalink($recent["ID"]) . '" class="btn btn--third mb-3">Ver Relatório final</a>';
                 }
                 ?>
-                <a href="#" class="btn btn--fourth">Voltar</a>
+                <a href="<?= esc_url(get_page_link(59)); ?>" class="btn btn--fourth">Voltar</a>
             </div>
         </div>
     </div>
