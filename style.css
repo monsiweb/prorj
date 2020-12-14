@@ -66,7 +66,7 @@ rect {
   border-radius: 4px;
   font-size: 11px;
   font-weight: bold;
-  padding: 25px 40px;
+  padding: 13px 40px;
 }
 
 .btn--five,
@@ -1291,4 +1291,23 @@ label {
   .strategy_section.relatorio {
     display: none;
   }
+}
+
+
+/*  Thank you */
+.thankyou {
+  padding: 100px 0;
+}
+
+.thankyou .thankyou__buttons {
+  margin-top: 50px !important;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
+.thankyou .thankyou__buttons a {
+  text-transform: uppercase;
 }
