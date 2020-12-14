@@ -51,17 +51,17 @@ function floatNum($value)
 
 // Automacão
 
-function automationValue($valueAuto)
-{
+// function automationValue($valueAuto)
+// {
 
-    if ($valueAuto == 'sim') {
-        $value_temp = 0.85;
-        return $value_temp;
-    } else {
-        $value_temp = 1;
-        return $value_temp;
-    }
-}
+//     if ($valueAuto == 'sim') {
+//         $value_temp = 0.85;
+//         return $value_temp;
+//     } else {
+//         $value_temp = 1;
+//         return $value_temp;
+//     }
+// }
 
 // Real
 
@@ -247,7 +247,24 @@ if ($consumption_type == 'A') {
 */
 
 // Global
-$automation = automationValue($data['automation_system']);
+
+if ($data['automation_system'] == 'sim') {
+    $automation = 0.85;
+
+    if ($data['on_off_system'] == 'sim' && $data['temperature_control'] == 'sim') {
+        $automation_ar = 0.82;
+    } elseif ($data['on_off_system'] == 'sim') {
+        $automation_ar = 0.92;
+    } elseif ($data['temperature_control'] == 'sim') {
+        $automation_ar = 0.85;
+    } else {
+        $automation_ar = 1;
+    }
+} else {
+    $automation = 1;
+    $automation_ar = 1;
+}
+
 
 //Sistema de ar condicionado principal
 $air_type = $data['predominant_air_conditioning'];
@@ -588,9 +605,9 @@ $potencial_economia = (int)numberPrecision(((($min_efficiency_pro - $min_efficie
 
 $pea_base = (float)numberPrecision(($ckw / $min_efficiency), 2, '.');
 $pea_prop = (float)numberPrecision(($ckw / $min_efficiency_pro), 2, '.');
-$consumo_anual_ar = $pea_base * 5200 * $automation;
+$consumo_anual_ar = $pea_base * 5200 * $automation_ar;
 $custo_anual_ar  = $consumo_anual_ar * $tariff;
-$consumo_anual_ar_prop = $pea_prop * 5200 * $automation;
+$consumo_anual_ar_prop = $pea_prop * 5200 * $automation_ar;
 $custo_anual_ar_prop  = $consumo_anual_ar_prop * $tariff;
 
 // Eficiência base com modificador de idade (EFB)
@@ -684,14 +701,14 @@ $ilu_F1 = round((($type_mod['emed']) * ($ilu_F0)) / (($ilu_values['n']) * ($ilu_
 
 $ilu_F2 = ($data_ilu['ptm'] * $ilu_F1 * $ilu_values['n']) / 1000;
 
-$ilu_F3 = num($ilu_F2 * 5.200 * $automation);
+$ilu_F3 = num(($ilu_F2 * 5.200)) * $automation;
 
 $ilu_F4 = $ilu_F3 * $tariff;
 
 
 $ilu_p_F1 = round((300 * $ilu_F0) / (2 * 2700 * 0.91 * 1));
 $ilu_p_F2 = (float)numberPrecision(((18 * $ilu_p_F1 * 2) / 1000), 2, '.');
-$ilu_p_F3 = num($ilu_p_F2 * 5200 * $automation);
+$ilu_p_F3 = num(($ilu_p_F2 * 5200)) * $automation;
 $ilu_p_F4 = $ilu_p_F3 * $tariff;
 
 $ilu_calc = [
@@ -739,7 +756,28 @@ $potencial_geral = $consumo_anual_ar_prop + $ilu_calc['ilu_ep']['F3'] + $outros_
 $geral_resto = $total_consumption_year - $potencial_geral;
 $porcentagem_total = (int)numberPrecision(($geral_resto * 100 / $cem_por), 2, '.');
 
+// Automação 
+
+if ($data['automation_system'] == 'nao') {
+    $consumo_anual_ar_prop = $consumo_anual_ar_prop * 0.92;
+    $ilu_calc['ilu_ep']['F3'] = $ilu_calc['ilu_ep']['F3'] * 0.82;
+    $potencial_geral = $consumo_anual_ar_prop + $ilu_calc['ilu_ep']['F3'] + $outros_consumo;
+
+
+    $geral_resto = $total_consumption_year - $potencial_geral;
+    $porcentagem_total = (int)numberPrecision(($geral_resto * 100 / $cem_por), 2, '.');
+
+    // Porcentagens
+    $consumo_anual_ar_temp = $consumo_anual_ar - $consumo_anual_ar_prop;
+    $potencial_economia = (int)numberPrecision(($consumo_anual_ar_temp * 100 / $consumo_anual_ar), 2, '.');
+
+    $dep_porcentagem_temp = $ilu_calc['ilu_esa']['F3'] - $ilu_calc['ilu_ep']['F3'];
+    $dep['dep_porcentagem'] = (int)numberPrecision(($dep_porcentagem_temp * 100 / $ilu_calc['ilu_esa']['F3']), 2, '.');
+}
 ?>
+
+
+
 <!-- Single page fim -->
 
 <?php get_header(); ?>
@@ -1024,7 +1062,7 @@ $porcentagem_total = (int)numberPrecision(($geral_resto * 100 / $cem_por), 2, '.
     <div class="container">
         <div class="d-flex justify-content-between">
             <a href="<?php the_permalink(59); ?>" class="btn btn--back">Voltar</a>
-            <a href="#"  class="btn btn--five" onclick="window.print();">Gerar PDF</a>
+            <a href="#" class="btn btn--five" onclick="window.print();">Gerar PDF</a>
         </div>
     </div>
 </section>
