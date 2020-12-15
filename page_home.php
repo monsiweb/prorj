@@ -83,6 +83,7 @@
                 <p class="modal__p">Você gostaria de fazer login como cidadão carioca ou como servidor público?</p>
 
                 <div class="modal__btn">
+                    <?= do_shortcode('[mo_oauth_login]'); ?>
                     <a href="#" class="btn btn--third">CIDADÃO</a>
                     <a href="#" class="btn btn--fourth">PREFEITURA</a>
                 </div>
