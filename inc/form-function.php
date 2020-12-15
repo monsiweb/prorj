@@ -114,7 +114,7 @@ function monsi_admin_add_imovel()
         $post_id = wp_insert_post($response);
         wp_set_post_terms($post_id, $type_of_property, 'tipos_de_imoveis');
 
-        wp_redirect(esc_url(get_page_link(280)));
+        wp_redirect(esc_url(get_page_link(277)));
     }
 }
 
