@@ -34,3 +34,19 @@ require get_template_directory() . '/inc/general.php';
 */
 
 require get_template_directory() . '/inc/form-function.php';
+
+
+//
+/* New Sidebar */
+function my_new_sidebar_widget_init()
+{
+    register_sidebar(array(
+        'name'          => 'Login IDRIO',
+        'id'            => 'my_new_sidebar',
+        'before_widget' => '<div>',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2>',
+        'after_title'   => '</h2>',
+    ));
+}
+add_action('widgets_init', 'my_new_sidebar_widget_init');
