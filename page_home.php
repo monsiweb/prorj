@@ -83,6 +83,7 @@
                 <p class="modal__p">Você gostaria de fazer login como cidadão carioca ou como servidor público?</p>
 
                 <div class="modal__btn">
+                    <?php dynamic_sidebar('my_new_sidebar'); ?>
                     <a href="#" class="btn btn--third">CIDADÃO</a>
                     <a href="#" class="btn btn--fourth">PREFEITURA</a>
                 </div>
