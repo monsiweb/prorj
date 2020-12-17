@@ -285,6 +285,7 @@ $cptr = (float)number_format($cptr_temp, '2', '.', '.');
 if ($air_type == 'janela') {
     // Capacidade total estimada em BTU/h (CPBTU)
     $cpbtu = $cptr * 12000;
+    $ckw = (float)number_format(($cptr * 3.5168), '2', '.', '.');
 } else {
     // Capacidade total estimada em kW (CKW)
     $ckw = (float)number_format(($cptr * 3.5168), '2', '.', '.');
@@ -600,19 +601,22 @@ switch ($air_type) {
         break;
 };
 
+$hours = $data['working_hours'] * 52;
+// Eficiência base com modificador de idade (EFB)
+$efb_temp = $min_efficiency * (1 - $mi);
+$efb = (float)number_format($efb_temp, '2', '.', '.');
+$min_efficiency = $efb;
+
 // POTENCIAL DE ECONOMIA
 $potencial_economia = (int)numberPrecision(((($min_efficiency_pro - $min_efficiency) / $min_efficiency_pro) * 100), 0, '.');
 
 $pea_base = (float)numberPrecision(($ckw / $min_efficiency), 2, '.');
 $pea_prop = (float)numberPrecision(($ckw / $min_efficiency_pro), 2, '.');
-$consumo_anual_ar = $pea_base * 5200 * $automation_ar;
+$consumo_anual_ar = $pea_base * $hours * $automation_ar;
 $custo_anual_ar  = $consumo_anual_ar * $tariff;
-$consumo_anual_ar_prop = $pea_prop * 5200 * $automation_ar;
+$consumo_anual_ar_prop = $pea_prop * $hours * $automation_ar;
 $custo_anual_ar_prop  = $consumo_anual_ar_prop * $tariff;
 
-// Eficiência base com modificador de idade (EFB)
-$efb_temp = $min_efficiency * (1 - $mi);
-$efb = (float)number_format($efb_temp, '2', '.', '.');
 
 
 
@@ -701,15 +705,15 @@ $ilu_F1 = round((($type_mod['emed']) * ($ilu_F0)) / (($ilu_values['n']) * ($ilu_
 
 $ilu_F2 = ($data_ilu['ptm'] * $ilu_F1 * $ilu_values['n']) / 1000;
 
-$ilu_F3 = num(($ilu_F2 * 5.200)) * $automation;
+$ilu_F3 = round(($ilu_F2 * $hours) * $automation);
 
 $ilu_F4 = $ilu_F3 * $tariff;
 
 
-$ilu_p_F1 = round((300 * $ilu_F0) / (2 * 2700 * 0.91 * 1));
+$ilu_p_F1 = round(($type_mod['emed'] * $ilu_F0) / (2 * 2700 * 0.91 * 1));
 $ilu_p_F2 = (float)numberPrecision(((18 * $ilu_p_F1 * 2) / 1000), 2, '.');
-$ilu_p_F3 = num(($ilu_p_F2 * 5200)) * $automation;
-$ilu_p_F4 = $ilu_p_F3 * $tariff;
+$ilu_p_F3 = (int)round(($ilu_p_F2 * $hours) * $automation);
+$ilu_p_F4 = round($ilu_p_F3 * $tariff);
 
 $ilu_calc = [
     "ilu_esa" => [
@@ -723,8 +727,9 @@ $ilu_calc = [
         "F0" => $ilu_F0,
         "F1" => $ilu_p_F1,
         "F2" => $ilu_p_F2,
+        "tariff" => $tariff * $ilu_p_F3,
         "F3" => $ilu_p_F3,
-        "F4" => $ilu_p_F4,
+        "F4" => round($ilu_p_F3 * $tariff),
     ]
 
 ];
@@ -760,7 +765,8 @@ $porcentagem_total = (int)numberPrecision(($geral_resto * 100 / $cem_por), 2, '.
 
 if ($data['automation_system'] == 'nao') {
     $consumo_anual_ar_prop = $consumo_anual_ar_prop * 0.92;
-    $ilu_calc['ilu_ep']['F3'] = $ilu_calc['ilu_ep']['F3'] * 0.82;
+    $ilu_calc['ilu_ep']['F3'] = $ilu_calc['ilu_ep']['F3'] * 0.85;
+    $ilu_p_F3 = $ilu_calc['ilu_ep']['F3'];
     $potencial_geral = $consumo_anual_ar_prop + $ilu_calc['ilu_ep']['F3'] + $outros_consumo;
 
 
@@ -774,6 +780,151 @@ if ($data['automation_system'] == 'nao') {
     $dep_porcentagem_temp = $ilu_calc['ilu_esa']['F3'] - $ilu_calc['ilu_ep']['F3'];
     $dep['dep_porcentagem'] = (int)numberPrecision(($dep_porcentagem_temp * 100 / $ilu_calc['ilu_esa']['F3']), 2, '.');
 }
+
+// Update
+
+$ilu_calc = [
+    "ilu_esa" => [
+        "F0" => $ilu_F0,
+        "F1" => $ilu_F1,
+        "F2" => $ilu_F2,
+        "F3" => $ilu_F3,
+        "F4" => $ilu_F4,
+    ],
+    "ilu_ep" => [
+        "F0" => $ilu_F0,
+        "F1" => $ilu_p_F1,
+        "F2" => $ilu_p_F2,
+        "F3" => round($ilu_p_F3),
+        "F4" => round($ilu_p_F3 * $tariff),
+    ]
+
+];
+
+// TOMADA e OUTROS
+
+$outros_consumo = $total_consumption_year - ($consumo_anual_ar + $ilu_calc['ilu_esa']['F3']);
+$outros_tarifa = $outros_consumo * $tariff;
+
+$cem_por = $total_consumption_year;
+$porcentagem_outros = (float)numberPrecision(($outros_consumo * 100 / $cem_por), 2, '.');
+$porcentagem_ar = (float)numberPrecision(($consumo_anual_ar * 100 / $cem_por), 2, '.');
+$porcentagem_ilu = (float)numberPrecision(($ilu_calc['ilu_esa']['F3'] * 100 / $cem_por), 2, '.');
+
+// GERAL
+
+$potencial_geral = $consumo_anual_ar_prop + $ilu_calc['ilu_ep']['F3'] + $outros_consumo;
+
+$geral_resto = $total_consumption_year - $potencial_geral;
+$porcentagem_total = (int)numberPrecision(($geral_resto * 100 / $cem_por), 2, '.');
+$custo_anual_ar_prop  = $consumo_anual_ar_prop * $tariff;
+
+$dep = [
+    "dep_value" => $ilu_calc['ilu_esa']['F4'] - num($ilu_calc['ilu_ep']['F4']),
+    "dep_kwh_ano" => $ilu_calc['ilu_esa']['F3'] - num($ilu_calc['ilu_ep']['F3']),
+    "dep_porcentagem" => $dep_porcentagem,
+    "dep_porcentagem_ano" => $dep_porcentagem_ano
+];
+
+var_dump($ilu_calc['ilu_esa']['F3'], $ilu_calc['ilu_ep']['F3']);
+
+var_dump([
+    'consumo_anual_ar_prop' => $consumo_anual_ar_prop,
+    'ilu_calcF3' =>  $ilu_p_F3,
+    '$outros_consumo' => $outros_consumo
+]);
+
+
+$data_full = [
+    "teste" => $ilu_p_F3,
+    "Tarifa" => $tariff,
+    "dep" => $dep,
+    "lamp calc" => $ilu_calc,
+    "ilu" => $ilu_values,
+    "Tipo de lampada" => $type_ilu,
+    "Values Lamp" => $data_ilu,
+    "Area Total" => $total_area,
+    "potencial geral" => $potencial_geral,
+    "porcen outros" => $porcentagem_outros,
+    "OUTROS CONSUMO" => $outros_consumo,
+    "OUTROS TARIFA" => $outros_tarifa,
+    "CUSTO ANUAL" => $custo_anual_ar,
+    "CUSTO ILU" => $ilu_F4,
+    "EFB" => $efb,
+    "PEA BASE" => $pea_base,
+    "PEA PROPOSTO" => $pea_prop,
+    "MIN_EFF" => $min_efficiency,
+    "MIN_EFF_PRO" => $min_efficiency_pro,
+    "pep" => ($min_efficiency_pro - $min_efficiency) / $min_efficiency_pro,
+    "POTENCIAL DE ECONOMIA" => $potencial_economia,
+    "CONSUMO ANUAL" => $consumo_anual_ar,
+
+    "CONSUMO ANUAL PROP" => $consumo_anual_ar_prop,
+    "CUSTO ANUAL PROPOSTO" => $custo_anual_ar_prop,
+    "TXAR" => $txar,
+    "CPTR" => $cptr,
+    "ckw" => $ckw,
+    "nivel" => $nivel,
+    "mi" => $mi,
+    "efb" => $efb,
+    "min_efficiency_pro" => $min_efficiency_pro,
+    "pea base" => $pea_base,
+    "pea prop" => $pea_prop,
+    "hora" => $hours,
+    "Consumo anual" => $consumo_anual_ar,
+    "Custo anual" => $custo_anual_ar,
+    "Consumo prop" => $consumo_anual_ar_prop,
+    "Custo prop" => $custo_anual_ar_prop,
+    "PE kWh" => $consumo_anual_ar - $consumo_anual_ar_prop,
+    "PEC" => $custo_anual_ar - $custo_anual_ar_prop,
+    "CDavc" => $consumo_anual_ar / $total_consumption_year
+];
+
+$data_full_2 = [
+    "total_area_cond" => $total_area_cond,
+    "Tarifa" => $tariff,
+    "dep" => $dep,
+    "lamp calc" => $ilu_calc,
+    "ilu" => $ilu_values,
+    "Tipo de lampada" => $type_ilu,
+    "Values Lamp" => $data_ilu,
+    "Area Total" => $total_area,
+    "potencial geral" => $potencial_geral,
+    "porcen outros" => $porcentagem_outros,
+    "OUTROS CONSUMO" => $outros_consumo,
+    "OUTROS TARIFA" => $outros_tarifa,
+    "CUSTO ANUAL" => $custo_anual_ar,
+    "CUSTO ILU" => $ilu_F4,
+    "EFB" => $efb,
+    "PEA BASE" => $pea_base,
+    "PEA PROPOSTO" => $pea_prop,
+    "MIN_EFF" => $min_efficiency,
+    "MIN_EFF_PRO" => $min_efficiency_pro,
+    "POTENCIAL DE ECONOMIA" => $potencial_economia,
+    "CONSUMO ANUAL" => $consumo_anual_ar,
+
+    "CONSUMO ANUAL PROP" => $consumo_anual_ar_prop,
+    "CUSTO ANUAL PROPOSTO" => $custo_anual_ar_prop,
+    "TXAR" => $txar,
+    "CPTR" => $cptr,
+    "ckw" => $ckw,
+    "nivel" => $nivel,
+    "mi" => $mi,
+    "efb" => $efb,
+    "min_efficiency_pro" => $min_efficiency_pro,
+    "pea base" => $pea_base,
+    "pea prop" => $pea_prop,
+    "hora" => $hours,
+    "Consumo anual" => $consumo_anual_ar,
+    "Custo anual" => $custo_anual_ar,
+    "Consumo prop" => $consumo_anual_ar_prop,
+    "Custo prop" => $custo_anual_ar_prop,
+    "PE kWh" => $consumo_anual_ar - $consumo_anual_ar_prop,
+    "PEC" => $custo_anual_ar - $custo_anual_ar_prop,
+    "CDavc" => $consumo_anual_ar / $total_consumption_year
+];
+
+var_dump($data_full, $data_full_2);
 ?>
 
 
@@ -1135,7 +1286,6 @@ if ($data['automation_system'] == 'nao') {
         function potencialObjetivoChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Task', 'Hours per Day'],
-                ['Atual', <?= $total_consumption_year; ?>],
                 ['Objetivo', <?= $potencial_geral; ?>]
             ]);
 
@@ -1144,9 +1294,6 @@ if ($data['automation_system'] == 'nao') {
                 legend: 'none',
                 slices: {
                     0: {
-                        color: '#FFCD00'
-                    },
-                    1: {
                         color: '#2DB71F'
                     },
                 }
@@ -1186,13 +1333,14 @@ if ($data['automation_system'] == 'nao') {
         function potencialObjetivoTwoChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Task', 'Hours per Day'],
-                ['Atual', <?= $consumo_anual_ar ?>],
+                ['Total', <?= $total_consumption_year ?>],
                 ['Objetivo', <?= $consumo_anual_ar_prop; ?>],
             ]);
 
             var options = {
                 pieHole: 0.4,
                 legend: 'none',
+                pieSliceText: "none",
                 slices: {
                     0: {
                         color: '#FB451D'
@@ -1200,7 +1348,11 @@ if ($data['automation_system'] == 'nao') {
                     1: {
                         color: '#2db71f'
                     }
+                },
+                tooltip: {
+                    text: 'value'
                 }
+
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('pie-consumo-objetivo-two'));
@@ -1219,6 +1371,7 @@ if ($data['automation_system'] == 'nao') {
             var options = {
                 pieHole: 0.4,
                 legend: 'none',
+                pieSliceText: 'none',
                 slices: {
                     0: {
                         color: '#FAAF41'
@@ -1237,13 +1390,14 @@ if ($data['automation_system'] == 'nao') {
         function potencialObjetivoThreeChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Task', 'Hours per Day'],
-                ['Atual', <?= $ilu_calc['ilu_esa']['F3']; ?>],
+                ['Atual', <?= $total_consumption_year ?>],
                 ['Objetivo', <?= $ilu_calc['ilu_ep']['F3']; ?>],
             ]);
 
             var options = {
                 pieHole: 0.4,
                 legend: 'none',
+                pieSliceText: 'none',
                 slices: {
                     0: {
                         color: '#FAAF41'
