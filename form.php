@@ -658,6 +658,29 @@
                                         <option value="led-18w">LED 18w</option>
                                     </select>
                                 </div>
+
+                                <div class="form-group text-center mt-5">
+                                    <p>Possui sistema de automação?</p>
+                                    <div class="pretty p-default p-thick p-smooth px-0 mx-0">
+                                        <div class="form-group form__width">
+                                            <div class="checkbox__input">
+                                                <div class="pretty p-default p-thick p-smooth mx-0">
+                                                    <input type="radio" name="light_automation" value="sim" id="auto_luz_sim" />
+                                                    <div class="state p-warning-o">
+                                                        <label for="auto_luz_sim">Sim</label>
+                                                    </div>
+                                                </div>
+                                                <div class="pretty p-default p-thick p-smooth mx-0">
+                                                    <input type="radio" name="light_automation" value="nao" id="auto_luz_nao" />
+                                                    <div class="state p-warning-o">
+                                                        <label for="auto_luz_nao">Não</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </section>
                         <h3 class="form__item__header">Passo 6</h3>
                         <section>

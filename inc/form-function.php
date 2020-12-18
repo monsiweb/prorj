@@ -56,6 +56,9 @@ function monsi_admin_add_imovel()
         $panels_water_heating = sanitize_text_field($request['panels_water_heating']);
         $available_on_rooftops = sanitize_text_field($request['available_on_rooftops']);
 
+        // Extra
+
+        $light_automation = sanitize_text_field($request['light_automation']);
 
         $response = array(
             'post_author' => $user_id,
@@ -105,6 +108,7 @@ function monsi_admin_add_imovel()
                 'temperature_control' => $temperature_control,
                 'do_not_have' => $do_not_have,
                 'predominant_type_illumination' => $predominant_type_illumination,
+                'light_automation' => $light_automation,
                 'has_photovoltaic_panels' => $has_photovoltaic_panels,
                 'panels_water_heating' => $panels_water_heating,
                 'available_on_rooftops' => $available_on_rooftops

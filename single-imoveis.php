@@ -132,7 +132,8 @@ $data = [
     'predominant_type_illumination' => get_field('predominant_type_illumination'),
     'has_photovoltaic_panels' => get_field('has_photovoltaic_panels'),
     'panels_water_heating' => get_field('panels_water_heating'),
-    'available_on_rooftops' => get_field('available_on_rooftops')
+    'available_on_rooftops' => get_field('available_on_rooftops'),
+    'light_automation' => get_field('light_automation'),
 ];
 $month_mod = [
     'janeiro' => 0.925,
@@ -249,8 +250,6 @@ if ($consumption_type == 'A') {
 // Global
 
 if ($data['automation_system'] == 'sim') {
-    $automation = 0.85;
-
     if ($data['on_off_system'] == 'sim' && $data['temperature_control'] == 'sim') {
         $automation_ar = 0.82;
     } elseif ($data['on_off_system'] == 'sim') {
@@ -261,10 +260,15 @@ if ($data['automation_system'] == 'sim') {
         $automation_ar = 1;
     }
 } else {
-    $automation = 1;
+
     $automation_ar = 1;
 }
 
+if ($data['light_automation'] == 'sim') {
+    $automation = 0.85;
+} else {
+    $automation = 1;
+}
 
 //Sistema de ar condicionado principal
 $air_type = $data['predominant_air_conditioning'];
@@ -826,15 +830,6 @@ $dep = [
     "dep_porcentagem_ano" => $dep_porcentagem_ano
 ];
 
-var_dump($ilu_calc['ilu_esa']['F3'], $ilu_calc['ilu_ep']['F3']);
-
-var_dump([
-    'consumo_anual_ar_prop' => $consumo_anual_ar_prop,
-    'ilu_calcF3' =>  $ilu_p_F3,
-    '$outros_consumo' => $outros_consumo
-]);
-
-
 $data_full = [
     "teste" => $ilu_p_F3,
     "Tarifa" => $tariff,
@@ -924,7 +919,9 @@ $data_full_2 = [
     "CDavc" => $consumo_anual_ar / $total_consumption_year
 ];
 
-var_dump($data_full, $data_full_2);
+echo "<pre>";
+var_dump($data['light_automation']);
+echo "</pre>";
 ?>
 
 
@@ -1094,6 +1091,13 @@ var_dump($data_full, $data_full_2);
                 <p class="single--pieSubTitle green--color"><?= kwh($ilu_calc['ilu_ep']['F3']); ?> kWh/ano</p>
             </div>
         </div>
+        <?php
+        if ($data['light_automation'] == 'nao') {
+            echo '<div class="alert alert-warning text-center" role="alert">';
+            echo ' O objetivo foi calculado utilizando um sistema de automação de sensor de presença.';
+            echo '</div>';
+        }
+        ?>
     </div>
 </section>
 
