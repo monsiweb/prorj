@@ -919,9 +919,37 @@ $data_full_2 = [
     "CDavc" => $consumo_anual_ar / $total_consumption_year
 ];
 
-echo "<pre>";
-var_dump($data['light_automation']);
-echo "</pre>";
+///
+
+switch ($type_public_property) {
+    case ($type_public_property == 'Clinica'):
+        $type_ben = [
+            "menor_consumo" => 70,
+            "tipico_consumo" => 103,
+            "maior_consumo" => 147
+        ];
+        break;
+    case ($type_public_property == 'Escola'):
+        $type_ben = [
+            "menor_consumo" => 5,
+            "tipico_consumo" => 38,
+            "maior_consumo" => 80
+        ];
+        $txar = 16.13;
+        break;
+    case ($type_public_property == 'Ed. ADM'):
+        $type_ben = [
+            "menor_consumo" => 4,
+            "tipico_consumo" => 30,
+            "maior_consumo" => 97
+        ];
+        break;
+};
+
+
+$consumo_especifico = (int)($total_consumption_year / $total_area);
+$calculo_bench = number_format(($consumo_especifico / $type_ben['tipico_consumo']) - 1, 2, '', '');
+
 ?>
 
 
@@ -968,15 +996,24 @@ echo "</pre>";
 </section>
 
 <section class="benchmark">
-    <div>
+    <div class="mb-5">
         <h2 class="subtitle--herosingle"><?php the_title(); ?></h2>
         <span class="text--herosingle">Área total: <?= $data['total_place_area']; ?> m²</span>
         <span class="text--herosingle">Consumo total: <?= kwh($total_consumption_year); ?> kWh/ano</span>
+
     </div>
 
-    <div class="text-center my-4 d-none">
+	  <div class="text-center my-4 mt-5">
         <h2 class="subtitle--two">POSIÇÃO NO BENCHMARK</h2>
         <p>veja aqui como está sua escola quando comparada a outras da mesma cidade:</p>
+        <br>
+        <div class="d-flex justify-content-center">
+            <p class="mr-3">Menor consumo: <b style="font-weight: bold !important; display:block"><?= $type_ben['menor_consumo'] ?> kWh/m²/ano</b></p>
+            <img src="<?= get_template_directory_uri(); ?>/assets/images/bench.png" alt="">
+            <p class="ml-3">Maior consumo: <b style="font-weight: bold !important; display:block"><?= $type_ben['maior_consumo'] ?> kWh/m²/ano</b></p>
+        </div>
+        <br>
+        <p class="single--subtitle mt-2">Consumo real do imóvel: <span><?= $consumo_especifico ?> kWh/m²/ano</span></p>
     </div>
 </section>
 
