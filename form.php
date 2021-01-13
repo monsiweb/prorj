@@ -1,4 +1,18 @@
-<?php /* Template Name: form */ ?>
+
+<?php /* Template Name: form */
+
+if (is_user_logged_in()) {
+    global $current_user;
+    $terms = get_user_meta($current_user->ID, 'terms', true);
+
+    if (!$terms == 1 || !$terms == 'on') {
+        wp_redirect(get_permalink(57));
+    }
+} else {
+    wp_redirect(get_home_url());
+}
+
+?>
 <?php get_header(); ?>
 <section class="form form-residencial">
     <div class="container">
@@ -193,6 +207,50 @@
                                         <div class="form-group">
                                             <label for="" class="mb-1">Faixa de renda</label>
                                             <input type="text" class="input__rio money" name="income_range">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="" id="residencial_fase2"> 
+                                    <div class="form-group mt-5">
+                                        <p class="form__row__title--two text-center">Qual o tipo de residência?</p>
+                                        <div class="radio__group form__width--two mt-5">
+                                            <div class="radio__content">
+                                                <label>
+                                                    <input type="radio" name="type_of_property" value="casa-ou-ap" id="casa-ou-ap" onclick="ShowHideDiv()">
+                                                    <div class="radio__item">
+                                                        <img src="<?= get_template_directory_uri(); ?>/assets/images/family_1.svg" alt="Casa ou apartamento">
+                                                        <p class="radio__item__title">Casa ou apartamento</p>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <div class="radio__content">
+                                                <label>
+                                                    <input type="radio" name="type_of_property" value="predio-condominio" id="predio-condominio" onclick="ShowHideDiv()">
+                                                    <div class="radio__item">
+                                                        <img src="<?= get_template_directory_uri(); ?>/assets/images/family_2.svg" alt="Prédio ou condomínio">
+                                                        <p class="radio__item__title">Prédio ou condomínio</p>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="input__extra" id="predio-condominio-misto" style="display: block;">
+                                            <div class="form-group form__width">
+                                                <p class="form__row__title--three text-center">É misto? (comercial + residencial)</p>
+                                                <div class="checkbox__input">
+                                                    <div class="pretty p-default p-thick p-smooth">
+                                                        <input type="radio" name="e_misto" value="sim">
+                                                        <div class="state p-warning-o">
+                                                            <label for="sim">Sim</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pretty p-default p-thick p-smooth">
+                                                        <input type="radio" name="e_misto" value="nao">
+                                                        <div class="state p-warning-o">
+                                                            <label for="nao">Não</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -731,9 +789,33 @@
                     </div>
                 </div>
             </section>
+            <input type="hidden" name="typelang" value="pt-br">
         </form>
     </div>
 </section>
+
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        $('#form-prorio-content').steps({
+            headerTag: 'h3',
+            bodyTag: 'section',
+            transitionEffect: 'slideLeft',
+            autoFocus: true,
+            labels: {
+                current: '',
+                pagination: 'Pagination',
+                finish: 'Enviar',
+                next: 'Avançar',
+                previous: 'Voltar',
+                loading: 'Carregando...',
+            },
+        });
+
+        $("a[href='#finish']").click(function() {
+            $('#form-prorio').submit();
+        });
+    })
+</script>
 
 <!-- FORM -->
 

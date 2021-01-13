@@ -32,7 +32,7 @@ function monsi_admin_add_imovel()
         $percentage_occupancy = sanitize_text_field($request['percentage_occupancy']);
         $what_property_use = sanitize_text_field($request['what_property_use']);
         $value_last_account = sanitize_text_field($request['value_last_account']);
-        $account_month = sanitize_text_field($request['account_month']);
+        $account_month = sanitize_text_field($request['account_month_a1']);
         $total_annual_consumption = sanitize_text_field($request['total_annual_consumption']);
         $energy_tariff = sanitize_text_field($request['energy_tariff']);
         $consumption_data = sanitize_text_field($request['consumption_data']);
@@ -55,6 +55,7 @@ function monsi_admin_add_imovel()
         $has_photovoltaic_panels = sanitize_text_field($request['has_photovoltaic_panels']);
         $panels_water_heating = sanitize_text_field($request['panels_water_heating']);
         $available_on_rooftops = sanitize_text_field($request['available_on_rooftops']);
+        $typelang = sanitize_text_field($request['typelang']);
 
         // Extra
 
@@ -118,7 +119,11 @@ function monsi_admin_add_imovel()
         $post_id = wp_insert_post($response);
         wp_set_post_terms($post_id, $type_of_property, 'tipos_de_imoveis');
 
-        wp_redirect(esc_url(get_page_link(277)));
+        if ($typelang == 'pt-br') {
+            wp_redirect(get_permalink(277));
+        } elseif ($typelang == 'en') {
+            wp_redirect(get_permalink(378));
+        }
     }
 }
 

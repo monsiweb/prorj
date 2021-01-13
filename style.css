@@ -178,7 +178,7 @@ a.modal__close:hover {
 }
 
 .form__row__title--three {
-  font-size: 26px;
+  font-size: 24px;
   color: #fff;
 }
 
@@ -334,7 +334,7 @@ a.modal__close:hover {
 }
 
 .radio__item__title {
-  font-size: 20px;
+  font-size: 16px;
   margin-top: 10px;
 }
 
@@ -346,8 +346,8 @@ a.modal__close:hover {
 }
 
 .radio__item {
-  max-width: 179px;
-  width: 100%;
+  max-width: 100%;
+  width: 200px;
   height: 172px;
   display: flex;
   justify-content: center;
@@ -428,6 +428,42 @@ header {
   width: 100%;
 }
 
+body.en header .menu-ptbr {
+  display: none;
+}
+
+body.en header .menu-en {
+  display: flex;
+}
+
+body.pt header .menu-ptbr {
+  display: flex;
+}
+
+body.pt header .menu-en {
+  display: none;
+}
+
+.header__menu__item ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.header__menu__item ul li {
+  padding: 0 5px;
+}
+
+.header__menu__item ul .lang-item a {
+  color: gray;
+}
+
+.header__menu__item ul .lang-item.current-lang a {
+  color: #f05a28;
+}
+
 /* Footer */
 
 footer {
@@ -459,7 +495,7 @@ footer {
 .footer__item__logos {
   display: flex;
   justify-content: space-between;
-  width: 700px;
+  width: 900px;
   max-width: 100%;
   margin: 0 auto;
   align-items: center;
@@ -491,7 +527,8 @@ footer {
   color: #fff;
 }
 
-#menu-menu-rodape {
+#menu-menu-rodape,
+#menu-menu-rodape-en {
   list-style: none;
   display: flex;
   justify-content: space-between;
@@ -722,6 +759,13 @@ footer {
   align-items: center;
 }
 
+a.terms__label__item {
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #414141;
+}
+
 /* Painel */
 
 .panel {
@@ -761,6 +805,26 @@ footer {
 
 .panel__items_control__add .btn--five img {
   margin-right: 14px;
+}
+
+body.en .panel__items_control__add .enbutton,
+body.en .relatorio-en {
+  display: block;
+}
+
+body.en .panel__items_control__add .ptbutton,
+body.en .relatorio-pt {
+  display: none;
+}
+
+body.pt .panel__items_control__add .enbutton,
+body.pt .relatorio-en {
+  display: none;
+}
+
+body.pt .panel__items_control__add .ptbutton,
+body.pt .relatorio-pt {
+  display: block;
 }
 
 .panel__items__control__search {
@@ -1085,6 +1149,19 @@ label {
   background: #fff !important;
 }
 
+#residencial_fase2 .pretty .state label:before {
+  border-color: #fff;
+}
+
+#residencial_fase2 .checkbox__input {
+  margin: 15px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 300px;
+  text-align: center;
+}
+
 /* Página do relatório */
 
 .subtitle--herosingle {
@@ -1291,8 +1368,19 @@ label {
   .strategy_section.relatorio {
     display: none;
   }
+  .yourConsumption {
+    margin-top: -25px;
+  }
+  .savingPotential.savingPotential__Three {
+    margin-top: -120px;
+  }
+  .savingPotential.savingPotential__Two {
+    margin-top: -30px;
+  }
+  .strategy__section {
+    margin-top: -50px;
+  }
 }
-
 
 /*  Thank you */
 .thankyou {

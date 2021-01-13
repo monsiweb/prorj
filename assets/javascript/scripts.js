@@ -1,22 +1,3 @@
-$('#form-prorio-content').steps({
-  headerTag: 'h3',
-  bodyTag: 'section',
-  transitionEffect: 'slideLeft',
-  autoFocus: true,
-  labels: {
-    current: '',
-    pagination: 'Pagination',
-    finish: 'Enviar',
-    next: 'Avançar',
-    previous: 'Voltar',
-    loading: 'Carregando...',
-  },
-});
-
-$("a[href='#finish']").click(function () {
-  $('#form-prorio').submit();
-});
-
 // FORM LOGIC
 
 $("a[href='#next']").click(function () {
@@ -40,8 +21,6 @@ function ShowHideDiv() {
   const autoVistoria = document.getElementById('autovistoria');
   const numeroProcesso = document.getElementById('process_number_content');
   numeroProcesso.style.display = autoVistoria.checked ? 'block' : 'none';
-
-  // Imovel Residencial
 
   // Imovel Publico & Imovel Comercial
   const imovelPublico = document.getElementById('imovel-publico');
@@ -94,6 +73,16 @@ function ShowHideDiv() {
   automationSystemContent.style.display = automationSystem.checked
     ? 'block'
     : 'none';
+
+  // Imovel Residencial
+
+  const fase2residencial = document.getElementById('residencial_fase2');
+  fase2residencial.style.display = imovelPublico.checked ? 'none' : 'block';
+
+  // É misto?
+  const misto = document.getElementById('predio-condominio');
+  const mistoContent = document.getElementById('predio-condominio-misto');
+  mistoContent.style.display = misto.checked ? 'block' : 'none';
 }
 
 function showDiv(divId, element, DivIdTwo) {
@@ -116,4 +105,3 @@ $(document).ready(function () {
   $('.mask-value').mask('000.000.000', { reverse: true });
   $('.money').mask('000.000.000.000.000', { reverse: true });
 });
-
