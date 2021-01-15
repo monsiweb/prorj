@@ -22,18 +22,18 @@ require_once($template_diretorio . "/endpoints/usuario_get.php");
 
 // Update
 
-function monsi_admin_term_update(){
+function monsi_admin_term_update()
+{
   $request = $_REQUEST;
   $user = wp_get_current_user();
   $user_id = $user->ID;
 
   if ($user_id > 0) {
-      $term = $request['term'];
-      update_user_meta($user_id, 'terms', $term);
+    $term = $request['term'];
+    update_user_meta($user_id, 'terms', $term);
   }
 
-  return wp_redirect(get_permalink(15));
-
+  return wp_redirect(get_permalink(59));
 }
 
 add_action('admin_post_term_update', 'monsi_admin_term_update');
