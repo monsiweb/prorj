@@ -72,11 +72,17 @@ function ShowHideDiv() {
     : 'none';
 
   // É misto?
+
   const misto = document.getElementById('predio-condominio');
   const mistoContent = document.getElementById('predio-condominio-misto');
   mistoContent.style.display = misto.checked ? 'block' : 'none';
 
+  const casaAp = document.getElementById('casa-ou-ap');
+  const casaApContent = document.getElementById('casa-ou-apartamento');
+  casaApContent.style.display = casaAp.checked ? 'block' : 'none';
+
   // Imovel Residencial
+
   const imovelResidencial = document.getElementById('imovel-residencial');
 
   const fase2residencial = document.getElementById('residencial_fase2');
@@ -103,6 +109,19 @@ function ShowHideDiv() {
   imovelComercialContent.style.display = imovelComercial.checked
     ? 'block'
     : 'none';
+
+  // Passo 4 v2
+  const tipoResidencial = document.getElementById('imovel-residencial');
+  const fasecu = document.getElementById('fase4-v2');
+  fasecu.style.display = tipoResidencial.checked ? 'block' : 'none';
+}
+
+function CasaAp(divId, element, DivIdTwo) {
+  if (element.value === 'casa-ou-ap') {
+    document.getElementById(divId).style.display = 'block';
+  } else {
+    document.getElementById(divId).style.display = 'none';
+  }
 }
 
 function showDiv(divId, element, DivIdTwo) {
@@ -120,7 +139,6 @@ function showDiv(divId, element, DivIdTwo) {
 }
 // Qual o tipo de residencia
 function tipoResidencia(divId, element, DivIdTwo) {
-  console.log(element);
   if (element.value === 'predio-condominio') {
     document.getElementById(divId).style.display = 'block';
   } else {

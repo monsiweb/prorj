@@ -234,7 +234,7 @@ $args = array(
                                         <div class="radio__group form__width--two mt-5">
                                             <div class="radio__content">
                                                 <label>
-                                                    <input type="radio" name="type_of_property" value="casa-ou-ap" id="casa-ou-ap">
+                                                    <input type="radio" name="type_of_property" value="casa-ou-ap" id="casa-ou-ap" onclick="CasaAp('casa-ou-apartamento', this)">
                                                     <div class="radio__item">
                                                         <img src="<?= get_template_directory_uri(); ?>/assets/images/family_1.svg" alt="Casa ou apartamento">
                                                         <p class="radio__item__title">Casa ou apartamento</p>
@@ -249,6 +249,15 @@ $args = array(
                                                         <p class="radio__item__title">Prédio ou condomínio</p>
                                                     </div>
                                                 </label>
+                                            </div>
+                                        </div>
+                                        <div class="input__extra" id="casa-ou-apartamento" style="display: block;">
+                                            <div class="form-group form__width">
+                                                <p class="form__row__title--three text-center">Qual a área total?</p>
+                                                <div class="input__text">
+                                                    <span class="text--input">m²</span>
+                                                    <input type="text" class="input__rio red_input" name="total_area">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="input__extra" id="predio-condominio-misto" style="display: block;">
