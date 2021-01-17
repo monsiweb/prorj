@@ -1144,6 +1144,10 @@ label {
 
 /* form step 4 part 2 */
 
+.fase4-v2 {
+  display: none;
+}
+
 .fase4-v2 .radio__item {
   max-width: 100%;
   width: 400px;
@@ -1197,6 +1201,10 @@ label {
   justify-content: space-around;
   width: 300px;
   text-align: center;
+}
+
+#residencial_fase2 {
+  display: none;
 }
 
 /* Página do relatório */

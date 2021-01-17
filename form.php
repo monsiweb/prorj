@@ -135,6 +135,14 @@ $args = array(
                                     <div class="input__extra" id="imovel-comercial-content">
                                         <div class="form-group">
                                             <div class="form-row">
+                                                <div class="col-6 mx-auto">
+                                                    <div class="form-group">
+                                                        <label for="name_of_property">Nome do imóvel</label>
+                                                        <input type="text" class="input__rio" name="name_of_property" id="name_of_property">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label for="IPTU">IPTU</label>
@@ -235,7 +243,7 @@ $args = array(
                                             </div>
                                             <div class="radio__content">
                                                 <label>
-                                                    <input type="radio" name="type_of_property" value="predio-condominio" id="predio-condominio" onclick="ShowHideDiv()">
+                                                    <input type="radio" name="type_of_property" value="predio-condominio" id="predio-condominio" onclick="tipoResidencia('predio-condominio-misto', this)">
                                                     <div class="radio__item">
                                                         <img src="<?= get_template_directory_uri(); ?>/assets/images/family_2.svg" alt="Prédio ou condomínio">
                                                         <p class="radio__item__title">Prédio ou condomínio</p>
@@ -643,7 +651,7 @@ $args = array(
                         </section>
                         <h3 class="form__item__header">Passo 4</h3>
                         <section>
-                            <div class="fase4">
+                            <div class="fase4" id="fase4Content">
                                 <p class="form__row__title">Ar condicionado</p>
                                 <div class="form-group">
                                     <label for="" class="text-center w-100">Qual tipo predominante de ar
