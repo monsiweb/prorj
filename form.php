@@ -10,8 +10,19 @@ if (is_user_logged_in()) {
     }
 } else {
     wp_redirect(get_home_url());
-}
+}  
 
+$dynamic_terms = get_terms('tipos_de_imoveis');  
+$args = array(
+    'post_type' => 'imoveis',
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'categorias',
+            'field'    => 'slug',
+            'terms' => $dynamic_term->name,
+        ),
+    ),
+);
 ?>
 <?php get_header(); ?>
 <section class="form form-residencial">
@@ -521,7 +532,7 @@ if (is_user_logged_in()) {
                         </section>
                         <h3 class="form__item__header">Passo 4</h3>
                         <section>
-                            <div class="fase4" style="display: none">
+                            <div class="fase4">
                                 <p class="form__row__title">Ar condicionado</p>
                                 <div class="form-group">
                                     <label for="" class="text-center w-100">Qual tipo predominante de ar
@@ -540,13 +551,6 @@ if (is_user_logged_in()) {
                                         <span class="text--input">anos</span>
                                         <input type="text" class="input__rio" name="idade_media_dos_equipamentos_de_ar_condicionado">
                                     </div>
-                                    <div class="form-group w-75 m-auto">
-                                        <label for="">Idade média dos equipamentos de ar condicionado?</label>
-                                        <div class="input__text">
-                                            <span class="text--input">anos</span>
-                                            <input type="text" class="input__rio" name="idade_media_dos_equipamentos_de_ar_condicionado">
-                                        </div>
-                                    </div>
                                     <div class="form-group">
                                         <div class="checkbox__input">
                                             <div class="pretty p-default p-thick p-smooth">
@@ -559,7 +563,7 @@ if (is_user_logged_in()) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="fase4-v2">
+                            <div class="fase4-v2" id="fase4-v2" >
                                 <div class="form-group mt-5">
                                     <p class="form__row__title--two text-center"> Qual tipo predominante de ar condicionado? </p>
                                     <div class="radio__group form__width--two mt-5">
