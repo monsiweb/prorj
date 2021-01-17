@@ -79,16 +79,15 @@ function ShowHideDiv() {
   const mistoContent = document.getElementById('predio-condominio-misto');
   mistoContent.style.display = misto.checked ? 'block' : 'none';
 
+  // Imovel Residencial
+  const fase2residencial = document.getElementById('residencial_fase2');
+  fase2residencial.style.display = imovelPublico.checked ? 'none' : 'block';
+
   // Passo 4 v2
 
   const tipoResidencial = document.getElementById('imovel-residencial');
-  const fase4v2 = document.getElementById('fase4-v2');
-  fase4v2.style.display = tipoResidencial.checked ? 'none' : 'block';
-
-  // Imovel Residencial
-
-  const fase2residencial = document.getElementById('residencial_fase2');
-  fase2residencial.style.display = imovelPublico.checked ? 'none' : 'block';
+  const fasecu = document.getElementById('fase4-v2');
+  fasecu.style.display = tipoResidencial.checked ? 'block' : 'none';
 }
 
 function showDiv(divId, element, DivIdTwo) {
