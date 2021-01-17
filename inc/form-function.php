@@ -61,6 +61,48 @@ function monsi_admin_add_imovel()
 
         $light_automation = sanitize_text_field($request['light_automation']);
 
+        // Extra passo 3, residencial
+
+        $area_comum_total =  sanitize_text_field($request['area_comum_total']);
+        $area_privativa_total =  sanitize_text_field($request['area_privativa_total']);
+        $n_unidades_pv_residenciais =  sanitize_text_field($request['n_unidades_pv_residenciais']);
+        $area_media_unidades_pv =  sanitize_text_field($request['area_media_unidades_pv']);
+        $quantos_andares_tem =  sanitize_text_field($request['quantos_andares_tem']);
+        $area_comercial_total =  sanitize_text_field($request['area_comercial_total']);
+        $n_unidades_pv_comerciais =  sanitize_text_field($request['n_unidades_pv_comerciais']);
+        $am_unidades_pv_comerciais =  sanitize_text_field($request['am_unidades_pv_comerciais']);
+
+        // Extra passo 3, residencial (consumo de energia)
+        
+        $consumo_areas_comuns =  sanitize_text_field($request['consumo_areas_comuns']);
+        $consumo_estimado_areas_comerciais =  sanitize_text_field($request['consumo_estimado_areas_comerciais']);
+        $consumo_estimado_areas_pv_residenciais =  sanitize_text_field($request['consumo_estimado_areas_pv_residenciais']);
+        $valor_ultima_conta_energia_condominio =  sanitize_text_field($request['valor_ultima_conta_energia_condominio']);
+        $valor_ultima_conta_energia_condominio =  sanitize_text_field($request['account_month_consumo_energia']);
+        
+        // Extra passo 4, Ar condicionado
+        
+        $qual_tipo_predominante_de_ar_condicionado_areas_comuns =  sanitize_text_field($request['qual_tipo_predominante_de_ar_condicionado_areas_comuns']);
+        $qtd_quip_ar_cond_areas_comuns =  sanitize_text_field($request['qtd_quip_ar_cond_areas_comuns']);
+        $idade_media_dos_equipamentos_de_ar_condicionado_areas_comuns =  sanitize_text_field($request['idade_media_dos_equipamentos_de_ar_condicionado_areas_comuns']);
+        
+        $qual_tipo_predominante_de_ar_condicionado_areas_pv_residencial =  sanitize_text_field($request['qual_tipo_predominante_de_ar_condicionado_areas_pv_residencial']);
+        $qtd_quip_ar_cond_areas_pv_residenciais =  sanitize_text_field($request['qtd_quip_ar_cond_areas_pv_residenciais']);
+        $idade_media_dos_equipamentos_de_ar_condicionado_areas_pv_residenciais =  sanitize_text_field($request['idade_media_dos_equipamentos_de_ar_condicionado_areas_pv_residenciais']);
+
+        $qual_tipo_predominante_de_ar_condicionado_areas_comerciais =  sanitize_text_field($request['qual_tipo_predominante_de_ar_condicionado_areas_comerciais']);
+        $qtd_quip_ar_cond_areas_comerciais =  sanitize_text_field($request['qtd_quip_ar_cond_areas_comerciais']);
+        $idade_media_dos_equipamentos_de_ar_condicionado_areas_comerciais =  sanitize_text_field($request['idade_media_dos_equipamentos_de_ar_condicionado_areas_comerciais']);
+
+         
+        // Extra passo 5, Iluminação
+
+        $luz_predominante_areas_comuns =  sanitize_text_field($request['luz_predominante_areas_comuns']);
+        $luz_predominante_areas_pv_residenciais =  sanitize_text_field($request['luz_predominante_areas_pv_residenciais']);
+        $luz_predominante_areas_comerciais =  sanitize_text_field($request['luz_predominante_areas_comerciais']);
+
+
+
         $response = array(
             'post_author' => $user_id,
             'post_type' => 'imoveis',
@@ -112,7 +154,31 @@ function monsi_admin_add_imovel()
                 'light_automation' => $light_automation,
                 'has_photovoltaic_panels' => $has_photovoltaic_panels,
                 'panels_water_heating' => $panels_water_heating,
-                'available_on_rooftops' => $available_on_rooftops
+                'available_on_rooftops' => $available_on_rooftops,
+                'area_comum_total' => $area_comum_total,
+                'area_privativa_total' => $area_privativa_total,
+                'numero_de_unidades_privativas_residenciais' => $n_unidades_pv_residenciais,
+                'area_media_das_unidades_privativas' =>  $area_media_unidades_pv,
+                'quantos_andares_tem' => $quantos_andares_tem,
+                'area_comercial_total' => $area_comercial_total, 
+                'numero_de_unidades_privativas_comerciais' => $n_unidades_pv_comerciais, 
+                'area_media_das_unidades_privativas_comerciais' => $am_unidades_pv_comerciais,
+                'consumo_das_areas_comuns' => $consumo_areas_comuns,
+                'consumo_estimado_das_areas_comerciais' => $consumo_estimado_areas_comerciais,
+                'consumo_estimado_das_areas_privativas_residenciais' => $consumo_estimado_areas_pv_residenciais,
+                'valor_ultima_conta_de_energia_do_condominio' => $valor_ultima_conta_energia_condominio,
+                'tipo_predominante_de_ar_condicionado_nas_areas_comuns' => $qual_tipo_predominante_de_ar_condicionado_areas_comuns,
+                'quantidade_de_equipamentos_de_ar_condicionado_nas_areas_comuns' => $qtd_quip_ar_cond_areas_comuns,
+                'idade_media_dos_equipamentos_de_ar_condicionado_nas_areas_comuns' => $idade_media_dos_equipamentos_de_ar_condicionado_areas_comuns,       
+                'tipo_predominante_de_ar_condicionado_nas_areas_privativas_residenciais' => $qual_tipo_predominante_de_ar_condicionado_areas_pv_residencial,
+                'quantidade_de_equipamentos_de_ar_condicionado_nas_areas_privativas_residenciais' => $qtd_quip_ar_cond_areas_pv_residenciais,
+                'idade_media_dos_equipamentos_de_ar_condicionado_nas_areas_privativas_residenciais' => $idade_media_dos_equipamentos_de_ar_condicionado_areas_pv_residenciais,
+                'tipo_predominante_de_ar_condicionado_nas_areas_comerciais' => $qual_tipo_predominante_de_ar_condicionado_areas_comerciais,
+                'quantidade_de_equipamentos_de_ar_condicionado_nas_areas_comerciais' => $qtd_quip_ar_cond_areas_comerciais,
+                'idade_media_dos_equipamentos_de_ar_condicionado_nas_areas_comerciais' => $idade_media_dos_equipamentos_de_ar_condicionado_areas_comerciais,
+                'qual_tipo_de_iluminacao_predominante_nas_areas_comuns' => $luz_predominante_areas_comuns,
+                'qual_tipo_de_iluminacao_predominante_nas_areas_privativas_residenciais' => $luz_predominante_areas_pv_residenciais,
+                'qual_tipo_de_iluminacao_predominante_nas__areas_comerciais' => $luz_predominante_areas_comerciais
             ),
         );
 

@@ -261,6 +261,18 @@ a.modal__close:hover {
   outline: none;
 }
 
+.yellow_input {
+  border: 1px solid #ffcd00;
+}
+
+.red_input {
+  border: 1px solid #eb4128;
+}
+
+.orange_input {
+  border: 1px solid #faaf41;
+}
+
 .input__rio--select {
   width: 100%;
   padding: 13px 10px;
@@ -269,6 +281,26 @@ a.modal__close:hover {
   border: none;
   font-weight: 400;
   font-size: 16px;
+}
+
+.input__rio--select_red {
+  width: 100%;
+  padding: 13px 10px;
+  color: #fff;
+  border: none;
+  font-weight: 400;
+  font-size: 16px;
+  background: #eb4128;
+}
+
+.input__rio--select_yellow {
+  width: 100%;
+  padding: 13px 10px;
+  color: #fff;
+  border: none;
+  font-weight: 400;
+  font-size: 16px;
+  background: #ffcd00;
 }
 
 .form__row__title {
@@ -852,8 +884,9 @@ body.pt .relatorio-pt {
 
 .fase4,
 .fase5,
+.fase5-v2,
 .fase1 .form__width {
-  max-width: 500px;
+  max-width: 400px;
   margin: 0 auto;
 }
 
@@ -916,6 +949,10 @@ label {
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
+}
+
+#fase3__three {
+  display: none;
 }
 
 /* FORM CSS */

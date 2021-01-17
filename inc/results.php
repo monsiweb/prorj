@@ -939,6 +939,7 @@ $calculo_bench = number_format(($consumo_especifico / $type_ben['tipico_consumo'
             display: contents;
         }
     </style>
+    <?php// if(!empty($total_consumption_year )) :?>
     <p class="meta-options hcf_field">
         <label for="hcf_tipo_imovel">Tipo de imóvel</label>
         <input id="hcf_tipo_imovel" type="text" name="hcf_tipo_imovel" value="<?= $type_public_property; ?>">
@@ -967,4 +968,7 @@ $calculo_bench = number_format(($consumo_especifico / $type_ben['tipico_consumo'
         <label for="hcf_eficiencia_ilu">Eficiência geral iluminação</label>
         <input id="hcf_eficiencia_ilu" type="text" name="hcf_eficiencia_ilu" value="<?= $dep['dep_porcentagem']; ?>%">
     </p>
+    <?php //else:?>
+      
+    <?php //endif;?>
 </div>
