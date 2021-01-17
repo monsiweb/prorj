@@ -1,4 +1,3 @@
-
 <?php /* Template Name: form */
 
 if (is_user_logged_in()) {
@@ -10,9 +9,9 @@ if (is_user_logged_in()) {
     }
 } else {
     wp_redirect(get_home_url());
-}  
+}
 
-$dynamic_terms = get_terms('tipos_de_imoveis');  
+$dynamic_terms = get_terms('tipos_de_imoveis');
 $args = array(
     'post_type' => 'imoveis',
     'tax_query' => array(
@@ -221,7 +220,7 @@ $args = array(
                                         </div>
                                     </div>
                                 </div>
-                                <div class="" id="residencial_fase2"> 
+                                <div class="" id="residencial_fase2">
                                     <div class="form-group mt-5">
                                         <p class="form__row__title--two text-center">Qual o tipo de residência?</p>
                                         <div class="radio__group form__width--two mt-5">
@@ -249,7 +248,7 @@ $args = array(
                                                 <p class="form__row__title--three text-center">É misto? (comercial + residencial)</p>
                                                 <div class="checkbox__input">
                                                     <div class="pretty p-default p-thick p-smooth">
-                                                        <input type="radio" name="e_misto" value="sim">
+                                                        <input type="radio" name="e_misto" id="e_misto" value="sim">
                                                         <div class="state p-warning-o">
                                                             <label for="sim">Sim</label>
                                                         </div>
@@ -675,7 +674,7 @@ $args = array(
                                     </div>
                                 </div>
                             </div>
-                            <div class="fase4-v2" id="fase4-v2" >
+                            <div class="fase4-v2" id="fase4-v2">
                                 <div class="form-group mt-5">
                                     <p class="form__row__title--two text-center"> Qual tipo predominante de ar condicionado? </p>
                                     <div class="radio__group form__width--two mt-5">
@@ -815,7 +814,7 @@ $args = array(
                             </div>
                             <div class="fase4-v3" id="fase4-v3">
                                 <p class="form__row__title">Ar condicionado</p>
-                                <div class="form-row mt-4"> 
+                                <div class="form-row mt-4">
                                     <div class="col-4">
                                         <div class="form-group mb-4">
                                             <label for="" class="">Tipo predominante de ar condicionado nas áreas comuns</label>
@@ -970,7 +969,7 @@ $args = array(
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="" class="text-center w-100">Qual tipo de iluminação predominante nas  áreas comerciais?</label>
+                                    <label for="" class="text-center w-100">Qual tipo de iluminação predominante nas áreas comerciais?</label>
                                     <select name="luz_predominante_areas_comerciais" id="luz_predominante_areas_comerciais" class="input__rio--select_red">
                                         <option value="incandescente">Incandescente</option>
                                         <option value="mista">Mista</option>
