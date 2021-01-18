@@ -234,7 +234,7 @@ $args = array(
                                         <div class="radio__group form__width--two mt-5">
                                             <div class="radio__content">
                                                 <label>
-                                                    <input type="radio" name="type_of_property" value="casa-ou-ap" id="casa-ou-ap" onclick="CasaAp('casa-ou-apartamento', this)">
+                                                    <input type="radio" name="type_of_property" value="casa-ou-ap" id="casa-ou-ap" onclick="tipoResidencia('casa-ou-apartamento', this, 'predio-condominio-misto')">
                                                     <div class="radio__item">
                                                         <img src="<?= get_template_directory_uri(); ?>/assets/images/family_1.svg" alt="Casa ou apartamento">
                                                         <p class="radio__item__title">Casa ou apartamento</p>
@@ -243,7 +243,7 @@ $args = array(
                                             </div>
                                             <div class="radio__content">
                                                 <label>
-                                                    <input type="radio" name="type_of_property" value="predio-condominio" id="predio-condominio" onclick="tipoResidencia('predio-condominio-misto', this)">
+                                                    <input type="radio" name="type_of_property" value="predio-condominio" id="predio-condominio" onclick="tipoResidencia('predio-condominio-misto', this, 'casa-ou-apartamento')">
                                                     <div class="radio__item">
                                                         <img src="<?= get_template_directory_uri(); ?>/assets/images/family_2.svg" alt="Prédio ou condomínio">
                                                         <p class="radio__item__title">Prédio ou condomínio</p>
@@ -251,8 +251,8 @@ $args = array(
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="input__extra" id="casa-ou-apartamento" style="display: block;">
-                                            <div class="form-group form__width">
+                                        <div class="input__extra" id="casa-ou-apartamento">
+                                            <div class=" form-group form__width">
                                                 <p class="form__row__title--three text-center">Qual a área total?</p>
                                                 <div class="input__text">
                                                     <span class="text--input">m²</span>
@@ -265,13 +265,13 @@ $args = array(
                                                 <p class="form__row__title--three text-center">É misto? (comercial + residencial)</p>
                                                 <div class="checkbox__input">
                                                     <div class="pretty p-default p-thick p-smooth">
-                                                        <input type="radio" name="e_misto" id="e_misto" value="sim">
+                                                        <input type="radio" name="e_misto" id="e_misto" value="sim" onclick="residencialMisto(this)">
                                                         <div class="state p-warning-o">
                                                             <label for="sim">Sim</label>
                                                         </div>
                                                     </div>
                                                     <div class="pretty p-default p-thick p-smooth">
-                                                        <input type="radio" name="e_misto" value="nao">
+                                                        <input type="radio" name="e_misto" value="nao" onclick="residencialMisto(this)">
                                                         <div class="state p-warning-o">
                                                             <label for="nao">Não</label>
                                                         </div>
@@ -657,6 +657,98 @@ $args = array(
                                     </div>
                                 </div>
                             </div>
+
+                            <div id="fase3__three-red" class="fase3">
+                                <p class="form__row__title">Dados do imóvel</p>
+                                <div class="form-row mt-4">
+                                    <div class="col-6 text-left">
+                                        <label for="" class="mb-1">Área comum total</label>
+                                        <div class="input__text mb-4">
+                                            <span class="text--input">m²</span>
+                                            <input type="text" class="input__rio orange_input" name="area_comum_total">
+                                        </div>
+                                        <label for="" class="mb-1">Área privativa total</label>
+                                        <div class="input__text mb-4">
+                                            <span class="text--input">m²</span>
+                                            <input type="text" class="input__rio yellow_input" name="area_privativa_total">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 text-left">
+                                        <label for="" class="mb-1">Quantos andares tem?</label>
+                                        <div class="input__text mb-4">
+                                            <input type="text" class="input__rio orange_input" name="quantos_andares_tem">
+                                        </div>
+                                        <label for="" class="mb-1">Número de unidades privativas residenciais</label>
+                                        <div class="input__text mb-4">
+                                            <input type="text" class="input__rio yellow_input" name="n_unidades_pv_residenciais">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mx-auto">
+                                        <label for="" class="mb-1">Área média das unidades privativas</label>
+                                        <div class="input__text mb-4">
+                                            <span class="text--input">m²</span>
+                                            <input type="text" class="input__rio yellow_input" name="area_media_unidades_pv">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form__section__title">
+                                            <p class="form__row__title">Consumo de energia</p>
+                                        </div>
+                                        <div class="form-row mb-3">
+                                            <div class="col-md-6 text-left">
+                                                <div class="form-group">
+                                                    <label for="" class="mb-1">Consumo das áreas comuns</label>
+                                                    <div class="input__text">
+                                                        <span class="text--input">kWh/ano</span>
+                                                        <input type="text" class="input__rio orange_input" name="consumo_areas_comuns">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 text-left">
+                                                <div class="form-group">
+                                                    <label for="consumo_estimado_areas_pv_residenciais" class="mb-1">Consumo estimado das áreas privativas residenciais</label>
+                                                    <div class="input__text">
+                                                        <span class="text--input">kWh/ano</span>
+                                                        <input type="text" class="input__rio yellow_input" name="consumo_estimado_areas_pv_residenciais">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row mb-3">
+                                            <div class="col-md-6 text-left">
+                                                <div class="form-group">
+                                                    <label for="" class="mb-1">Valor última conta de energia do condomínio</label>
+                                                    <div class="input__text">
+                                                        <span class="text--input">R$</span>
+                                                        <input type="text" class="input__rio orange_input" name="valor_ultima_conta_energia_condominio">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 text-left">
+                                                <div class="form-group">
+                                                    <label for="account_month_a1" class="mb-1">Mês da conta</label>
+                                                    <select name="account_month_a1" id="account_month_consumo_energia" class="input__rio--select">
+                                                        <option value="janeiro">Janeiro</option>
+                                                        <option value="fevereiro">Fevereiro</option>
+                                                        <option value="marco">Março</option>
+                                                        <option value="abril">Abril</option>
+                                                        <option value="maio">Maio</option>
+                                                        <option value="junho">Junho</option>
+                                                        <option value="julho">Julho</option>
+                                                        <option value="agosto">Agosto</option>
+                                                        <option value="setembro">Setembro</option>
+                                                        <option value="outubro">Outubro</option>
+                                                        <option value="novembro">Novembro</option>
+                                                        <option value="dezembro">Dezembro</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </section>
                         <h3 class="form__item__header">Passo 4</h3>
                         <section>
@@ -832,7 +924,7 @@ $args = array(
                             <div class="fase4-v3" id="fase4-v3">
                                 <p class="form__row__title">Ar condicionado</p>
                                 <div class="form-row mt-4">
-                                    <div class="col-4">
+                                    <div class="col-4 d-flex flex-column justify-content-between">
                                         <div class="form-group mb-4">
                                             <label for="" class="">Tipo predominante de ar condicionado nas áreas comuns</label>
                                             <select name="qual_tipo_predominante_de_ar_condicionado_areas_comuns" id="" class="input__rio--select">
@@ -855,7 +947,7 @@ $args = array(
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-4 col-4 d-flex flex-column justify-content-between">
                                         <div class="form-group mb-4">
                                             <label for="" class="">Tipo predominante de ar condicionado nas áreas privativas residenciais</label>
                                             <select name="qual_tipo_predominante_de_ar_condicionado_areas_pv_residencial" id="" class="input__rio--select_yellow">
@@ -878,7 +970,7 @@ $args = array(
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-4 col-4 d-flex flex-column justify-content-between">
                                         <div class="form-group mb-4">
                                             <label for="" class="">Tipo predominante de ar condicionado nas áreas comerciais</label>
                                             <select name="qual_tipo_predominante_de_ar_condicionado_areas_comerciais" id="" class="input__rio--select_red">
@@ -915,10 +1007,74 @@ $args = array(
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="fase4-v3" id="fase4-v3-two">
+                                <p class="form__row__title">Ar condicionado</p>
+                                <div class="form-row mt-4 mx-auto d-flex justify-content-center" style="max-width: 1200px;">
+                                    <div class="col-4 d-flex flex-column justify-content-between">
+                                        <div class="form-group mb-4">
+                                            <label for="" class="">Tipo predominante de ar condicionado nas áreas comuns?</label>
+                                            <select name="qual_tipo_predominante_de_ar_condicionado_areas_comuns" id="" class="input__rio--select">
+                                                <option value="split">Split</option>
+                                                <option value="janela">Janela</option>
+                                                <option value="split-inverter">Split inverter</option>
+                                                <option value="vrf">VRF</option>
+                                                <option value="chiller">Chiller</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group mb-4">
+                                            <label for="">Quantidade de equipamentos de ar condicionado nas áreas comuns</label>
+                                            <input type="text" class="input__rio orange_input" name="qtd_quip_ar_cond_areas_comuns">
+                                        </div>
+                                        <div class="form-group mb-4">
+                                            <label for="">Idade média dos equipamentos de ar condicionado nas áreas comuns</label>
+                                            <div class="input__text">
+                                                <span class="text--input">anos</span>
+                                                <input type="text" class="input__rio orange_input" name="idade_media_dos_equipamentos_de_ar_condicionado_areas_comuns">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 col-4 d-flex flex-column justify-content-between">
+                                        <div class="form-group mb-4">
+                                            <label for="" class="">Tipo predominante de ar condicionado nas áreas privativas?</label>
+                                            <select name="qual_tipo_predominante_de_ar_condicionado_areas_pv_residencial" id="" class="input__rio--select_yellow">
+                                                <option value="split">Split</option>
+                                                <option value="janela">Janela</option>
+                                                <option value="split-inverter">Split inverter</option>
+                                                <option value="vrf">VRF</option>
+                                                <option value="chiller">Chiller</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group mb-4">
+                                            <label for="">Quantidade de equipamentos de ar condicionado nas áreas privativas</label>
+                                            <input type="text" class="input__rio yellow_input" name="qtd_quip_ar_cond_areas_pv_residenciais">
+                                        </div>
+                                        <div class="form-group mb-4">
+                                            <label for="">Idade média dos equipamentos de ar condicionado nas áreas privativas</label>
+                                            <div class="input__text">
+                                                <span class="text--input">anos</span>
+                                                <input type="text" class="input__rio yellow_input" name="idade_media_dos_equipamentos_de_ar_condicionado_areas_pv_residenciais">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 m-auto">
+                                        <div class="form-group">
+                                            <div class="checkbox__input">
+                                                <div class="pretty p-default p-thick p-smooth">
+                                                    <input type="checkbox" name="nao_possuo_ar" value="nao_possuo">
+                                                    <div class="state p-warning-o">
+                                                        <label for="nao_possuo_ar">Não Possuo ar</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </section>
                         <h3 class="form__item__header">Passo 5</h3>
                         <section>
-                            <div class="fase5">
+                            <div class="fase5" id="fase5Content">
                                 <p class="form__row__title text-center w-100">Iluminação</p>
                                 <div class="form-group">
                                     <label for="" class="text-center w-100">Qual tipo de iluminação
@@ -935,7 +1091,7 @@ $args = array(
                                     </select>
                                 </div>
 
-                                <div class="form-group text-center mt-5">
+                                <div class="form-group text-center mt-5" id="sistema-automacao">
                                     <p>Possui sistema de automação?</p>
                                     <div class="pretty p-default p-thick p-smooth px-0 mx-0">
                                         <div class="form-group form__width">
@@ -957,7 +1113,7 @@ $args = array(
                                     </div>
                                 </div>
                             </div>
-                            <div class="fase5-v2">
+                            <div class="fase5-v2" id="fase5-v2">
                                 <p class="form__row__title text-center w-100">Iluminação</p>
                                 <div class="form-group">
                                     <label for="" class="text-center w-100"> Qual tipo de iluminação predominante nas áreas comuns?</label>
@@ -973,7 +1129,7 @@ $args = array(
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="" class="text-center w-100">Qual tipo de iluminação predominante nas áreas privativas residenciais?</label>
+                                    <label for="" class="text-center w-100">Qual tipo de iluminação predominante nas áreas privativas?</label>
                                     <select name="luz_predominante_areas_pv_residenciais" id="luz_predominante_areas_pv_residenciais" class="input__rio--select_yellow">
                                         <option value="incandescente">Incandescente</option>
                                         <option value="mista">Mista</option>
@@ -985,7 +1141,7 @@ $args = array(
                                         <option value="led-18w">LED 18w</option>
                                     </select>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" id="form-v5-comercial">
                                     <label for="" class="text-center w-100">Qual tipo de iluminação predominante nas áreas comerciais?</label>
                                     <select name="luz_predominante_areas_comerciais" id="luz_predominante_areas_comerciais" class="input__rio--select_red">
                                         <option value="incandescente">Incandescente</option>

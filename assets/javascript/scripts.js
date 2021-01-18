@@ -77,10 +77,6 @@ function ShowHideDiv() {
   const mistoContent = document.getElementById('predio-condominio-misto');
   mistoContent.style.display = misto.checked ? 'block' : 'none';
 
-  const casaAp = document.getElementById('casa-ou-ap');
-  const casaApContent = document.getElementById('casa-ou-apartamento');
-  casaApContent.style.display = casaAp.checked ? 'block' : 'none';
-
   // Imovel Residencial
 
   const imovelResidencial = document.getElementById('imovel-residencial');
@@ -97,14 +93,6 @@ function ShowHideDiv() {
     ? 'none'
     : 'block';
 
-  if (imovelComercial.checked) {
-    document.getElementById('fase2__two').style.display = 'block';
-    document.getElementById('fase__3').style.display = 'none';
-    document.getElementById('fase4Content').style.display = 'none';
-    document.getElementById('fase3__two').style.display = 'block';
-    document.getElementById('fase4-v2').style.display = 'block';
-  }
-
   // Content Passo 1
   imovelComercialContent.style.display = imovelComercial.checked
     ? 'block'
@@ -112,18 +100,68 @@ function ShowHideDiv() {
 
   // Passo 4 v2
   const tipoResidencial = document.getElementById('imovel-residencial');
-  const fasecu = document.getElementById('fase4-v2');
-  fasecu.style.display = tipoResidencial.checked ? 'block' : 'none';
-}
+  const fase4Item = document.getElementById('fase4-v2');
+  fase4Item.style.display = tipoResidencial.checked ? 'block' : 'none';
 
-function CasaAp(divId, element, DivIdTwo) {
-  if (element.value === 'casa-ou-ap') {
-    document.getElementById(divId).style.display = 'block';
-  } else {
-    document.getElementById(divId).style.display = 'none';
+  if (imovelResidencial.checked) {
+    document.getElementById('fase__3').style.display = 'none';
+    document.getElementById('fase3__three').style.display = 'block';
+  }
+
+  if (imovelPublico.checked) {
+    document.getElementById('fase4-v3').style.display = 'none';
+    document.getElementById('fase4-v2').style.display = 'block';
+    document.getElementById('fase5-v2').style.display = 'none';
+    document.getElementById('fase3__three-red').style.display = 'none';
+    document.getElementById('fase3__three').style.display = 'none';
+    document.getElementById('fase4-v3-two').style.display = 'none';
+    document.getElementById('fase5Content').style.display = 'block';
+    document.getElementById('sistema-automacao').style.display = 'block';
+  }
+
+  if (imovelComercial.checked) {
+    document.getElementById('fase2__two').style.display = 'block';
+    document.getElementById('fase__3').style.display = 'none';
+    document.getElementById('fase4Content').style.display = 'none';
+    document.getElementById('fase3__two').style.display = 'block';
+    document.getElementById('fase4-v2').style.display = 'block';
+    document.getElementById('fase3__three').style.display = 'none';
+    document.getElementById('fase3__three-red').style.display = 'none';
+    document.getElementById('fase4-v3').style.display = 'none';
+    document.getElementById('fase4-v3-two').style.display = 'none';
+    document.getElementById('fase5-v2').style.display = 'none';
   }
 }
 
+// É misto (Comercial + Residencial)
+
+function residencialMisto(event) {
+  console.log(event);
+  if (event.value == 'sim') {
+    document.getElementById('fase3__three').style.display = 'block';
+    document.getElementById('fase3__three-red').style.display = 'none';
+    document.getElementById('fase__3').style.display = 'none';
+    document.getElementById('fase4-v2').style.display = 'none';
+    document.getElementById('fase4-v3').style.display = 'block';
+    document.getElementById('fase4-v3-two').style.display = 'none';
+    document.getElementById('fase4Content').style.display = 'none';
+    document.getElementById('fase5-v2').style.display = 'block';
+    document.getElementById('fase5Content').style.display = 'none';
+  } else if (event.value == 'nao') {
+    document.getElementById('fase3__three').style.display = 'none';
+    document.getElementById('fase3__three-red').style.display = 'block';
+    document.getElementById('fase__3').style.display = 'none';
+    document.getElementById('fase4-v2').style.display = 'none';
+    document.getElementById('fase4Content').style.display = 'none';
+    document.getElementById('fase4-v3').style.display = 'none';
+    document.getElementById('fase4-v3-two').style.display = 'block';
+    document.getElementById('fase5Content').style.display = 'none';
+    document.getElementById('fase5-v2').style.display = 'block';
+    document.getElementById('form-v5-comercial').style.display = 'none';
+  } else {
+    alert('ok');
+  }
+}
 function showDiv(divId, element, DivIdTwo) {
   if (element.value === 'A') {
     document.getElementById(divId).style.display = 'block';
@@ -138,17 +176,22 @@ function showDiv(divId, element, DivIdTwo) {
   }
 }
 // Qual o tipo de residencia
-function tipoResidencia(divId, element, DivIdTwo) {
+function tipoResidencia(divId, element, divIdTwo) {
+  console.log(element);
   if (element.value === 'predio-condominio') {
     document.getElementById(divId).style.display = 'block';
+    document.getElementById(divIdTwo).style.display = 'none';
+    document.getElementById('fase3__three').style.display = 'none';
+    document.getElementById('fase__3').style.display = 'block';
+    document.getElementById('fase4-v2').style.display = 'none';
+    document.getElementById('fase4-v3').style.display = 'none';
+    document.getElementById('fase5-v2').style.display = 'none';
+    document.getElementById('sistema-automacao').style.display = 'none';
+  } else if (element.value === 'casa-ou-ap') {
+    document.getElementById(divId).style.display = 'block';
+    document.getElementById(divIdTwo).style.display = 'none';
+    document.getElementById('sistema-automacao').style.display = 'none';
   } else {
-    document.getElementById(divId).style.display = 'none';
-  }
-
-  if (element.value === 'B') {
-    document.getElementById(DivIdTwo).style.display = 'block';
-  } else {
-    document.getElementById(DivIdTwo).style.display = 'none';
   }
 }
 

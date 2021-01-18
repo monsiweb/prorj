@@ -955,6 +955,14 @@ label {
   display: none;
 }
 
+#fase3__three-red {
+  display: none;
+}
+
+#fase4-v3-two {
+  display: none;
+}
+
 /* FORM CSS */
 /* FORM HIDE CONTENTS */
 #process_number_content {
@@ -1204,6 +1212,10 @@ label {
 }
 
 #residencial_fase2 {
+  display: none;
+}
+
+#casa-ou-apartamento {
   display: none;
 }
 
